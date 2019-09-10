@@ -14,6 +14,7 @@
 		5FA66F02231FA92A00A23B14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FA66F01231FA92A00A23B14 /* Assets.xcassets */; };
 		5FA66F05231FA92A00A23B14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FA66F03231FA92A00A23B14 /* LaunchScreen.storyboard */; };
 		5FA66F10231FA92A00A23B14 /* tdb_propositionSolutionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA66F0F231FA92A00A23B14 /* tdb_propositionSolutionTests.swift */; };
+		B7679560919645BD498EE909 /* Pods_tdb_propositionSolution.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8900154E9FF7D018425BC509 /* Pods_tdb_propositionSolution.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,9 @@
 		5FA66F0B231FA92A00A23B14 /* tdb_propositionSolutionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tdb_propositionSolutionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FA66F0F231FA92A00A23B14 /* tdb_propositionSolutionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tdb_propositionSolutionTests.swift; sourceTree = "<group>"; };
 		5FA66F11231FA92A00A23B14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8900154E9FF7D018425BC509 /* Pods_tdb_propositionSolution.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tdb_propositionSolution.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B12E3DFF918C50BCBEE28DD1 /* Pods-tdb_propositionSolution.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tdb_propositionSolution.release.xcconfig"; path = "Target Support Files/Pods-tdb_propositionSolution/Pods-tdb_propositionSolution.release.xcconfig"; sourceTree = "<group>"; };
+		B1E66023352F09DCBF2E7F16 /* Pods-tdb_propositionSolution.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tdb_propositionSolution.debug.xcconfig"; path = "Target Support Files/Pods-tdb_propositionSolution/Pods-tdb_propositionSolution.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7679560919645BD498EE909 /* Pods_tdb_propositionSolution.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,12 +63,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		420DDE9EAB0449B3967C4622 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B1E66023352F09DCBF2E7F16 /* Pods-tdb_propositionSolution.debug.xcconfig */,
+				B12E3DFF918C50BCBEE28DD1 /* Pods-tdb_propositionSolution.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		574C96907A66F9744D322A51 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8900154E9FF7D018425BC509 /* Pods_tdb_propositionSolution.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5FA66EEC231FA92700A23B14 = {
 			isa = PBXGroup;
 			children = (
 				5FA66EF7231FA92700A23B14 /* tdb_propositionSolution */,
 				5FA66F0E231FA92A00A23B14 /* tdb_propositionSolutionTests */,
 				5FA66EF6231FA92700A23B14 /* Products */,
+				420DDE9EAB0449B3967C4622 /* Pods */,
+				574C96907A66F9744D322A51 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -106,9 +131,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5FA66F14231FA92A00A23B14 /* Build configuration list for PBXNativeTarget "tdb_propositionSolution" */;
 			buildPhases = (
+				A9DC973483B76110EA20AE2F /* [CP] Check Pods Manifest.lock */,
 				5FA66EF1231FA92700A23B14 /* Sources */,
 				5FA66EF2231FA92700A23B14 /* Frameworks */,
 				5FA66EF3231FA92700A23B14 /* Resources */,
+				8E902F1E97EB8B8D5B0BF570 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -194,6 +221,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8E902F1E97EB8B8D5B0BF570 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tdb_propositionSolution/Pods-tdb_propositionSolution-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tdb_propositionSolution/Pods-tdb_propositionSolution-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tdb_propositionSolution/Pods-tdb_propositionSolution-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A9DC973483B76110EA20AE2F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-tdb_propositionSolution-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5FA66EF1231FA92700A23B14 /* Sources */ = {
@@ -360,6 +429,7 @@
 		};
 		5FA66F15231FA92A00A23B14 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B1E66023352F09DCBF2E7F16 /* Pods-tdb_propositionSolution.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -378,6 +448,7 @@
 		};
 		5FA66F16231FA92A00A23B14 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B12E3DFF918C50BCBEE28DD1 /* Pods-tdb_propositionSolution.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
