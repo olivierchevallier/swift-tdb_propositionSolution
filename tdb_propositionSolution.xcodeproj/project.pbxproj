@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,8 @@
 		5FA66F02231FA92A00A23B14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FA66F01231FA92A00A23B14 /* Assets.xcassets */; };
 		5FA66F05231FA92A00A23B14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FA66F03231FA92A00A23B14 /* LaunchScreen.storyboard */; };
 		5FA66F10231FA92A00A23B14 /* tdb_propositionSolutionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA66F0F231FA92A00A23B14 /* tdb_propositionSolutionTests.swift */; };
+		5FADAC302327E16D00316A55 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FADAC2F2327E16D00316A55 /* Location.swift */; };
+		5FADAC342327E5CA00316A55 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FADAC332327E5CA00316A55 /* LocationTableViewCell.swift */; };
 		B7679560919645BD498EE909 /* Pods_tdb_propositionSolution.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8900154E9FF7D018425BC509 /* Pods_tdb_propositionSolution.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +41,8 @@
 		5FA66F0B231FA92A00A23B14 /* tdb_propositionSolutionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tdb_propositionSolutionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FA66F0F231FA92A00A23B14 /* tdb_propositionSolutionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tdb_propositionSolutionTests.swift; sourceTree = "<group>"; };
 		5FA66F11231FA92A00A23B14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5FADAC2F2327E16D00316A55 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		5FADAC332327E5CA00316A55 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
 		8900154E9FF7D018425BC509 /* Pods_tdb_propositionSolution.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tdb_propositionSolution.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B12E3DFF918C50BCBEE28DD1 /* Pods-tdb_propositionSolution.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tdb_propositionSolution.release.xcconfig"; path = "Target Support Files/Pods-tdb_propositionSolution/Pods-tdb_propositionSolution.release.xcconfig"; sourceTree = "<group>"; };
 		B1E66023352F09DCBF2E7F16 /* Pods-tdb_propositionSolution.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tdb_propositionSolution.debug.xcconfig"; path = "Target Support Files/Pods-tdb_propositionSolution/Pods-tdb_propositionSolution.debug.xcconfig"; sourceTree = "<group>"; };
@@ -69,7 +73,6 @@
 				B1E66023352F09DCBF2E7F16 /* Pods-tdb_propositionSolution.debug.xcconfig */,
 				B12E3DFF918C50BCBEE28DD1 /* Pods-tdb_propositionSolution.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -108,9 +111,11 @@
 				5FA66EFA231FA92700A23B14 /* SceneDelegate.swift */,
 				5FA66EFC231FA92700A23B14 /* ViewController.swift */,
 				5FA66EFE231FA92700A23B14 /* Main.storyboard */,
+				5FADAC2F2327E16D00316A55 /* Location.swift */,
 				5FA66F01231FA92A00A23B14 /* Assets.xcassets */,
 				5FA66F03231FA92A00A23B14 /* LaunchScreen.storyboard */,
 				5FA66F06231FA92A00A23B14 /* Info.plist */,
+				5FADAC332327E5CA00316A55 /* LocationTableViewCell.swift */,
 			);
 			path = tdb_propositionSolution;
 			sourceTree = "<group>";
@@ -270,7 +275,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FA66EFD231FA92700A23B14 /* ViewController.swift in Sources */,
+				5FADAC342327E5CA00316A55 /* LocationTableViewCell.swift in Sources */,
 				5FA66EF9231FA92700A23B14 /* AppDelegate.swift in Sources */,
+				5FADAC302327E16D00316A55 /* Location.swift in Sources */,
 				5FA66EFB231FA92700A23B14 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
