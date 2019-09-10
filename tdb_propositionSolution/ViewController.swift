@@ -7,14 +7,30 @@
 //
 
 import UIKit
+import Mapbox
+import MapboxCoreNavigation
+import MapboxNavigation
+import MapboxDirections
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, MGLMapViewDelegate {
+
+    //MARK: Properties
+    var mapView: NavigationMapView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        mapView = NavigationMapView(frame: view.bounds)
+        mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(mapView)
+        view.sendSubviewToBack(mapView)
+        
+        mapView.delegate = self
+        
+        mapView.showsUserLocation = true
+        mapView.setUserTrackingMode(.follow, animated: true) {
+            
+        }
     }
-
-
 }
 
