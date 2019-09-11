@@ -9,13 +9,14 @@
 /* Begin PBXBuildFile section */
 		5FA66EF9231FA92700A23B14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA66EF8231FA92700A23B14 /* AppDelegate.swift */; };
 		5FA66EFB231FA92700A23B14 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA66EFA231FA92700A23B14 /* SceneDelegate.swift */; };
-		5FA66EFD231FA92700A23B14 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA66EFC231FA92700A23B14 /* ViewController.swift */; };
+		5FA66EFD231FA92700A23B14 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA66EFC231FA92700A23B14 /* MapViewController.swift */; };
 		5FA66F00231FA92700A23B14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FA66EFE231FA92700A23B14 /* Main.storyboard */; };
 		5FA66F02231FA92A00A23B14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FA66F01231FA92A00A23B14 /* Assets.xcassets */; };
 		5FA66F05231FA92A00A23B14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FA66F03231FA92A00A23B14 /* LaunchScreen.storyboard */; };
 		5FA66F10231FA92A00A23B14 /* tdb_propositionSolutionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA66F0F231FA92A00A23B14 /* tdb_propositionSolutionTests.swift */; };
 		5FADAC302327E16D00316A55 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FADAC2F2327E16D00316A55 /* Location.swift */; };
 		5FADAC342327E5CA00316A55 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FADAC332327E5CA00316A55 /* LocationTableViewCell.swift */; };
+		5FADAC3823291C1D00316A55 /* LocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FADAC3723291C1D00316A55 /* LocationTableViewController.swift */; };
 		B7679560919645BD498EE909 /* Pods_tdb_propositionSolution.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8900154E9FF7D018425BC509 /* Pods_tdb_propositionSolution.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,7 +34,7 @@
 		5FA66EF5231FA92700A23B14 /* tdb_propositionSolution.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tdb_propositionSolution.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FA66EF8231FA92700A23B14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5FA66EFA231FA92700A23B14 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5FA66EFC231FA92700A23B14 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5FA66EFC231FA92700A23B14 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		5FA66EFF231FA92700A23B14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5FA66F01231FA92A00A23B14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5FA66F04231FA92A00A23B14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -43,6 +44,7 @@
 		5FA66F11231FA92A00A23B14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5FADAC2F2327E16D00316A55 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		5FADAC332327E5CA00316A55 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
+		5FADAC3723291C1D00316A55 /* LocationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewController.swift; sourceTree = "<group>"; };
 		8900154E9FF7D018425BC509 /* Pods_tdb_propositionSolution.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tdb_propositionSolution.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B12E3DFF918C50BCBEE28DD1 /* Pods-tdb_propositionSolution.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tdb_propositionSolution.release.xcconfig"; path = "Target Support Files/Pods-tdb_propositionSolution/Pods-tdb_propositionSolution.release.xcconfig"; sourceTree = "<group>"; };
 		B1E66023352F09DCBF2E7F16 /* Pods-tdb_propositionSolution.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tdb_propositionSolution.debug.xcconfig"; path = "Target Support Files/Pods-tdb_propositionSolution/Pods-tdb_propositionSolution.debug.xcconfig"; sourceTree = "<group>"; };
@@ -109,13 +111,14 @@
 			children = (
 				5FA66EF8231FA92700A23B14 /* AppDelegate.swift */,
 				5FA66EFA231FA92700A23B14 /* SceneDelegate.swift */,
-				5FA66EFC231FA92700A23B14 /* ViewController.swift */,
+				5FA66EFC231FA92700A23B14 /* MapViewController.swift */,
 				5FA66EFE231FA92700A23B14 /* Main.storyboard */,
 				5FADAC2F2327E16D00316A55 /* Location.swift */,
 				5FA66F01231FA92A00A23B14 /* Assets.xcassets */,
 				5FA66F03231FA92A00A23B14 /* LaunchScreen.storyboard */,
 				5FA66F06231FA92A00A23B14 /* Info.plist */,
 				5FADAC332327E5CA00316A55 /* LocationTableViewCell.swift */,
+				5FADAC3723291C1D00316A55 /* LocationTableViewController.swift */,
 			);
 			path = tdb_propositionSolution;
 			sourceTree = "<group>";
@@ -274,8 +277,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5FA66EFD231FA92700A23B14 /* ViewController.swift in Sources */,
+				5FA66EFD231FA92700A23B14 /* MapViewController.swift in Sources */,
 				5FADAC342327E5CA00316A55 /* LocationTableViewCell.swift in Sources */,
+				5FADAC3823291C1D00316A55 /* LocationTableViewController.swift in Sources */,
 				5FA66EF9231FA92700A23B14 /* AppDelegate.swift in Sources */,
 				5FADAC302327E16D00316A55 /* Location.swift in Sources */,
 				5FA66EFB231FA92700A23B14 /* SceneDelegate.swift in Sources */,

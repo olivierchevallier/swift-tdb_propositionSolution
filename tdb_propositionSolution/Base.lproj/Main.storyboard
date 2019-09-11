@@ -10,7 +10,7 @@
         <!--Plan-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="tdb_propositionSolution" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MapViewController" customModule="tdb_propositionSolution" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -51,30 +51,35 @@
             </objects>
             <point key="canvasLocation" x="1072.8" y="93.103448275862078"/>
         </scene>
-        <!--Table View Controller-->
+        <!--LocationTableViewController-->
         <scene sceneID="wpa-JF-qGb">
             <objects>
-                <tableViewController id="rT6-KM-ZzY" sceneMemberID="viewController">
+                <tableViewController title="LocationTableViewController" id="rT6-KM-ZzY" customClass="LocationTableViewController" customModule="tdb_propositionSolution" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="pgg-1z-b6Z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationTableViewCell" id="4g8-5J-oYZ" customClass="LocationTableViewCell">
-                                <rect key="frame" x="0.0" y="28" width="375" height="43.666667938232422"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationTableViewCell" id="4g8-5J-oYZ" customClass="LocationTableViewCell" customModule="tdb_propositionSolution" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="40.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4g8-5J-oYZ" id="Mdv-Zk-cjl">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="40.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DZ5-Ow-reb">
-                                            <rect key="frame" x="16" y="11" width="42" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DZ5-Ow-reb">
+                                            <rect key="frame" x="26" y="10.000000000000002" width="323" height="20.666666666666671"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="DZ5-Ow-reb" secondAttribute="bottom" constant="10" id="1iJ-yO-nLG"/>
+                                        <constraint firstItem="DZ5-Ow-reb" firstAttribute="top" secondItem="Mdv-Zk-cjl" secondAttribute="top" constant="10" id="A4T-Qd-XiK"/>
+                                        <constraint firstItem="DZ5-Ow-reb" firstAttribute="leading" secondItem="Mdv-Zk-cjl" secondAttribute="leadingMargin" constant="10" id="ajN-ao-5Qo"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="DZ5-Ow-reb" secondAttribute="trailing" constant="10" id="e0z-kJ-0j2"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="lbl_locationName" destination="DZ5-Ow-reb" id="GK4-4Y-jVa"/>

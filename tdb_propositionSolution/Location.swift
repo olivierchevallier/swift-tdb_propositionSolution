@@ -13,19 +13,14 @@ class Location {
     //MARK: Properties
     var name: String
     var coordinate: CLLocationCoordinate2D
-    var postcode: String
-    var place: String
-    var region: String
-    var country: String
     
-    init(name: String, coordinate: CLLocationCoordinate2D, postcode: String, place: String, region: String, country: String) {
+    init(name: String, coordinate: CLLocationCoordinate2D) {
         self.name = name
         self.coordinate = coordinate
-        self.postcode = postcode
-        self.place = place
-        self.region = region
-        self.country = country
     }
     
+    convenience init (name: String, coordinate: [Double]){
+        self.init(name: name, coordinate: CLLocationCoordinate2D(latitude: coordinate[0], longitude: coordinate[1]))
+    }
     
 }
