@@ -38,12 +38,21 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
         }
     }
     
+    //MARK: Actions
+    
+    
     //MARK: UITextFieldDelegate
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        searchTxt = txt_search.text
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         userLocationStr = getFormatedUserLocation()
-        performSegue(withIdentifier: "showResults", sender: nil)
+        textField.resignFirstResponder()
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
         return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        performSegue(withIdentifier: "showResults", sender: nil)
     }
     
     //MARK: Private methods

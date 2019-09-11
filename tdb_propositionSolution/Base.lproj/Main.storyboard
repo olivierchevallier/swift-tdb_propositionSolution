@@ -21,9 +21,8 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Trouver une destination..." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="TMr-K3-9at">
                                         <rect key="frame" x="0.0" y="0.0" width="355" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="search" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="location"/>
                                         <connections>
-                                            <action selector="searchDestination:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="Gek-rR-gZG"/>
                                             <segue destination="rT6-KM-ZzY" kind="presentation" identifier="showResults" id="6ZX-RX-0NG"/>
                                         </connections>
                                     </textField>
@@ -49,7 +48,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1072.8" y="93.103448275862078"/>
+            <point key="canvasLocation" x="1034" y="93"/>
         </scene>
         <!--LocationTableViewController-->
         <scene sceneID="wpa-JF-qGb">
@@ -59,9 +58,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="grU-PY-gmx">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Trouver une destination..." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="mLm-vI-MV9">
+                                    <rect key="frame" x="10" y="10" width="355" height="24"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="search" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="location"/>
+                                    <connections>
+                                        <action selector="searchDestination:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="0Gf-Hv-dbQ"/>
+                                        <action selector="txt_searchChanged:" destination="rT6-KM-ZzY" eventType="editingChanged" id="oE9-Gd-b0A"/>
+                                    </connections>
+                                </textField>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstItem="mLm-vI-MV9" firstAttribute="top" secondItem="grU-PY-gmx" secondAttribute="top" constant="10" id="Avf-Iw-tiD"/>
+                                <constraint firstItem="mLm-vI-MV9" firstAttribute="leading" secondItem="grU-PY-gmx" secondAttribute="leading" constant="10" id="ILf-hP-vrw"/>
+                                <constraint firstAttribute="bottom" secondItem="mLm-vI-MV9" secondAttribute="bottom" constant="10" id="RRW-4d-eIG"/>
+                                <constraint firstAttribute="trailing" secondItem="mLm-vI-MV9" secondAttribute="trailing" constant="10" id="Xbb-t5-Ehn"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationTableViewCell" id="4g8-5J-oYZ" customClass="LocationTableViewCell" customModule="tdb_propositionSolution" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="40.666667938232422"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="40.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4g8-5J-oYZ" id="Mdv-Zk-cjl">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="40.666667938232422"/>
@@ -91,6 +112,9 @@
                             <outlet property="delegate" destination="rT6-KM-ZzY" id="LjK-78-vQv"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="txt_search" destination="mLm-vI-MV9" id="aom-xT-0sS"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dmQ-qz-cKq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

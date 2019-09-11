@@ -14,11 +14,12 @@ class LocationTableViewController: UITableViewController {
     var searchTxt: String?
     var userLocationStr: String?
     var locations = [Location]()
-
+    @IBOutlet var txt_search: UITextField!
+    let dispatchGroup = DispatchGroup()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        performSearch(txt: searchTxt!, userLocation: userLocationStr!)
+        txt_search.becomeFirstResponder()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -26,47 +27,61 @@ class LocationTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
+    //MARK: Actions
+    @IBAction func txt_searchChanged(_ sender: UITextField) {
+        locations = [Location]()
+        if txt_search.text != "" {
+            performSearch(txt: txt_search.text!, userLocation: userLocationStr!)
+        }
+        // Le dispatchGroup permet d'attendre que les fonctions qui en font partie quittent le groupe avant d'effectuer ce qui se trouve dans notify
+        dispatchGroup.notify(queue: .main) {
+            self.tableView.reloadData()
+        }
+    }
+    
+    
     //MARK: Private methods
     private func performSearch(txt: String, userLocation: String){
-          let accessToken = Bundle.main.object(forInfoDictionaryKey: "MGLMapboxAccessToken") as! String
-          let formatedTxt = txt.replacingOccurrences(of: " ", with: "%20")
-          let stringURL = "https://api.mapbox.com/geocoding/v5/mapbox.places/" + formatedTxt + ".json?proximity=" + userLocation + "&access_token=" + accessToken
-          let session = URLSession.shared
-          let url = URL(string: stringURL)!
-          let task = session.dataTask(with: url, completionHandler: {data, response, error in
-              if error != nil || data == nil {
-                  os_log("Client error", log: OSLog.default, type: .debug)
-                  return
-              }
-              
-              guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-                  os_log("Server error", log: OSLog.default, type: .debug)
-                  return
-              }
-              
-              guard let mime = response.mimeType, mime == "application/vnd.geo+json" else {
-                  print("MIME type : " + response.mimeType!)
-                  os_log("Wrong MIME type", log: OSLog.default, type: .debug)
-                  return
-              }
-              
-              do {
-                  let featuresCollection = try JSONDecoder().decode(FeaturesCollection.self, from: data!)
-                  for feature in featuresCollection.features {
-                      self.locations.append(Location(name: feature.place_name, coordinate: feature.geometry.coordinates))
-                  }
-                  
-              } catch {
-                  print("JSON error : \(error)")
-              }
+        dispatchGroup.enter()
+        let accessToken = Bundle.main.object(forInfoDictionaryKey: "MGLMapboxAccessToken") as! String
+        let formatedTxt = txt.replacingOccurrences(of: " ", with: "%20")
+        let stringURL = "https://api.mapbox.com/geocoding/v5/mapbox.places/" + formatedTxt + ".json?proximity=" + userLocation + "&access_token=" + accessToken
+        let session = URLSession.shared
+        let url = URL(string: stringURL)!
+        let task = session.dataTask(with: url, completionHandler: {data, response, error in
+            if error != nil || data == nil {
+                os_log("Client error", log: OSLog.default, type: .debug)
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
+                os_log("Server error", log: OSLog.default, type: .debug)
+                return
+            }
+            
+            guard let mime = response.mimeType, mime == "application/vnd.geo+json" else {
+                print("MIME type : " + response.mimeType!)
+                os_log("Wrong MIME type", log: OSLog.default, type: .debug)
+                return
+            }
+            
+            do {
+                let featuresCollection = try JSONDecoder().decode(FeaturesCollection.self, from: data!)
+                for feature in featuresCollection.features {
+                    self.locations.append(Location(name: feature.place_name, coordinate: feature.geometry.coordinates))
+                }
+                self.dispatchGroup.leave()
+            } catch {
+                print("JSON error : \(error)")
+            }
           })
           task.resume()
       }
       
-      struct FeaturesCollection: Decodable {
-          let attribution: String
-          let features: [Feature]
-      }
+    struct FeaturesCollection: Decodable {
+      let attribution: String
+      let features: [Feature]
+    }
       
     struct Feature: Decodable {
           let center: [Double]
