@@ -11,7 +11,6 @@ import os.log
 
 class LocationTableViewController: UITableViewController {
     //MARK: Properties
-    var searchTxt: String?
     var userLocationStr: String?
     var locations = [Location]()
     @IBOutlet var txt_search: UITextField!
@@ -31,7 +30,7 @@ class LocationTableViewController: UITableViewController {
     @IBAction func txt_searchChanged(_ sender: UITextField) {
         locations = [Location]()
         if txt_search.text != "" {
-            performSearch(txt: txt_search.text!, userLocation: userLocationStr!)
+            performSearch(searchTxt: txt_search.text!, userLocation: userLocationStr!)
         }
         // Le dispatchGroup permet d'attendre que les fonctions qui en font partie quittent le groupe avant d'effectuer ce qui se trouve dans notify
         dispatchGroup.notify(queue: .main) {
@@ -41,13 +40,30 @@ class LocationTableViewController: UITableViewController {
     
     
     //MARK: Private methods
-    private func performSearch(txt: String, userLocation: String){
-        dispatchGroup.enter()
+    private func performSearch(searchTxt: String, userLocation: String){
+        let url = generateURL(searchTxt: searchTxt, userLocation: userLocation)
+        executeHTTPGet(url: url, dataCompletionHandler: { data, error in
+            do {
+                let featuresCollection = try JSONDecoder().decode(FeaturesCollection.self, from: data!)
+                for feature in featuresCollection.features {
+                    self.locations.append(Location(name: feature.place_name, coordinate: feature.geometry.coordinates))
+                }
+            } catch {
+                print("JSON error : \(error)")
+            }
+        })
+    }
+    
+    private func generateURL(searchTxt: String, userLocation: String) -> URL {
         let accessToken = Bundle.main.object(forInfoDictionaryKey: "MGLMapboxAccessToken") as! String
-        let formatedTxt = txt.replacingOccurrences(of: " ", with: "%20")
+        let formatedTxt = searchTxt.replacingOccurrences(of: " ", with: "%20")
         let stringURL = "https://api.mapbox.com/geocoding/v5/mapbox.places/" + formatedTxt + ".json?proximity=" + userLocation + "&access_token=" + accessToken
+        return URL(string: stringURL)!
+    }
+    
+    private func executeHTTPGet(url: URL, dataCompletionHandler: @escaping(Data?, Error?) -> Void) {
+        dispatchGroup.enter()
         let session = URLSession.shared
-        let url = URL(string: stringURL)!
         let task = session.dataTask(with: url, completionHandler: {data, response, error in
             if error != nil || data == nil {
                 os_log("Client error", log: OSLog.default, type: .debug)
@@ -58,25 +74,17 @@ class LocationTableViewController: UITableViewController {
                 os_log("Server error", log: OSLog.default, type: .debug)
                 return
             }
-            
+        
             guard let mime = response.mimeType, mime == "application/vnd.geo+json" else {
                 print("MIME type : " + response.mimeType!)
                 os_log("Wrong MIME type", log: OSLog.default, type: .debug)
                 return
             }
-            
-            do {
-                let featuresCollection = try JSONDecoder().decode(FeaturesCollection.self, from: data!)
-                for feature in featuresCollection.features {
-                    self.locations.append(Location(name: feature.place_name, coordinate: feature.geometry.coordinates))
-                }
-                self.dispatchGroup.leave()
-            } catch {
-                print("JSON error : \(error)")
-            }
-          })
-          task.resume()
-      }
+            dataCompletionHandler(data, nil)
+            self.dispatchGroup.leave()
+        })
+        task.resume()
+    }
       
     struct FeaturesCollection: Decodable {
       let attribution: String

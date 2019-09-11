@@ -69,7 +69,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
         if segue.identifier == "showResults" {
             print(segue.destination)
             if let destinationVC = segue.destination as? LocationTableViewController {
-                destinationVC.searchTxt = self.searchTxt
+                //destinationVC.searchTxt = self.searchTxt
                 destinationVC.userLocationStr = self.userLocationStr
             }
         }
