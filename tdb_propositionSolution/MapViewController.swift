@@ -17,8 +17,9 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
 
     //MARK: Properties
     var mapView: NavigationMapView!
-    var searchTxt: String?
     var userLocationStr: String?
+    var destinationLocation: Location?
+    var carDirectionsRoute: Route?
     @IBOutlet var txt_search: UITextField!
     
     override func viewDidLoad() {
@@ -39,16 +40,22 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
     }
     
     //MARK: Actions
+    @IBAction func unwindToMap(_ unwindSegue: UIStoryboardSegue) {
+        if let sourceViewController = unwindSegue.source as? LocationTableViewController, let destinationLocation = sourceViewController.destinationLocation {
+            self.destinationLocation = destinationLocation
+            mapView.setUserTrackingMode(.none, animated: true, completionHandler: ({
+                
+            }))
+            showDestination()
+        }
+    }
+    
     
     
     //MARK: UITextFieldDelegate
     func textFieldDidBeginEditing(_ textField: UITextField) {
         userLocationStr = getFormatedUserLocation()
         textField.resignFirstResponder()
-    }
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -64,12 +71,37 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
         return stringFormatedLocation.replacingOccurrences(of: " ", with: "")
     }
     
+    private func calculateCarRoute(from originCoordinate: CLLocationCoordinate2D, to destinationCoordinate: CLLocationCoordinate2D, completion: @escaping (Route?, Error?) -> Void) {
+        let origin = Waypoint(coordinate: originCoordinate, coordinateAccuracy: -1, name: "Start")
+        let destination = Waypoint(coordinate: destinationCoordinate, coordinateAccuracy: -1, name: "Finish")
+        
+        let options = NavigationRouteOptions(waypoints: [origin, destination], profileIdentifier: .automobileAvoidingTraffic)
+        
+        _ = Directions.shared.calculate(options, completionHandler: { (waypoints, routes, error) in
+            self.carDirectionsRoute = routes?.first
+            
+            self.previewZoom(sw: originCoordinate, ne: destinationCoordinate)
+        })
+    }
+    
+    private func showDestination() {
+        let destinationAnnotation = MGLPointAnnotation()
+        destinationAnnotation.coordinate = destinationLocation!.coordinate
+        previewZoom(sw: mapView.userLocation!.coordinate, ne: destinationLocation!.coordinate)
+        self.mapView.addAnnotation(destinationAnnotation)
+    }
+    
+    private func previewZoom(sw: CLLocationCoordinate2D, ne: CLLocationCoordinate2D) {
+        let coordinatesBounds = MGLCoordinateBounds(sw: sw, ne: ne)
+        let insets = UIEdgeInsets(top: 50, left: 50, bottom: 50, right: 50)
+        let routeCam = self.mapView.cameraThatFitsCoordinateBounds(coordinatesBounds, edgePadding: insets)
+        self.mapView.setCamera(routeCam, animated: true)
+    }
+    
     //MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showResults" {
-            print(segue.destination)
             if let destinationVC = segue.destination as? LocationTableViewController {
-                //destinationVC.searchTxt = self.searchTxt
                 destinationVC.userLocationStr = self.userLocationStr
             }
         }

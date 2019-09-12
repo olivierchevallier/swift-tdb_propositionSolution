@@ -12,9 +12,10 @@ import os.log
 class LocationTableViewController: UITableViewController {
     //MARK: Properties
     var userLocationStr: String?
+    var destinationLocation: Location?
     var locations = [Location]()
-    @IBOutlet var txt_search: UITextField!
     let dispatchGroup = DispatchGroup()
+    @IBOutlet var txt_search: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,17 +33,23 @@ class LocationTableViewController: UITableViewController {
         if txt_search.text != "" {
             performSearch(searchTxt: txt_search.text!, userLocation: userLocationStr!)
         }
-        // Le dispatchGroup permet d'attendre que les fonctions qui en font partie quittent le groupe avant d'effectuer ce qui se trouve dans notify
+        // Le dispatchGroup permet d'attendre que les fonctions qui en font partie quittent le groupe avant d'effectuer ce qui se trouve dans notify. Comme le traitement se fait de manière asynchrone, c'est important
         dispatchGroup.notify(queue: .main) {
             self.tableView.reloadData()
         }
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        destinationLocation = locations[indexPath.row]
+    }
     
     //MARK: Private methods
+    /**
+        Effectue la recherche de lieu à afficher dans le TableView
+     */
     private func performSearch(searchTxt: String, userLocation: String){
         let url = generateURL(searchTxt: searchTxt, userLocation: userLocation)
-        executeHTTPGet(url: url, dataCompletionHandler: { data, error in
+        executeHTTPGet(url: url, dataCompletionHandler: { data in
             do {
                 let featuresCollection = try JSONDecoder().decode(FeaturesCollection.self, from: data!)
                 for feature in featuresCollection.features {
@@ -54,6 +61,9 @@ class LocationTableViewController: UITableViewController {
         })
     }
     
+    /**
+        Genère l'URL pour la recherche de lieux grâce à l'API search de MapBox
+     */
     private func generateURL(searchTxt: String, userLocation: String) -> URL {
         let accessToken = Bundle.main.object(forInfoDictionaryKey: "MGLMapboxAccessToken") as! String
         let formatedTxt = searchTxt.replacingOccurrences(of: " ", with: "%20")
@@ -61,7 +71,10 @@ class LocationTableViewController: UITableViewController {
         return URL(string: stringURL)!
     }
     
-    private func executeHTTPGet(url: URL, dataCompletionHandler: @escaping(Data?, Error?) -> Void) {
+    /**
+        Exécute un requête HTTP GET sur l'URL donnée en permettant de traiter les données retournée par la requête dans le dataCompletionHandler (explication dataCompletionHandler : https://fluffy.es/return-value-from-a-closure/)
+     */
+    private func executeHTTPGet(url: URL, dataCompletionHandler: @escaping(Data?) -> Void) {
         dispatchGroup.enter()
         let session = URLSession.shared
         let task = session.dataTask(with: url, completionHandler: {data, response, error in
@@ -76,11 +89,11 @@ class LocationTableViewController: UITableViewController {
             }
         
             guard let mime = response.mimeType, mime == "application/vnd.geo+json" else {
-                print("MIME type : " + response.mimeType!)
                 os_log("Wrong MIME type", log: OSLog.default, type: .debug)
                 return
             }
-            dataCompletionHandler(data, nil)
+            //Execution du code défini dans le dataCompletionHandler à l'appel de la méthode
+            dataCompletionHandler(data)
             self.dispatchGroup.leave()
         })
         task.resume()
@@ -116,7 +129,7 @@ class LocationTableViewController: UITableViewController {
           let address: String?
           let category: String?
       }
-
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -174,15 +187,22 @@ class LocationTableViewController: UITableViewController {
         return true
     }
     */
-
-    /*
+    
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {        
+        guard let mapViewController = segue.destination as? MapViewController else {
+            fatalError("Unexpected destination : \(segue.destination)")
+        }
+        
+        guard let selectedCell = sender as? LocationTableViewCell else {
+            fatalError("Unexpected sender : \(sender)")
+        }
+        
+        guard let indexPath = tableView.indexPath(for: selectedCell) else {
+            fatalError("The selected cell is not being displayed by the table")
+        }
+        
+        destinationLocation = locations[indexPath.row]
+        mapViewController.destinationLocation = destinationLocation
     }
-    */
-
 }

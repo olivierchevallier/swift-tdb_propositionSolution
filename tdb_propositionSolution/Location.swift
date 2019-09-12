@@ -20,7 +20,7 @@ class Location {
     }
     
     convenience init (name: String, coordinate: [Double]){
-        self.init(name: name, coordinate: CLLocationCoordinate2D(latitude: coordinate[0], longitude: coordinate[1]))
+        self.init(name: name, coordinate: CLLocationCoordinate2D(latitude: coordinate[1], longitude: coordinate[0]))
     }
     
 }
