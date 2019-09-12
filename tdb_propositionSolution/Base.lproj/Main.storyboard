@@ -16,10 +16,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="aUR-6i-MuS">
-                                <rect key="frame" x="10" y="44" width="355" height="34"/>
+                                <rect key="frame" x="10" y="54" width="355" height="40"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Trouver une destination..." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="TMr-K3-9at">
-                                        <rect key="frame" x="0.0" y="0.0" width="355" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="355" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="DKI-DT-4z4"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="search" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="location"/>
                                         <connections>
@@ -36,7 +39,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aUR-6i-MuS" secondAttribute="trailing" constant="10" id="5Nu-GK-0NV"/>
-                            <constraint firstItem="aUR-6i-MuS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="GE6-51-NHV"/>
+                            <constraint firstItem="aUR-6i-MuS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="GE6-51-NHV"/>
                             <constraint firstItem="aUR-6i-MuS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="OrS-wj-7Gp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -62,22 +65,38 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Trouver une destination..." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="mLm-vI-MV9">
+                                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ei1-Me-Qkn">
                                     <rect key="frame" x="10" y="10" width="355" height="40"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="search" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="location"/>
-                                    <connections>
-                                        <action selector="searchDestination:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="0Gf-Hv-dbQ"/>
-                                        <action selector="txt_searchChanged:" destination="rT6-KM-ZzY" eventType="editingChanged" id="oE9-Gd-b0A"/>
-                                    </connections>
-                                </textField>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Trouver une destination..." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="mLm-vI-MV9">
+                                            <rect key="frame" x="0.0" y="0.0" width="292" height="40"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="search" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="location"/>
+                                            <connections>
+                                                <action selector="searchDestination:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="0Gf-Hv-dbQ"/>
+                                                <action selector="txt_searchChanged:" destination="rT6-KM-ZzY" eventType="editingChanged" id="oE9-Gd-b0A"/>
+                                            </connections>
+                                        </textField>
+                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vLQ-vm-IgN" userLabel="Btn cancel">
+                                            <rect key="frame" x="302" y="0.0" width="53" height="40"/>
+                                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                            <state key="normal" title="Annuler"/>
+                                            <connections>
+                                                <action selector="btn_cancelPressed:" destination="rT6-KM-ZzY" eventType="touchUpInside" id="AyZ-Rj-7xy"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="mLm-vI-MV9" firstAttribute="leading" secondItem="Ei1-Me-Qkn" secondAttribute="leading" id="Svn-wd-1Eb"/>
+                                        <constraint firstAttribute="trailing" secondItem="vLQ-vm-IgN" secondAttribute="trailing" id="Y4z-ux-ZYx"/>
+                                    </constraints>
+                                </stackView>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="mLm-vI-MV9" firstAttribute="top" secondItem="grU-PY-gmx" secondAttribute="top" constant="10" id="Avf-Iw-tiD"/>
-                                <constraint firstItem="mLm-vI-MV9" firstAttribute="leading" secondItem="grU-PY-gmx" secondAttribute="leading" constant="10" id="ILf-hP-vrw"/>
-                                <constraint firstAttribute="bottom" secondItem="mLm-vI-MV9" secondAttribute="bottom" constant="10" id="RRW-4d-eIG"/>
-                                <constraint firstAttribute="trailing" secondItem="mLm-vI-MV9" secondAttribute="trailing" constant="10" id="Xbb-t5-Ehn"/>
+                                <constraint firstItem="Ei1-Me-Qkn" firstAttribute="top" secondItem="grU-PY-gmx" secondAttribute="top" constant="10" id="6gB-tE-qHZ"/>
+                                <constraint firstAttribute="trailing" secondItem="Ei1-Me-Qkn" secondAttribute="trailing" constant="10" id="Dov-bZ-tu7"/>
+                                <constraint firstItem="Ei1-Me-Qkn" firstAttribute="leading" secondItem="grU-PY-gmx" secondAttribute="leading" constant="10" id="GPt-yU-KCb"/>
+                                <constraint firstAttribute="bottom" secondItem="Ei1-Me-Qkn" secondAttribute="bottom" constant="10" id="Yzq-Ff-M0R"/>
                             </constraints>
                         </view>
                         <prototypes>

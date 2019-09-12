@@ -43,6 +43,10 @@ class LocationTableViewController: UITableViewController {
         destinationLocation = locations[indexPath.row]
     }
     
+    @IBAction func btn_cancelPressed(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     //MARK: Private methods
     /**
         Effectue la recherche de lieu à afficher dans le TableView

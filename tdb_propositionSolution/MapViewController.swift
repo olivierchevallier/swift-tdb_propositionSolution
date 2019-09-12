@@ -33,6 +33,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
         mapView.delegate = self
         txt_search.delegate = self
         
+        adaptMapStyle()
         mapView.showsUserLocation = true
         mapView.setUserTrackingMode(.follow, animated: true) {
             
@@ -50,7 +51,11 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
         }
     }
     
-    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        adaptMapStyle()
+    }
     
     //MARK: UITextFieldDelegate
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -93,9 +98,20 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
     
     private func previewZoom(sw: CLLocationCoordinate2D, ne: CLLocationCoordinate2D) {
         let coordinatesBounds = MGLCoordinateBounds(sw: sw, ne: ne)
-        let insets = UIEdgeInsets(top: 50, left: 50, bottom: 50, right: 50)
+        let insets = UIEdgeInsets(top: 100, left: 50, bottom: 50, right: 50)
         let routeCam = self.mapView.cameraThatFitsCoordinateBounds(coordinatesBounds, edgePadding: insets)
         self.mapView.setCamera(routeCam, animated: true)
+    }
+    
+    private func adaptMapStyle() {
+        let userInterfaceStyle = traitCollection.userInterfaceStyle
+        
+        switch userInterfaceStyle {
+        case .dark :
+            mapView.styleURL = MGLStyle.darkStyleURL
+        default:
+            mapView.styleURL = MGLStyle.lightStyleURL
+        }
     }
     
     //MARK: Navigation
