@@ -47,6 +47,9 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
             mapView.setUserTrackingMode(.none, animated: true, completionHandler: ({
                 
             }))
+            if mapView.annotations != nil {
+                mapView.removeAnnotations(mapView.annotations!)
+            }
             showDestination()
         }
     }
