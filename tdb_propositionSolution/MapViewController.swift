@@ -21,6 +21,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
     var destinationLocation: Location?
     var carDirectionsRoute: Route?
     @IBOutlet var txt_search: UITextField!
+    @IBOutlet var routes: RoutesControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,11 +98,12 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
         destinationAnnotation.coordinate = destinationLocation!.coordinate
         previewZoom(sw: mapView.userLocation!.coordinate, ne: destinationLocation!.coordinate)
         self.mapView.addAnnotation(destinationAnnotation)
+        self.routes.destinationName = destinationLocation!.name
     }
     
     private func previewZoom(sw: CLLocationCoordinate2D, ne: CLLocationCoordinate2D) {
         let coordinatesBounds = MGLCoordinateBounds(sw: sw, ne: ne)
-        let insets = UIEdgeInsets(top: 100, left: 50, bottom: 50, right: 50)
+        let insets = UIEdgeInsets(top: 100, left: 50, bottom: 300, right: 50)
         let routeCam = self.mapView.cameraThatFitsCoordinateBounds(coordinatesBounds, edgePadding: insets)
         self.mapView.setCamera(routeCam, animated: true)
     }

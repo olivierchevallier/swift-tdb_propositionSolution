@@ -35,6 +35,11 @@
                                     <constraint firstAttribute="trailing" secondItem="TMr-K3-9at" secondAttribute="trailing" id="Z3e-c9-O3o"/>
                                 </constraints>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ECu-L0-78o" customClass="RoutesControl" customModule="tdb_propositionSolution" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="517" width="375" height="295"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <directionalEdgeInsets key="directionalLayoutMargins" top="10" leading="10" bottom="10" trailing="10"/>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -46,12 +51,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Plan" id="PTD-MI-5x1"/>
                     <connections>
+                        <outlet property="routes" destination="ECu-L0-78o" id="1pR-ey-Krq"/>
                         <outlet property="txt_search" destination="TMr-K3-9at" id="vgW-q2-SPa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1034" y="93"/>
+            <point key="canvasLocation" x="1032.8" y="92.364532019704441"/>
         </scene>
         <!--LocationTableViewController-->
         <scene sceneID="wpa-JF-qGb">
