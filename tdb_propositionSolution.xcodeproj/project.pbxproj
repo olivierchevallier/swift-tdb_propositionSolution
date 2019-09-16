@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F252B55232F79AB0050546E /* Itinerary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F252B54232F79AB0050546E /* Itinerary.swift */; };
 		5F728EA0232B981000ECA799 /* RoutesControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F728E9F232B981000ECA799 /* RoutesControl.swift */; };
 		5F728EA2232B981B00ECA799 /* RouteControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F728EA1232B981B00ECA799 /* RouteControl.swift */; };
 		5FA66EF9231FA92700A23B14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA66EF8231FA92700A23B14 /* AppDelegate.swift */; };
@@ -19,7 +20,6 @@
 		5FADAC302327E16D00316A55 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FADAC2F2327E16D00316A55 /* Location.swift */; };
 		5FADAC342327E5CA00316A55 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FADAC332327E5CA00316A55 /* LocationTableViewCell.swift */; };
 		5FADAC3823291C1D00316A55 /* LocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FADAC3723291C1D00316A55 /* LocationTableViewController.swift */; };
-		5FE8DCD8232BCF5900558A3C /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE8DCD7232BCF5900558A3C /* Route.swift */; };
 		B7679560919645BD498EE909 /* Pods_tdb_propositionSolution.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8900154E9FF7D018425BC509 /* Pods_tdb_propositionSolution.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5F252B54232F79AB0050546E /* Itinerary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Itinerary.swift; sourceTree = "<group>"; };
 		5F728E9F232B981000ECA799 /* RoutesControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesControl.swift; sourceTree = "<group>"; };
 		5F728EA1232B981B00ECA799 /* RouteControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteControl.swift; sourceTree = "<group>"; };
 		5FA66EF5231FA92700A23B14 /* tdb_propositionSolution.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tdb_propositionSolution.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -50,7 +51,6 @@
 		5FADAC2F2327E16D00316A55 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		5FADAC332327E5CA00316A55 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
 		5FADAC3723291C1D00316A55 /* LocationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewController.swift; sourceTree = "<group>"; };
-		5FE8DCD7232BCF5900558A3C /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		8900154E9FF7D018425BC509 /* Pods_tdb_propositionSolution.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tdb_propositionSolution.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B12E3DFF918C50BCBEE28DD1 /* Pods-tdb_propositionSolution.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tdb_propositionSolution.release.xcconfig"; path = "Target Support Files/Pods-tdb_propositionSolution/Pods-tdb_propositionSolution.release.xcconfig"; sourceTree = "<group>"; };
 		B1E66023352F09DCBF2E7F16 /* Pods-tdb_propositionSolution.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tdb_propositionSolution.debug.xcconfig"; path = "Target Support Files/Pods-tdb_propositionSolution/Pods-tdb_propositionSolution.debug.xcconfig"; sourceTree = "<group>"; };
@@ -152,7 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				5FADAC2F2327E16D00316A55 /* Location.swift */,
-				5FE8DCD7232BCF5900558A3C /* Route.swift */,
+				5F252B54232F79AB0050546E /* Itinerary.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -302,7 +302,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5FE8DCD8232BCF5900558A3C /* Route.swift in Sources */,
 				5FA66EFD231FA92700A23B14 /* MapViewController.swift in Sources */,
 				5FADAC342327E5CA00316A55 /* LocationTableViewCell.swift in Sources */,
 				5FADAC3823291C1D00316A55 /* LocationTableViewController.swift in Sources */,
@@ -310,6 +309,7 @@
 				5FA66EF9231FA92700A23B14 /* AppDelegate.swift in Sources */,
 				5F728EA2232B981B00ECA799 /* RouteControl.swift in Sources */,
 				5FADAC302327E16D00316A55 /* Location.swift in Sources */,
+				5F252B55232F79AB0050546E /* Itinerary.swift in Sources */,
 				5FA66EFB231FA92700A23B14 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

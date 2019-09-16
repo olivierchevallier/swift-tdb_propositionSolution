@@ -18,6 +18,13 @@ import UIKit
             lbl_destinationName.text = self.destinationName
         }
     }
+    var intineraries = [Itinerary]() {
+        didSet {
+            for cpt in 0..<intineraries.count {
+                routeControls[cpt].itinerary = intineraries[cpt]
+            }
+        }
+    }
     var routes = [String]()
     
     //MARK: Initialization
@@ -43,7 +50,7 @@ import UIKit
         insertSubview(subView, at: 0)
         
         // Pour les tests de l'interface uniquement
-        for _ in 0..<3 {
+        for cpt in 0..<3 {
             let routeControl = RouteControl()
             routeControl.axis = .horizontal
             routeControl.transportType = "Type de transport"

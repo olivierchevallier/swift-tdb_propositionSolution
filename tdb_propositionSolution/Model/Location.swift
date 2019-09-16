@@ -14,6 +14,7 @@ class Location {
     var name: String
     var coordinate: CLLocationCoordinate2D
     
+    //MARK: Initializer
     init(name: String, coordinate: CLLocationCoordinate2D) {
         self.name = name
         self.coordinate = coordinate

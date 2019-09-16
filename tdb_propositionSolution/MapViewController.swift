@@ -20,6 +20,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
     var userLocationStr: String?
     var destinationLocation: Location?
     var carDirectionsRoute: Route?
+    var itineraries = [Itinerary]()
     @IBOutlet var txt_search: UITextField!
     @IBOutlet var routes: RoutesControl!
     
@@ -45,13 +46,10 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
     @IBAction func unwindToMap(_ unwindSegue: UIStoryboardSegue) {
         if let sourceViewController = unwindSegue.source as? LocationTableViewController, let destinationLocation = sourceViewController.destinationLocation {
             self.destinationLocation = destinationLocation
-            mapView.setUserTrackingMode(.none, animated: true, completionHandler: ({
-                
-            }))
-            if mapView.annotations != nil {
-                mapView.removeAnnotations(mapView.annotations!)
-            }
+            mapView.setUserTrackingMode(.none, animated: true, completionHandler: nil)
+            clearAnnotations()
             showDestination()
+            updateItineraries()
         }
     }
     
@@ -117,6 +115,24 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
         default:
             mapView.styleURL = MGLStyle.lightStyleURL
         }
+    }
+    
+    private func clearAnnotations(){
+        if mapView.annotations != nil {
+            mapView.removeAnnotations(mapView.annotations!)
+        }
+    }
+    
+    private func updateItineraries(){
+        if itineraries.count > 0 {
+            itineraries.removeAll()
+        }
+        itineraries.append(Itinerary(origin: mapView.userLocation!.coordinate, destination: destinationLocation!.coordinate, transport: "Voiture"))
+        routes.intineraries = itineraries
+    }
+    
+    func startNavigation(){
+        
     }
     
     //MARK: Navigation

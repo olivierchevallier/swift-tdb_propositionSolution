@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import Mapbox
+import MapboxCoreNavigation
+import MapboxNavigation
+import MapboxDirections
 
 @IBDesignable class RouteControl: UIStackView {
     //MARK: Properties
@@ -14,6 +18,7 @@ import UIKit
     private var lbl_infos = UILabel()
     private var btn_go = UIButton()
     private var stk_labels = UIStackView()
+    
     
     var transportType = "" {
         didSet {
@@ -23,6 +28,22 @@ import UIKit
     var infos = "" {
         didSet {
             lbl_infos.text = infos
+        }
+    }
+    var itinerary: Itinerary? {
+        didSet {
+            let dispatchGroup = DispatchGroup()
+            dispatchGroup.enter()
+            transportType = itinerary!.transport
+            var expectedTime = 0
+            self.infos = "Chargement..."
+            itinerary!.expectedTime(completionHandler: { time in
+                expectedTime = time
+                dispatchGroup.leave()
+            })
+            dispatchGroup.notify(queue: .main) {
+                self.infos = String(format: "%d min, %dg CO2, CHF %d.-", expectedTime, self.itinerary!.emmissions, self.itinerary!.cost)
+            }
         }
     }
 
@@ -53,8 +74,13 @@ import UIKit
         btn_go.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
         btn_go.setTitleColor(UIColor.white, for: .normal)
         btn_go.layer.cornerRadius = 10
+        //btn_go.addTarget(self, action: #selector(ViewController.btn_goTapped(button:)), for: .touchUpInside)
         
         addArrangedSubview(stk_labels)
         addArrangedSubview(btn_go)
+    }
+    
+    @objc private func btn_goTapped(button: UIButton) {
+        let navigationVC = NavigationViewController(for: itinerary!.route!)
     }
 }
