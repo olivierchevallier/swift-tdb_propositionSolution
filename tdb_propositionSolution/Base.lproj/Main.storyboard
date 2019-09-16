@@ -35,7 +35,7 @@
                                     <constraint firstAttribute="trailing" secondItem="TMr-K3-9at" secondAttribute="trailing" id="Z3e-c9-O3o"/>
                                 </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ECu-L0-78o" customClass="RoutesControl" customModule="tdb_propositionSolution" customModuleProvider="target">
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ECu-L0-78o" customClass="RoutesControl" customModule="tdb_propositionSolution" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="517" width="375" height="295"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <directionalEdgeInsets key="directionalLayoutMargins" top="10" leading="10" bottom="10" trailing="10"/>

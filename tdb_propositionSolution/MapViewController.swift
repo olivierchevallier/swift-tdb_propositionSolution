@@ -50,6 +50,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
             clearAnnotations()
             showDestination()
             updateItineraries()
+            routes.isHidden = false
         }
     }
     

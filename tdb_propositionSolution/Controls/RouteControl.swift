@@ -74,13 +74,17 @@ import MapboxDirections
         btn_go.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
         btn_go.setTitleColor(UIColor.white, for: .normal)
         btn_go.layer.cornerRadius = 10
-        //btn_go.addTarget(self, action: #selector(ViewController.btn_goTapped(button:)), for: .touchUpInside)
+        btn_go.addTarget(self, action: #selector(btn_goTapped(button:)), for: .touchUpInside)
+        
         
         addArrangedSubview(stk_labels)
         addArrangedSubview(btn_go)
     }
     
     @objc private func btn_goTapped(button: UIButton) {
-        let navigationVC = NavigationViewController(for: itinerary!.route!)
+        if itinerary != nil {
+            let navigationVC = NavigationViewController(for: itinerary!.route!)
+            self.window?.rootViewController!.present(navigationVC, animated: true, completion: nil)
+        }
     }
 }
