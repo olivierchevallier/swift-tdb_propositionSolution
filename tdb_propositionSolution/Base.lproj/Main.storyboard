@@ -105,6 +105,10 @@
                                 <constraint firstAttribute="bottom" secondItem="Ei1-Me-Qkn" secondAttribute="bottom" constant="10" id="Yzq-Ff-M0R"/>
                             </constraints>
                         </view>
+                        <activityIndicatorView key="tableFooterView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" id="f27-Lp-15R">
+                            <rect key="frame" x="0.0" y="156.66666793823242" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </activityIndicatorView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationTableViewCell" id="4g8-5J-oYZ" customClass="LocationTableViewCell" customModule="tdb_propositionSolution" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="88" width="375" height="40.666667938232422"/>
@@ -139,6 +143,7 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="indic_loading" destination="f27-Lp-15R" id="cZ8-bK-6zW"/>
                         <outlet property="txt_search" destination="mLm-vI-MV9" id="aom-xT-0sS"/>
                     </connections>
                 </tableViewController>
