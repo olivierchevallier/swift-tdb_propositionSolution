@@ -30,6 +30,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Setting up the map
         mapView = NavigationMapView(frame: view.bounds)
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(mapView)
@@ -48,7 +49,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
     //MARK: - Actions
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        
         adaptMapStyle()
     }
     

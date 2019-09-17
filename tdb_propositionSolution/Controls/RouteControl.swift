@@ -34,22 +34,15 @@ import MapboxDirections
     }
     var itinerary: Itinerary? {
         didSet {
-            let dispatchGroup = DispatchGroup()
-            dispatchGroup.enter()
             transportType = itinerary!.transport
-            var expectedTime = 0
             self.infos = "Chargement..."
             btn_go.isEnabled = false
-            btn_go.backgroundColor = UIColor.gray
-            itinerary!.expectedTime(completionHandler: { time in
-                expectedTime = time
-                dispatchGroup.leave()
-            })
-            dispatchGroup.notify(queue: .main) {
+            updateStyleBtnGo()
+            itinerary!.expectedTime(completionHandler: { expectedTime in
                 self.infos = String(format: "%d min, %dg CO2, CHF %d.-", expectedTime, self.itinerary!.emmissions, self.itinerary!.cost)
                 self.btn_go.isEnabled = true
-                self.btn_go.backgroundColor = UIColor.green
-            }
+                self.updateStyleBtnGo()
+            })
         }
     }
 
@@ -84,6 +77,14 @@ import MapboxDirections
         
         addArrangedSubview(stk_labels)
         addArrangedSubview(btn_go)
+    }
+    
+    private func updateStyleBtnGo(){
+        if btn_go.isEnabled {
+            btn_go.backgroundColor = UIColor.green
+        } else {
+            btn_go.backgroundColor = UIColor.gray
+        }
     }
     
     @objc private func btn_goTapped(button: UIButton) {
