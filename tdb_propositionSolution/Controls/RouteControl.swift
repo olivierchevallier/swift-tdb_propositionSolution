@@ -37,12 +37,16 @@ import MapboxDirections
             transportType = itinerary!.transport
             var expectedTime = 0
             self.infos = "Chargement..."
+            btn_go.isEnabled = false
+            btn_go.backgroundColor = UIColor.gray
             itinerary!.expectedTime(completionHandler: { time in
                 expectedTime = time
                 dispatchGroup.leave()
             })
             dispatchGroup.notify(queue: .main) {
                 self.infos = String(format: "%d min, %dg CO2, CHF %d.-", expectedTime, self.itinerary!.emmissions, self.itinerary!.cost)
+                self.btn_go.isEnabled = true
+                self.btn_go.backgroundColor = UIColor.green
             }
         }
     }
@@ -71,11 +75,10 @@ import MapboxDirections
         btn_go.widthAnchor.constraint(equalToConstant: 50).isActive = true
         btn_go.backgroundColor = UIColor.green
         btn_go.setTitle("GO", for: .normal)
-        btn_go.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
         btn_go.setTitleColor(UIColor.white, for: .normal)
+        btn_go.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
         btn_go.layer.cornerRadius = 10
         btn_go.addTarget(self, action: #selector(btn_goTapped(button:)), for: .touchUpInside)
-        
         
         addArrangedSubview(stk_labels)
         addArrangedSubview(btn_go)

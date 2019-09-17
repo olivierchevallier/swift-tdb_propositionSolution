@@ -16,26 +16,24 @@ class LocationTableViewController: UITableViewController {
     var locations = [Location]()
     let dispatchGroup = DispatchGroup()
     @IBOutlet var txt_search: UITextField!
+    @IBOutlet var indic_loading: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         txt_search.becomeFirstResponder()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     //MARK: Actions
     @IBAction func txt_searchChanged(_ sender: UITextField) {
         locations = [Location]()
         if txt_search.text != "" {
+            indic_loading.startAnimating()
             performSearch(searchTxt: txt_search.text!, userLocation: userLocationStr!)
         }
         // Le dispatchGroup permet d'attendre que les fonctions qui en font partie quittent le groupe avant d'effectuer ce qui se trouve dans notify. Comme le traitement se fait de manière asynchrone, c'est important
         dispatchGroup.notify(queue: .main) {
             self.tableView.reloadData()
+            self.indic_loading.stopAnimating()
         }
     }
     
@@ -70,9 +68,8 @@ class LocationTableViewController: UITableViewController {
      */
     private func generateURL(searchTxt: String, userLocation: String) -> URL {
         let accessToken = Bundle.main.object(forInfoDictionaryKey: "MGLMapboxAccessToken") as! String
-        let formatedTxt = searchTxt.replacingOccurrences(of: " ", with: "%20")
-        let stringURL = "https://api.mapbox.com/geocoding/v5/mapbox.places/" + formatedTxt + ".json?proximity=" + userLocation + "&access_token=" + accessToken
-        guard let encodedStringURL = stringURL.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed), let url = URL(string: encodedStringURL) else {
+        let stringURL = "https://api.mapbox.com/geocoding/v5/mapbox.places/" + searchTxt + ".json?proximity=" + userLocation + "&access_token=" + accessToken
+        guard let encodedStringURL = stringURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let url = URL(string: encodedStringURL) else {
             fatalError("Error generating URL")
         }
         return url
