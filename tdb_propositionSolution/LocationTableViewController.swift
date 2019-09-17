@@ -72,7 +72,7 @@ class LocationTableViewController: UITableViewController {
     /// - Parameter userLocation : La localisation de l'utilisateur doit être passée sous forme de chaine de caractères respectant le format "longitude,latitude"
     private func generateURL(searchTxt: String, userLocation: String) -> URL {
         let accessToken = Bundle.main.object(forInfoDictionaryKey: "MGLMapboxAccessToken") as! String
-        let stringURL = "https://api.mapbox.com/geocoding/v5/mapbox.places/" + searchTxt + ".json?proximity=" + userLocation + "&access_token=" + accessToken
+        let stringURL = "https://api.mapbox.com/geocoding/v5/mapbox.places/" + searchTxt + ".json?language=fr&proximity=" + userLocation + "&access_token=" + accessToken
         guard let encodedStringURL = stringURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let url = URL(string: encodedStringURL) else {
             fatalError("Error generating URL")
         }
