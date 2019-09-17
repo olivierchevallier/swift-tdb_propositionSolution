@@ -53,6 +53,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
     }
     
     //MARK: - Private methods
+    /// Retourne la localisation de l'utilisateur sous forme d'une chaine de caratères respectant le format "longitude,latitude"
     private func getFormatedUserLocation() -> String{
         let userLocation = mapView.userLocation!
         let latitude = String(format: "%10f", (userLocation.location?.coordinate.latitude)!)
@@ -61,6 +62,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
         return stringFormatedLocation.replacingOccurrences(of: " ", with: "")
     }
     
+    /// Met à jour la vue pour y afficher la destination (annotation sur la carte + affichage du nom de la destination)
     private func showDestination() {
         let destinationAnnotation = MGLPointAnnotation()
         destinationAnnotation.coordinate = destination!.coordinate
@@ -69,6 +71,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
         self.routes.destinationName = destination!.name
     }
     
+    /// Effectue un dézoom sur la carte pour y afficher deux coordonnées à la fois
     private func previewZoom(sw: CLLocationCoordinate2D, ne: CLLocationCoordinate2D) {
         let coordinatesBounds = MGLCoordinateBounds(sw: sw, ne: ne)
         let insets = UIEdgeInsets(top: 100, left: 50, bottom: 300, right: 50)
@@ -76,6 +79,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
         self.mapView.setCamera(routeCam, animated: true)
     }
     
+    /// Adapte le style de la carte pour le mode sombre et pour le mode clair
     private func adaptMapStyle() {
         let userInterfaceStyle = traitCollection.userInterfaceStyle
         
@@ -87,12 +91,14 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
         }
     }
     
+    /// Supprime toutes les présentes sur la carte
     private func clearAnnotations(){
         if mapView.annotations != nil {
             mapView.removeAnnotations(mapView.annotations!)
         }
     }
     
+    /// Met à jour les itinéraires pour correspondre à la destination
     private func updateItineraries(){
         if itineraries.count > 0 {
             itineraries.removeAll()

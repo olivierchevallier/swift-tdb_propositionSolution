@@ -41,6 +41,7 @@ import UIKit
     }
     
     //MARK: - Private methods
+    /// Met en place tous les éléments à afficher dans la vue 
     private func setupView() {
         lbl_destinationName.text = self.destinationName
         lbl_destinationName.font = UIFont.boldSystemFont(ofSize: 25)

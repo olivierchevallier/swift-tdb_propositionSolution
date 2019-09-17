@@ -39,6 +39,7 @@ class Itinerary {
     }
     
     //MARK: - Private methods
+    /// Calcul l'itinéraire 
     private func calculateRoute(completion: @escaping(Route?, Error?) -> Void){
         dispatchGroup.enter()
         let originWaypoint = Waypoint(coordinate: origin, coordinateAccuracy: -1, name: "Départ")
@@ -51,6 +52,7 @@ class Itinerary {
     }
     
     //MARK: - Public methods
+    /// Permet d'accéder au temps éstimé pour un itinéraire. La valeur est accessible au travers d'un completionHandler
     func expectedTime(completionHandler: @escaping(Int) -> Void){
         dispatchGroup.notify(queue: .main) {
             let interval = Int(self.route!.expectedTravelTime)

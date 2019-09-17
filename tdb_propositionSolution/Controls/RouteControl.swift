@@ -58,6 +58,7 @@ import MapboxDirections
     }
     
     //MARK: - Private methods
+    /// Met en place tous les éléments à afficher dans la vue 
     private func setupView() {
         stk_labels.axis = .vertical
         stk_labels.addArrangedSubview(lbl_transportType)
@@ -79,6 +80,7 @@ import MapboxDirections
         addArrangedSubview(btn_go)
     }
     
+    /// Met à jour le style du bouton pour refléter son état d'activation
     private func updateStyleBtnGo(){
         if btn_go.isEnabled {
             btn_go.backgroundColor = UIColor.green

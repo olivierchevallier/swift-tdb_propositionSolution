@@ -52,9 +52,8 @@ class LocationTableViewController: UITableViewController {
     }
     
     //MARK: - Private methods
-    /**
-        Effectue la recherche de lieu à afficher dans le TableView
-     */
+    /// Effectue la recherche de lieu à afficher dans le TableView.
+    /// - Parameter userLocation: La localisation de l'utilisateur doit être passée sous forme de chaine de caractères respectant le format "longitude,latitude"
     private func performSearch(searchTxt: String, userLocation: String){
         let url = generateURL(searchTxt: searchTxt, userLocation: userLocation)
         executeHTTPGet(url: url, dataCompletionHandler: { data in
@@ -69,9 +68,8 @@ class LocationTableViewController: UITableViewController {
         })
     }
     
-    /**
-        Genère l'URL pour la recherche de lieux grâce à l'API search de MapBox
-     */
+    /// Genère l'URL pour la recherche de lieux grâce à l'API search de MapBox.
+    /// - Parameter userLocation : La localisation de l'utilisateur doit être passée sous forme de chaine de caractères respectant le format "longitude,latitude"
     private func generateURL(searchTxt: String, userLocation: String) -> URL {
         let accessToken = Bundle.main.object(forInfoDictionaryKey: "MGLMapboxAccessToken") as! String
         let stringURL = "https://api.mapbox.com/geocoding/v5/mapbox.places/" + searchTxt + ".json?proximity=" + userLocation + "&access_token=" + accessToken
@@ -81,9 +79,7 @@ class LocationTableViewController: UITableViewController {
         return url
     }
     
-    /**
-        Exécute un requête HTTP GET sur l'URL donnée en permettant de traiter les données retournée par la requête dans le dataCompletionHandler (explication dataCompletionHandler : https://fluffy.es/return-value-from-a-closure/)
-     */
+    /// Exécute un requête HTTP GET sur l'URL donnée en permettant de traiter les données retournée par la requête dans le dataCompletionHandler (explication dataCompletionHandler : https://fluffy.es/return-value-from-a-closure/)
     private func executeHTTPGet(url: URL, dataCompletionHandler: @escaping(Data?) -> Void) {
         dispatchGroup.enter()
         let session = URLSession.shared
