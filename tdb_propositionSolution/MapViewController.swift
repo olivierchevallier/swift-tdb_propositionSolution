@@ -18,9 +18,8 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
     //MARK: - Properties
     //MARK: Var
     var mapView: NavigationMapView!
-    var userLocationStr: String?
-    var destinationLocation: Location?
-    var carDirectionsRoute: Route?
+    var str_userLocation: String?
+    var destination: Location?
     var itineraries = [Itinerary]()
     
     //MARK: Controls
@@ -62,25 +61,12 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
         return stringFormatedLocation.replacingOccurrences(of: " ", with: "")
     }
     
-    private func calculateCarRoute(from originCoordinate: CLLocationCoordinate2D, to destinationCoordinate: CLLocationCoordinate2D, completion: @escaping (Route?, Error?) -> Void) {
-        let origin = Waypoint(coordinate: originCoordinate, coordinateAccuracy: -1, name: "Start")
-        let destination = Waypoint(coordinate: destinationCoordinate, coordinateAccuracy: -1, name: "Finish")
-        
-        let options = NavigationRouteOptions(waypoints: [origin, destination], profileIdentifier: .automobileAvoidingTraffic)
-        
-        _ = Directions.shared.calculate(options, completionHandler: { (waypoints, routes, error) in
-            self.carDirectionsRoute = routes?.first
-            
-            self.previewZoom(sw: originCoordinate, ne: destinationCoordinate)
-        })
-    }
-    
     private func showDestination() {
         let destinationAnnotation = MGLPointAnnotation()
-        destinationAnnotation.coordinate = destinationLocation!.coordinate
-        previewZoom(sw: mapView.userLocation!.coordinate, ne: destinationLocation!.coordinate)
+        destinationAnnotation.coordinate = destination!.coordinate
+        previewZoom(sw: mapView.userLocation!.coordinate, ne: destination!.coordinate)
         self.mapView.addAnnotation(destinationAnnotation)
-        self.routes.destinationName = destinationLocation!.name
+        self.routes.destinationName = destination!.name
     }
     
     private func previewZoom(sw: CLLocationCoordinate2D, ne: CLLocationCoordinate2D) {
@@ -111,13 +97,13 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
         if itineraries.count > 0 {
             itineraries.removeAll()
         }
-        itineraries.append(Itinerary(origin: mapView.userLocation!.coordinate, destination: destinationLocation!.coordinate, transport: "Voiture"))
+        itineraries.append(Itinerary(origin: mapView.userLocation!.coordinate, destination: destination!.coordinate, transport: "Voiture"))
         routes.intineraries = itineraries
     }
     
     //MARK: - UITextFieldDelegate
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        userLocationStr = getFormatedUserLocation()
+        str_userLocation = getFormatedUserLocation()
         textField.resignFirstResponder()
     }
     
@@ -129,14 +115,14 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showResults" {
             if let destinationVC = segue.destination as? LocationTableViewController {
-                destinationVC.userLocationStr = self.userLocationStr
+                destinationVC.str_userLocation = self.str_userLocation
             }
         }
     }
     
     @IBAction func unwindToMap(_ unwindSegue: UIStoryboardSegue) {
-        if let sourceViewController = unwindSegue.source as? LocationTableViewController, let destinationLocation = sourceViewController.destinationLocation {
-            self.destinationLocation = destinationLocation
+        if let sourceViewController = unwindSegue.source as? LocationTableViewController, let destination = sourceViewController.destination {
+            self.destination = destination
             mapView.setUserTrackingMode(.none, animated: true, completionHandler: nil)
             clearAnnotations()
             showDestination()

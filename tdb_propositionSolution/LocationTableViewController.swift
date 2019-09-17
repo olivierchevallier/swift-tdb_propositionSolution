@@ -12,8 +12,8 @@ import os.log
 class LocationTableViewController: UITableViewController {
     //MARK: - Properties
     //MARK: Var
-    var userLocationStr: String?
-    var destinationLocation: Location?
+    var str_userLocation: String?
+    var destination: Location?
     var locations = [Location]()
     
     //MARK: Const
@@ -34,7 +34,7 @@ class LocationTableViewController: UITableViewController {
         locations = [Location]()
         if txt_search.text != "" {
             indic_loading.startAnimating()
-            performSearch(searchTxt: txt_search.text!, userLocation: userLocationStr!)
+            performSearch(searchTxt: txt_search.text!, userLocation: str_userLocation!)
         }
         // Le dispatchGroup permet d'attendre que les fonctions qui en font partie quittent le groupe avant d'effectuer ce qui se trouve dans notify. Comme le traitement se fait de manière asynchrone, c'est important
         dispatchGroup.notify(queue: .main) {
@@ -44,7 +44,7 @@ class LocationTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        destinationLocation = locations[indexPath.row]
+        destination = locations[indexPath.row]
     }
     
     @IBAction func btn_cancelPressed(_ sender: UIButton) {
@@ -145,8 +145,8 @@ class LocationTableViewController: UITableViewController {
             fatalError("The selected cell is not being displayed by the table")
         }
         
-        destinationLocation = locations[indexPath.row]
-        mapViewController.destinationLocation = destinationLocation
+        destination = locations[indexPath.row]
+        mapViewController.destination = destination
     }
     
     //MARK: - Structures
