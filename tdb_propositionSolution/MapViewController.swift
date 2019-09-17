@@ -118,7 +118,8 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
         routes.intineraries = itineraries
     }
     
-    private func updateDestination(destination: Location) {
+    /// Change la destination et met à jour la vue en conséquence
+    private func updateDestination(destination: Location) {
         self.destination = destination
         mapView.setUserTrackingMode(.none, animated: true, completionHandler: nil)
         clearAnnotations()

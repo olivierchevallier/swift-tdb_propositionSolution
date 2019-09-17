@@ -38,11 +38,11 @@ import MapboxDirections
             self.infos = "Chargement..."
             btn_go.isEnabled = false
             updateStyleBtnGo()
-            itinerary!.expectedTime(completionHandler: { expectedTime in
-                self.infos = String(format: "%d min, %dg CO2, CHF %d.-", expectedTime, self.itinerary!.emmissions, self.itinerary!.cost)
+            itinerary!.routeCalculated {
+                self.infos = String(format: "%d min, %.01fg CO2, CHF %.02f.-", self.itinerary!.expectedTime, self.itinerary!.emissions, self.itinerary!.cost)
                 self.btn_go.isEnabled = true
                 self.updateStyleBtnGo()
-            })
+            }
         }
     }
 

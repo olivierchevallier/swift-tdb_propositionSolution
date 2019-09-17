@@ -16,15 +16,31 @@ class Itinerary {
     
     //MARK: - Properties
     //MARK: Var
-    var route: Route?
-    var cost = 0
-    var emmissions = 0
+    var route: Route? //sera spécifique à l'itinéraire pour voiture
     var origin: CLLocationCoordinate2D
     var destination: CLLocationCoordinate2D
     var transport: String
     
     //MARK: Const
     private let dispatchGroup = DispatchGroup()
+    
+    //MARK: Computed
+    var emissions: Double {
+        get {
+            return self.route!.distance * 137.8 / 1000
+        }
+    }
+    var cost: Double {
+        get {
+            return self.route!.distance * 0.8 / 1000
+        }
+    }
+    var expectedTime: Int {
+        get {
+            return Int(self.route!.expectedTravelTime) / 60
+        }
+    }
+    
     
     //MARK: - Initializer
     init(origin: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, transport: String) {
@@ -52,13 +68,10 @@ class Itinerary {
     }
     
     //MARK: - Public methods
-    /// Permet d'accéder au temps éstimé pour un itinéraire. La valeur est accessible au travers d'un completionHandler
-    func expectedTime(completionHandler: @escaping(Int) -> Void){
+    /// Permet d'accéder aux différente valeurs calculées dépendante du fait que l'itinéraire ait fini de se calculer
+    func routeCalculated(completionHandler: @escaping() -> Void){
         dispatchGroup.notify(queue: .main) {
-            let interval = Int(self.route!.expectedTravelTime)
-            completionHandler(interval / 60)
+            completionHandler()
         }
     }
-    
-    
 }
