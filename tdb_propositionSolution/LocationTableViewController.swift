@@ -75,7 +75,7 @@ class LocationTableViewController: UITableViewController {
         guard let encodedStringURL = stringURL.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed), let url = URL(string: encodedStringURL) else {
             fatalError("Error generating URL")
         }
-        return url!
+        return url
     }
     
     /**
