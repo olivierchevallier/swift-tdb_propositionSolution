@@ -10,20 +10,26 @@ import UIKit
 import os.log
 
 class LocationTableViewController: UITableViewController {
-    //MARK: Properties
+    //MARK: - Properties
+    //MARK: Var
     var userLocationStr: String?
     var destinationLocation: Location?
     var locations = [Location]()
+    
+    //MARK: Const
     let dispatchGroup = DispatchGroup()
+    
+    //MARK: Controls
     @IBOutlet var txt_search: UITextField!
     @IBOutlet var indic_loading: UIActivityIndicatorView!
     
+    //MARK: -
     override func viewDidLoad() {
         super.viewDidLoad()
         txt_search.becomeFirstResponder()
     }
     
-    //MARK: Actions
+    //MARK: - Actions
     @IBAction func txt_searchChanged(_ sender: UITextField) {
         locations = [Location]()
         if txt_search.text != "" {
@@ -45,7 +51,7 @@ class LocationTableViewController: UITableViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    //MARK: Private methods
+    //MARK: - Private methods
     /**
         Effectue la recherche de lieu à afficher dans le TableView
      */
@@ -102,40 +108,8 @@ class LocationTableViewController: UITableViewController {
         })
         task.resume()
     }
-      
-    struct FeaturesCollection: Decodable {
-      let attribution: String
-      let features: [Feature]
-    }
-      
-    struct Feature: Decodable {
-          let center: [Double]
-          let context: [Context]?
-          let geometry: Geometry
-          let id: String
-          let place_name: String
-          let place_type: [String]
-          let properties: Property
-          let text: String
-      }
-      
-      struct Context: Decodable {
-          let id: String
-          let text: String
-      }
-      
-      struct Geometry: Decodable {
-          let coordinates: [Double]
-          let type: String
-      }
-      
-      struct Property: Decodable {
-          let address: String?
-          let category: String?
-      }
     
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -156,41 +130,6 @@ class LocationTableViewController: UITableViewController {
 
         return cell
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {        
@@ -208,5 +147,37 @@ class LocationTableViewController: UITableViewController {
         
         destinationLocation = locations[indexPath.row]
         mapViewController.destinationLocation = destinationLocation
+    }
+    
+    //MARK: - Structures
+    struct FeaturesCollection: Decodable {
+        let attribution: String
+        let features: [Feature]
+    }
+    
+    struct Feature: Decodable {
+        let center: [Double]
+        let context: [Context]?
+        let geometry: Geometry
+        let id: String
+        let place_name: String
+        let place_type: [String]
+        let properties: Property
+        let text: String
+    }
+    
+    struct Context: Decodable {
+        let id: String
+        let text: String
+    }
+    
+    struct Geometry: Decodable {
+        let coordinates: [Double]
+        let type: String
+    }
+    
+    struct Property: Decodable {
+        let address: String?
+        let category: String?
     }
 }

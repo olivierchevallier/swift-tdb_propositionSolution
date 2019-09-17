@@ -9,10 +9,11 @@
 import UIKit
 
 class LocationTableViewCell: UITableViewCell {
-    //MARK: Properties
+    //MARK: - Properties
+    //MARK: Contols
     @IBOutlet var lbl_locationName: UILabel!
     
-    
+    //MARK: - 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

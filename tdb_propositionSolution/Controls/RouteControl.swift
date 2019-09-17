@@ -13,7 +13,9 @@ import MapboxNavigation
 import MapboxDirections
 
 @IBDesignable class RouteControl: UIStackView {
-    //MARK: Properties
+    
+    //MARK: - Properties
+    //MARK: Var
     private var lbl_transportType = UILabel()
     private var lbl_infos = UILabel()
     private var btn_go = UIButton()
@@ -51,7 +53,7 @@ import MapboxDirections
         }
     }
 
-    //MARK: Initialization
+    //MARK: - Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -62,7 +64,7 @@ import MapboxDirections
         setupView()
     }
     
-    //MARK: Private methods
+    //MARK: - Private methods
     private func setupView() {
         stk_labels.axis = .vertical
         stk_labels.addArrangedSubview(lbl_transportType)

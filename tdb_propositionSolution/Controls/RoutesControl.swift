@@ -9,10 +9,13 @@
 import UIKit
 
 @IBDesignable class RoutesControl: UIStackView {
-    //MARK: Properties
+    
+    //MARK: - Properties
+    //MARK: Var
     private var lbl_destinationName = UILabel()
     private var routeControls = [RouteControl]()
     
+    var routes = [String]()
     var destinationName = "Nom destination" {
         didSet {
             lbl_destinationName.text = self.destinationName
@@ -25,9 +28,8 @@ import UIKit
             }
         }
     }
-    var routes = [String]()
     
-    //MARK: Initialization
+    //MARK: - Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -38,7 +40,7 @@ import UIKit
         setupView()
     }
     
-    //MARK: Private methods
+    //MARK: - Private methods
     private func setupView() {
         lbl_destinationName.text = self.destinationName
         lbl_destinationName.font = UIFont.boldSystemFont(ofSize: 25)

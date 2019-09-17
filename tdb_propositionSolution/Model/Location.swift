@@ -10,11 +10,13 @@ import Foundation
 import CoreLocation
 
 class Location {
-    //MARK: Properties
+    
+    //MARK: - Properties
+    //MARK: Var
     var name: String
     var coordinate: CLLocationCoordinate2D
     
-    //MARK: Initializer
+    //MARK: - Initializer
     init(name: String, coordinate: CLLocationCoordinate2D) {
         self.name = name
         self.coordinate = coordinate

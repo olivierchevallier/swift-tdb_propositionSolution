@@ -13,7 +13,9 @@ import MapboxNavigation
 import MapboxDirections
 
 class Itinerary {
-    //MARK: Properties
+    
+    //MARK: - Properties
+    //MARK: Var
     var route: Route?
     var cost = 0
     var emmissions = 0
@@ -21,9 +23,10 @@ class Itinerary {
     var destination: CLLocationCoordinate2D
     var transport: String
     
+    //MARK: Const
     private let dispatchGroup = DispatchGroup()
     
-    //MARK: Initializer
+    //MARK: - Initializer
     init(origin: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, transport: String) {
         self.origin = origin
         self.destination = destination
@@ -35,7 +38,7 @@ class Itinerary {
         })
     }
     
-    //MARK: Private methods
+    //MARK: - Private methods
     private func calculateRoute(completion: @escaping(Route?, Error?) -> Void){
         dispatchGroup.enter()
         let originWaypoint = Waypoint(coordinate: origin, coordinateAccuracy: -1, name: "Départ")
@@ -47,7 +50,7 @@ class Itinerary {
         })
     }
     
-    //MARK: Public methods
+    //MARK: - Public methods
     func expectedTime(completionHandler: @escaping(Int) -> Void){
         dispatchGroup.notify(queue: .main) {
             let interval = Int(self.route!.expectedTravelTime)
