@@ -1,10 +1,10 @@
+//--------------------------------------------------
+// Travail de bachelor - Proposition de solution
 //
-//  Itinerary.swift
-//  tdb_propositionSolution
+// Itinerary : Modèle représentant un itinéraire
 //
-//  Created by olivier chevallier on 16.09.19.
-//  Copyright © 2019 Olivier Chevallier. All rights reserved.
-//
+// Créé par : Olivier Chevallier le 16.09.19
+//--------------------------------------------------
 
 import Foundation
 import Mapbox

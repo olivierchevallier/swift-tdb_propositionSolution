@@ -1,10 +1,10 @@
+//--------------------------------------------------
+// Travail de bachelor - Proposition de solution
 //
-//  SceneDelegate.swift
-//  tdb_propositionSolution
+// SceneDelegate
 //
-//  Created by olivier chevallier on 04.09.19.
-//  Copyright © 2019 Olivier Chevallier. All rights reserved.
-//
+// Créé par : Olivier Chevallier le 04.09.19
+//--------------------------------------------------
 
 import UIKit
 

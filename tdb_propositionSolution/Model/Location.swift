@@ -1,10 +1,10 @@
+//--------------------------------------------------
+// Travail de bachelor - Proposition de solution
 //
-//  Location.swift
-//  tdb_propositionSolution
+// Location : Modèle représentant un lieu
 //
-//  Created by olivier chevallier on 10.09.19.
-//  Copyright © 2019 Olivier Chevallier. All rights reserved.
-//
+// Créé par : Olivier Chevallier le 10.09.19
+//--------------------------------------------------
 
 import Foundation
 import CoreLocation

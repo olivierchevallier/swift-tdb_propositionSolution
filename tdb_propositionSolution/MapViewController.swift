@@ -1,10 +1,10 @@
+//--------------------------------------------------
+// Travail de bachelor - Proposition de solution
 //
-//  ViewController.swift
-//  tdb_propositionSolution
+// MapViewController : Controleur de la vue affichant la carte
 //
-//  Created by olivier chevallier on 04.09.19.
-//  Copyright © 2019 Olivier Chevallier. All rights reserved.
-//
+// Créé par : Olivier Chevallier le 04.09.19
+//--------------------------------------------------
 
 import UIKit
 import Mapbox

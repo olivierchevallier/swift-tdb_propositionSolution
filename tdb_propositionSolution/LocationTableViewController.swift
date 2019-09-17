@@ -1,10 +1,10 @@
+//--------------------------------------------------
+// Travail de bachelor - Proposition de solution
 //
-//  LocationTableViewController.swift
-//  tdb_propositionSolution
+// LocationTableViewController : Controleur du tableau affichant les résultats de recherche de lieux
 //
-//  Created by olivier chevallier on 11.09.19.
-//  Copyright © 2019 Olivier Chevallier. All rights reserved.
-//
+// Créé par : Olivier Chevallier le 11.09.19
+//--------------------------------------------------
 
 import UIKit
 import os.log

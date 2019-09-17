@@ -1,0 +1,7 @@
+--------------------------------------------------
+// Travail de bachelor - Proposition de solution
+//
+// ___FILEBASENAME___ :
+//
+// Créé par : ___FULLUSERNAME___ le ___DATE___
+//--------------------------------------------------

@@ -1,10 +1,10 @@
+//--------------------------------------------------
+// Travail de bachelor - Proposition de solution
 //
-//  RoutesControl.swift
-//  tdb_propositionSolution
+// RoutesControl : Contrôle affichant une liste d'itinéraires
 //
-//  Created by olivier chevallier on 13.09.19.
-//  Copyright © 2019 Olivier Chevallier. All rights reserved.
-//
+// Créé par : Olivier Chevallier le 13.09.19
+//--------------------------------------------------
 
 import UIKit
 

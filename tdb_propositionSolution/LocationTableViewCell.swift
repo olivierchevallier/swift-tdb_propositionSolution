@@ -1,10 +1,10 @@
+//--------------------------------------------------
+// Travail de bachelor - Proposition de solution
 //
-//  LocationTableViewCell.swift
-//  tdb_propositionSolution
+// LocationTableViewCell : Cellule de la TableView affichant les résultats de recherche
 //
-//  Created by olivier chevallier on 10.09.19.
-//  Copyright © 2019 Olivier Chevallier. All rights reserved.
-//
+// Créé par : Olivier Chevallier le 11.09.19
+//--------------------------------------------------
 
 import UIKit
 
