@@ -35,6 +35,8 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(mapView)
         view.sendSubviewToBack(mapView)
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(didLongPressMap(_:)))
+        mapView.addGestureRecognizer(longPress)
         
         mapView.delegate = self
         txt_search.delegate = self
@@ -50,6 +52,15 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         adaptMapStyle()
+    }
+    
+    @objc func didLongPressMap(_ sender: UILongPressGestureRecognizer) {
+        guard sender.state == .began else { return }
+        print(sender)
+        let point = sender.location(in: mapView)
+        let coordinate = mapView.convert(point, toCoordinateFrom: mapView)
+        let destination = Location(name: "Lieu pointé sur la carte", coordinate: coordinate)
+        updateDestination(destination: destination)
     }
     
     //MARK: - Private methods
@@ -107,6 +118,15 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
         routes.intineraries = itineraries
     }
     
+    private func updateDestination(destination: Location) {
+        self.destination = destination
+        mapView.setUserTrackingMode(.none, animated: true, completionHandler: nil)
+        clearAnnotations()
+        showDestination()
+        updateItineraries()
+        routes.isHidden = false
+    }
+    
     //MARK: - UITextFieldDelegate
     func textFieldDidBeginEditing(_ textField: UITextField) {
         str_userLocation = getFormatedUserLocation()
@@ -128,12 +148,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
     
     @IBAction func unwindToMap(_ unwindSegue: UIStoryboardSegue) {
         if let sourceViewController = unwindSegue.source as? LocationTableViewController, let destination = sourceViewController.destination {
-            self.destination = destination
-            mapView.setUserTrackingMode(.none, animated: true, completionHandler: nil)
-            clearAnnotations()
-            showDestination()
-            updateItineraries()
-            routes.isHidden = false
+            updateDestination(destination: destination)
         }
     }
     
