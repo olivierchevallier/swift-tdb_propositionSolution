@@ -72,7 +72,10 @@ class LocationTableViewController: UITableViewController {
         let accessToken = Bundle.main.object(forInfoDictionaryKey: "MGLMapboxAccessToken") as! String
         let formatedTxt = searchTxt.replacingOccurrences(of: " ", with: "%20")
         let stringURL = "https://api.mapbox.com/geocoding/v5/mapbox.places/" + formatedTxt + ".json?proximity=" + userLocation + "&access_token=" + accessToken
-        return URL(string: stringURL)!
+        guard let encodedStringURL = stringURL.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed), let url = URL(string: encodedStringURL) else {
+            fatalError("Error generating URL")
+        }
+        return url!
     }
     
     /**
