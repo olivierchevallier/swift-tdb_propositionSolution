@@ -114,7 +114,8 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
         if itineraries.count > 0 {
             itineraries.removeAll()
         }
-        itineraries.append(Itinerary(origin: mapView.userLocation!.coordinate, destination: destination!.coordinate, transport: "Voiture"))
+        itineraries.append(CarItinerary(origin: mapView.userLocation!.coordinate, destination: destination!.coordinate))
+        itineraries.append(TransitItinerary(origin: mapView.userLocation!.coordinate, destination: destination!.coordinate))
         routes.intineraries = itineraries
     }
     

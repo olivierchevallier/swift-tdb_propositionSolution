@@ -17,7 +17,6 @@ class LocationTableViewController: UITableViewController {
     var locations = [Location]()
     
     //MARK: Const
-    let dispatchGroup = DispatchGroup()
     
     //MARK: Controls
     @IBOutlet var txt_search: UITextField!
@@ -37,7 +36,7 @@ class LocationTableViewController: UITableViewController {
             performSearch(searchTxt: txt_search.text!, userLocation: str_userLocation!)
         }
         // Le dispatchGroup permet d'attendre que les fonctions qui en font partie quittent le groupe avant d'effectuer ce qui se trouve dans notify. Comme le traitement se fait de manière asynchrone, c'est important
-        dispatchGroup.notify(queue: .main) {
+        Network.dispatchGroup.notify(queue: .main) {
             self.tableView.reloadData()
             self.indic_loading.stopAnimating()
         }
@@ -55,10 +54,10 @@ class LocationTableViewController: UITableViewController {
     /// Effectue la recherche de lieu à afficher dans le TableView.
     /// - Parameter userLocation: La localisation de l'utilisateur doit être passée sous forme de chaine de caractères respectant le format "longitude,latitude"
     private func performSearch(searchTxt: String, userLocation: String){
-        let url = generateURL(searchTxt: searchTxt, userLocation: userLocation)
-        executeHTTPGet(url: url, dataCompletionHandler: { data in
+        let url = URL(string: CarWebService.getPlaces(txt: searchTxt, proximity: userLocation))!
+        Network.executeHTTPGet(url: url, dataCompletionHandler: { data in
             do {
-                let featuresCollection = try JSONDecoder().decode(FeaturesCollection.self, from: data!)
+                let featuresCollection = try JSONDecoder().decode(CarWebService.FeaturesCollection.self, from: data!)
                 for feature in featuresCollection.features {
                     self.locations.append(Location(name: feature.place_name, coordinate: feature.geometry.coordinates))
                 }
@@ -66,43 +65,6 @@ class LocationTableViewController: UITableViewController {
                 print("JSON error : \(error)")
             }
         })
-    }
-    
-    /// Genère l'URL pour la recherche de lieux grâce à l'API search de MapBox.
-    /// - Parameter userLocation : La localisation de l'utilisateur doit être passée sous forme de chaine de caractères respectant le format "longitude,latitude"
-    private func generateURL(searchTxt: String, userLocation: String) -> URL {
-        let accessToken = Bundle.main.object(forInfoDictionaryKey: "MGLMapboxAccessToken") as! String
-        let stringURL = "https://api.mapbox.com/geocoding/v5/mapbox.places/" + searchTxt + ".json?language=fr&proximity=" + userLocation + "&access_token=" + accessToken
-        guard let encodedStringURL = stringURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let url = URL(string: encodedStringURL) else {
-            fatalError("Error generating URL")
-        }
-        return url
-    }
-    
-    /// Exécute un requête HTTP GET sur l'URL donnée en permettant de traiter les données retournée par la requête dans le dataCompletionHandler (explication dataCompletionHandler : https://fluffy.es/return-value-from-a-closure/)
-    private func executeHTTPGet(url: URL, dataCompletionHandler: @escaping(Data?) -> Void) {
-        dispatchGroup.enter()
-        let session = URLSession.shared
-        let task = session.dataTask(with: url, completionHandler: {data, response, error in
-            if error != nil || data == nil {
-                os_log("Client error", log: OSLog.default, type: .debug)
-                return
-            }
-            
-            guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-                os_log("Server error", log: OSLog.default, type: .debug)
-                return
-            }
-        
-            guard let mime = response.mimeType, mime == "application/vnd.geo+json" else {
-                os_log("Wrong MIME type", log: OSLog.default, type: .debug)
-                return
-            }
-            //Execution du code défini dans le dataCompletionHandler à l'appel de la méthode
-            dataCompletionHandler(data)
-            self.dispatchGroup.leave()
-        })
-        task.resume()
     }
     
     // MARK: - Table view data source
@@ -143,37 +105,5 @@ class LocationTableViewController: UITableViewController {
         
         destination = locations[indexPath.row]
         mapViewController.destination = destination
-    }
-    
-    //MARK: - Structures
-    struct FeaturesCollection: Decodable {
-        let attribution: String
-        let features: [Feature]
-    }
-    
-    struct Feature: Decodable {
-        let center: [Double]
-        let context: [Context]?
-        let geometry: Geometry
-        let id: String
-        let place_name: String
-        let place_type: [String]
-        let properties: Property
-        let text: String
-    }
-    
-    struct Context: Decodable {
-        let id: String
-        let text: String
-    }
-    
-    struct Geometry: Decodable {
-        let coordinates: [Double]
-        let type: String
-    }
-    
-    struct Property: Decodable {
-        let address: String?
-        let category: String?
     }
 }
