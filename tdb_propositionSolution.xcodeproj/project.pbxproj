@@ -92,13 +92,41 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		5F728EA3232B982800ECA799 /* Controls */ = {
+		5F713AD82333A14C00C2C8CC /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5FA66EFC231FA92700A23B14 /* MapViewController.swift */,
+				5FADAC3723291C1D00316A55 /* LocationTableViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		5F713AD92333A17900C2C8CC /* Ressources */ = {
+			isa = PBXGroup;
+			children = (
+				5FA66EFE231FA92700A23B14 /* Main.storyboard */,
+				5FA66F01231FA92A00A23B14 /* Assets.xcassets */,
+				5FA66F03231FA92A00A23B14 /* LaunchScreen.storyboard */,
+			);
+			path = Ressources;
+			sourceTree = "<group>";
+		};
+		5F713ADA2333A19E00C2C8CC /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				5FA66F06231FA92A00A23B14 /* Info.plist */,
+			);
+			path = "Supporting files";
+			sourceTree = "<group>";
+		};
+		5F728EA3232B982800ECA799 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				5F728E9F232B981000ECA799 /* RoutesControl.swift */,
 				5F728EA1232B981B00ECA799 /* RouteControl.swift */,
+				5FADAC332327E5CA00316A55 /* LocationTableViewCell.swift */,
 			);
-			path = Controls;
+			path = View;
 			sourceTree = "<group>";
 		};
 		5FA66EEC231FA92700A23B14 = {
@@ -124,17 +152,13 @@
 		5FA66EF7231FA92700A23B14 /* tdb_propositionSolution */ = {
 			isa = PBXGroup;
 			children = (
+				5F713ADA2333A19E00C2C8CC /* Supporting files */,
+				5F713AD92333A17900C2C8CC /* Ressources */,
+				5F713AD82333A14C00C2C8CC /* Controllers */,
 				5FE8DCD6232BCF4B00558A3C /* Model */,
-				5F728EA3232B982800ECA799 /* Controls */,
+				5F728EA3232B982800ECA799 /* View */,
 				5FA66EF8231FA92700A23B14 /* AppDelegate.swift */,
 				5FA66EFA231FA92700A23B14 /* SceneDelegate.swift */,
-				5FA66EFC231FA92700A23B14 /* MapViewController.swift */,
-				5FA66EFE231FA92700A23B14 /* Main.storyboard */,
-				5FA66F01231FA92A00A23B14 /* Assets.xcassets */,
-				5FA66F03231FA92A00A23B14 /* LaunchScreen.storyboard */,
-				5FA66F06231FA92A00A23B14 /* Info.plist */,
-				5FADAC332327E5CA00316A55 /* LocationTableViewCell.swift */,
-				5FADAC3723291C1D00316A55 /* LocationTableViewController.swift */,
 			);
 			path = tdb_propositionSolution;
 			sourceTree = "<group>";
@@ -473,7 +497,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TH6JZAS29B;
-				INFOPLIST_FILE = tdb_propositionSolution/Info.plist;
+				INFOPLIST_FILE = "tdb_propositionSolution/Supporting files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -492,7 +516,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TH6JZAS29B;
-				INFOPLIST_FILE = tdb_propositionSolution/Info.plist;
+				INFOPLIST_FILE = "tdb_propositionSolution/Supporting files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
