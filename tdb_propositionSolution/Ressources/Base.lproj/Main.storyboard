@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0qa-eO-YNp">
-    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <device id="retina5_9" orientation="portrait" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -35,11 +35,13 @@
                                     <constraint firstAttribute="trailing" secondItem="TMr-K3-9at" secondAttribute="trailing" id="Z3e-c9-O3o"/>
                                 </constraints>
                             </stackView>
-                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ECu-L0-78o" customClass="RoutesControl" customModule="tdb_propositionSolution" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="517" width="375" height="295"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d7m-y0-Rdj">
+                                <rect key="frame" x="0.0" y="570" width="375" height="242"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <directionalEdgeInsets key="directionalLayoutMargins" top="10" leading="10" bottom="10" trailing="10"/>
-                            </stackView>
+                                <connections>
+                                    <segue destination="dMV-aL-sPU" kind="embed" id="LMC-wg-Coj"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -51,7 +53,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Plan" id="PTD-MI-5x1"/>
                     <connections>
-                        <outlet property="routes" destination="ECu-L0-78o" id="1pR-ey-Krq"/>
                         <outlet property="txt_search" destination="TMr-K3-9at" id="vgW-q2-SPa"/>
                     </connections>
                 </viewController>
@@ -168,6 +169,140 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FCe-KF-Vcy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="130.40000000000001" y="93.103448275862078"/>
+        </scene>
+        <!--Itineraries View Controller-->
+        <scene sceneID="pHc-SO-6VV">
+            <objects>
+                <viewController id="dMV-aL-sPU" customClass="ItinerariesViewController" customModule="tdb_propositionSolution" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="czT-cB-y39">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="242"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="mQE-UL-60b">
+                                <rect key="frame" x="10" y="10" width="355" height="207"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nom destination" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aY9-dP-LCL">
+                                        <rect key="frame" x="0.0" y="0.0" width="355" height="33"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="61" translatesAutoresizingMaskIntoConstraints="NO" id="5Vv-oa-jVJ">
+                                        <rect key="frame" x="0.0" y="41" width="355" height="50"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voiture" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ot-e4-sx8">
+                                                <rect key="frame" x="0.0" y="0.0" width="244" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ocg-NK-DtW" customClass="GoButtonControl" customModule="tdb_propositionSolution" customModuleProvider="target">
+                                                <rect key="frame" x="305" y="0.0" width="50" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="3W4-Qd-7ds"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="PYa-jL-sym"/>
+                                                    <constraint firstAttribute="width" constant="50" id="TeS-Cg-M9h"/>
+                                                    <constraint firstAttribute="height" constant="50" id="ak0-6g-jcv"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <size key="titleShadowOffset" width="2" height="2"/>
+                                                <state key="normal" title="GO">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="btn_goCarTapped:" destination="dMV-aL-sPU" eventType="touchUpInside" id="3JF-rB-fnW"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="61" translatesAutoresizingMaskIntoConstraints="NO" id="8Gi-uD-WTi">
+                                        <rect key="frame" x="0.0" y="99" width="355" height="50"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transports publics" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nNa-E0-FlL">
+                                                <rect key="frame" x="0.0" y="0.0" width="244" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xl1-wH-WZI" customClass="GoButtonControl" customModule="tdb_propositionSolution" customModuleProvider="target">
+                                                <rect key="frame" x="305" y="0.0" width="50" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="J6l-kM-Y7u"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="tad-ZY-puP"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="tyT-VD-MDs"/>
+                                                    <constraint firstAttribute="height" constant="50" id="zAO-rW-UqH"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <size key="titleShadowOffset" width="2" height="2"/>
+                                                <state key="normal" title="GO">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="61" translatesAutoresizingMaskIntoConstraints="NO" id="dmE-ef-u9W">
+                                        <rect key="frame" x="0.0" y="157" width="355" height="50"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mix" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ic-w3-yEK">
+                                                <rect key="frame" x="0.0" y="0.0" width="244" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ls9-Jz-qfp" customClass="GoButtonControl" customModule="tdb_propositionSolution" customModuleProvider="target">
+                                                <rect key="frame" x="305" y="0.0" width="50" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="4TU-s7-MbU"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="MKI-Ii-rfk"/>
+                                                    <constraint firstAttribute="width" constant="50" id="f6A-Ua-9an"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="sOV-n5-iWE"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <size key="titleShadowOffset" width="2" height="2"/>
+                                                <state key="normal" title="GO">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="dmE-ef-u9W" firstAttribute="leading" secondItem="mQE-UL-60b" secondAttribute="leading" id="FoL-w1-Qrv"/>
+                                    <constraint firstItem="5Vv-oa-jVJ" firstAttribute="leading" secondItem="mQE-UL-60b" secondAttribute="leading" id="N8f-gE-QGT"/>
+                                    <constraint firstItem="aY9-dP-LCL" firstAttribute="leading" secondItem="mQE-UL-60b" secondAttribute="leading" id="PgY-O9-mRu"/>
+                                    <constraint firstItem="8Gi-uD-WTi" firstAttribute="leading" secondItem="mQE-UL-60b" secondAttribute="leading" id="WHf-ev-3Bv"/>
+                                    <constraint firstAttribute="trailing" secondItem="aY9-dP-LCL" secondAttribute="trailing" id="Wew-07-iDf"/>
+                                    <constraint firstAttribute="trailing" secondItem="5Vv-oa-jVJ" secondAttribute="trailing" id="XcZ-vN-ojW"/>
+                                    <constraint firstItem="aY9-dP-LCL" firstAttribute="top" secondItem="mQE-UL-60b" secondAttribute="top" id="hXN-ec-VHa"/>
+                                    <constraint firstAttribute="trailing" secondItem="8Gi-uD-WTi" secondAttribute="trailing" id="utH-nT-2iB"/>
+                                    <constraint firstAttribute="trailing" secondItem="dmE-ef-u9W" secondAttribute="trailing" id="xjX-ZJ-GRc"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="mQE-UL-60b" firstAttribute="top" secondItem="czT-cB-y39" secondAttribute="top" constant="10" id="Baq-hX-ZrT"/>
+                            <constraint firstAttribute="trailing" secondItem="mQE-UL-60b" secondAttribute="trailing" constant="10" id="bfZ-nB-BqQ"/>
+                            <constraint firstAttribute="bottom" secondItem="mQE-UL-60b" secondAttribute="bottom" constant="25" id="iYP-Bz-kv6"/>
+                            <constraint firstItem="mQE-UL-60b" firstAttribute="leading" secondItem="czT-cB-y39" secondAttribute="leading" constant="10" id="orf-pc-nYK"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btn_goCar" destination="Ocg-NK-DtW" id="fiC-ig-RY8"/>
+                        <outlet property="btn_goMix" destination="Ls9-Jz-qfp" id="nm0-Gs-hHN"/>
+                        <outlet property="btn_goTransit" destination="Xl1-wH-WZI" id="Thc-Fz-Ocn"/>
+                        <outlet property="lbl_destination" destination="aY9-dP-LCL" id="ShL-yS-fzc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dBp-oB-W8d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1033" y="578"/>
         </scene>
     </scenes>
 </document>

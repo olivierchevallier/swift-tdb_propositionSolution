@@ -20,15 +20,20 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
     var mapView: NavigationMapView!
     var str_userLocation: String?
     var destination: Location?
-    var itineraries = [Itinerary]()
+    var itinerariesVC: ItinerariesViewController?
     
     //MARK: Controls
     @IBOutlet var txt_search: UITextField!
-    @IBOutlet var routes: RoutesControl!
     
     //MARK: -
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let itinerariesController = children.first as? ItinerariesViewController else {
+            fatalError("Error while getting itineraries child view")
+        }
+        itinerariesVC = itinerariesController
+        itinerariesVC!.view.isHidden = true
         
         // Setting up the map
         mapView = NavigationMapView(frame: view.bounds)
@@ -79,7 +84,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
         destinationAnnotation.coordinate = destination!.coordinate
         previewZoom(sw: mapView.userLocation!.coordinate, ne: destination!.coordinate)
         self.mapView.addAnnotation(destinationAnnotation)
-        self.routes.destinationName = destination!.name
+        //self.routes.destination = destination!.name
     }
     
     /// Effectue un dézoom sur la carte pour y afficher deux coordonnées à la fois
@@ -110,13 +115,10 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
     }
     
     /// Met à jour les itinéraires pour correspondre à la destination
-    private func updateItineraries(){
-        if itineraries.count > 0 {
-            itineraries.removeAll()
-        }
-        itineraries.append(CarItinerary(origin: mapView.userLocation!.coordinate, destination: destination!.coordinate))
-        itineraries.append(TransitItinerary(origin: mapView.userLocation!.coordinate, destination: destination!.coordinate))
-        routes.intineraries = itineraries
+    private func showItineraries(){
+        itinerariesVC!.view.isHidden = false
+        itinerariesVC!.userLocation = self.mapView!.userLocation?.coordinate
+        itinerariesVC!.destination = self.destination!
     }
     
     /// Change la destination et met à jour la vue en conséquence
@@ -125,8 +127,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
         mapView.setUserTrackingMode(.none, animated: true, completionHandler: nil)
         clearAnnotations()
         showDestination()
-        updateItineraries()
-        routes.isHidden = false
+        showItineraries()
     }
     
     //MARK: - UITextFieldDelegate

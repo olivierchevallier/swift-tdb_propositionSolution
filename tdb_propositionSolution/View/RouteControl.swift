@@ -38,11 +38,9 @@ import MapboxDirections
             self.infos = "Chargement..."
             btn_go.isEnabled = false
             updateStyleBtnGo()
-            itinerary!.routeCalculated {
                 self.infos = String(format: "%d min, %.01fg CO2, CHF %.02f.-", self.itinerary!.expectedTime, self.itinerary!.emissions, self.itinerary!.cost)
                 self.btn_go.isEnabled = true
                 self.updateStyleBtnGo()
-            }
         }
     }
 
@@ -91,7 +89,7 @@ import MapboxDirections
     
     @objc private func btn_goTapped(button: UIButton) {
         if itinerary != nil {
-            let navigationVC = NavigationViewController(for: itinerary!.route!)
+            let navigationVC = NavigationViewController(for: (itinerary! as! CarItinerary).route!)
             self.window?.rootViewController!.present(navigationVC, animated: true, completion: nil)
         }
     }

@@ -17,6 +17,8 @@ class CarItinerary: Itinerary {
     
     //MARK: - Properties
     //MARK: Var
+    var distance: Double
+    var route: Route?
     
     //MARK: Computed
     override var emissions: Double {
@@ -35,23 +37,14 @@ class CarItinerary: Itinerary {
         }
     }
     
-    //MARK: - Initializers
-    init(origin: CLLocationCoordinate2D, destination: CLLocationCoordinate2D) {
+    //MARK: - Initializers    
+    init(origin: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, route: Route) {
+        self.distance = route.distance
+        self.route = route
         super.init(origin: origin, destination: destination, transport: "Voiture")
     }
     
     //MARK: - Private methods
-    /// Calcul l'itinéraire
-    override internal func calculateRoute(completion: @escaping(Error?) -> Void){
-        dispatchGroup.enter()
-        let originWaypoint = Waypoint(coordinate: origin, coordinateAccuracy: -1, name: "Départ")
-        let destinationWaypoint = Waypoint(coordinate: destination, coordinateAccuracy: -1, name: "Arrivée")
-        let options = NavigationRouteOptions(waypoints: [originWaypoint, destinationWaypoint], profileIdentifier: .automobileAvoidingTraffic)
-        _ = Directions.shared.calculate(options, completionHandler: { (waypoints, routes, error) in
-            self.route = routes?.first
-            self.dispatchGroup.leave()
-        })
-    }
     
     //MARK: - Public methods
 }

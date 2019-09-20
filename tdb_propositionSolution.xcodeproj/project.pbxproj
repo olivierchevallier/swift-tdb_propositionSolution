@@ -25,6 +25,11 @@
 		5FADAC302327E16D00316A55 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FADAC2F2327E16D00316A55 /* Location.swift */; };
 		5FADAC342327E5CA00316A55 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FADAC332327E5CA00316A55 /* LocationTableViewCell.swift */; };
 		5FADAC3823291C1D00316A55 /* LocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FADAC3723291C1D00316A55 /* LocationTableViewController.swift */; };
+		5FB3B4422334C06300205719 /* TransitItinerariesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3B4412334C06300205719 /* TransitItinerariesList.swift */; };
+		5FB3B4442334C83B00205719 /* CarItinerariesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3B4432334C83B00205719 /* CarItinerariesList.swift */; };
+		5FB3B4462334C84D00205719 /* ItinerariesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3B4452334C84D00205719 /* ItinerariesList.swift */; };
+		5FB3B4482334E65100205719 /* ItinerariesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3B4472334E65100205719 /* ItinerariesViewController.swift */; };
+		5FB3B44A2335023500205719 /* GoButtonControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3B4492335023400205719 /* GoButtonControl.swift */; };
 		B7679560919645BD498EE909 /* Pods_tdb_propositionSolution.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8900154E9FF7D018425BC509 /* Pods_tdb_propositionSolution.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +66,11 @@
 		5FADAC2F2327E16D00316A55 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		5FADAC332327E5CA00316A55 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
 		5FADAC3723291C1D00316A55 /* LocationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewController.swift; sourceTree = "<group>"; };
+		5FB3B4412334C06300205719 /* TransitItinerariesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitItinerariesList.swift; sourceTree = "<group>"; };
+		5FB3B4432334C83B00205719 /* CarItinerariesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarItinerariesList.swift; sourceTree = "<group>"; };
+		5FB3B4452334C84D00205719 /* ItinerariesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItinerariesList.swift; sourceTree = "<group>"; };
+		5FB3B4472334E65100205719 /* ItinerariesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItinerariesViewController.swift; sourceTree = "<group>"; };
+		5FB3B4492335023400205719 /* GoButtonControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoButtonControl.swift; sourceTree = "<group>"; };
 		8900154E9FF7D018425BC509 /* Pods_tdb_propositionSolution.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tdb_propositionSolution.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B12E3DFF918C50BCBEE28DD1 /* Pods-tdb_propositionSolution.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tdb_propositionSolution.release.xcconfig"; path = "Target Support Files/Pods-tdb_propositionSolution/Pods-tdb_propositionSolution.release.xcconfig"; sourceTree = "<group>"; };
 		B1E66023352F09DCBF2E7F16 /* Pods-tdb_propositionSolution.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tdb_propositionSolution.debug.xcconfig"; path = "Target Support Files/Pods-tdb_propositionSolution/Pods-tdb_propositionSolution.debug.xcconfig"; sourceTree = "<group>"; };
@@ -107,6 +117,7 @@
 			children = (
 				5FA66EFC231FA92700A23B14 /* MapViewController.swift */,
 				5FADAC3723291C1D00316A55 /* LocationTableViewController.swift */,
+				5FB3B4472334E65100205719 /* ItinerariesViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -133,8 +144,8 @@
 			isa = PBXGroup;
 			children = (
 				5F713ADB2333A3B300C2C8CC /* Network.swift */,
-				5F713AE22333AFDB00C2C8CC /* TransitWebService.swift */,
 				5F713AE72333B04B00C2C8CC /* CarWebService.swift */,
+				5F713AE22333AFDB00C2C8CC /* TransitWebService.swift */,
 			);
 			path = "Data sources";
 			sourceTree = "<group>";
@@ -145,6 +156,7 @@
 				5F728E9F232B981000ECA799 /* RoutesControl.swift */,
 				5F728EA1232B981B00ECA799 /* RouteControl.swift */,
 				5FADAC332327E5CA00316A55 /* LocationTableViewCell.swift */,
+				5FB3B4492335023400205719 /* GoButtonControl.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -177,8 +189,8 @@
 				5F713AD82333A14C00C2C8CC /* Controllers */,
 				5FE8DCD6232BCF4B00558A3C /* Model */,
 				5F728EA3232B982800ECA799 /* View */,
-				5FA66EF8231FA92700A23B14 /* AppDelegate.swift */,
 				5FA66EFA231FA92700A23B14 /* SceneDelegate.swift */,
+				5FA66EF8231FA92700A23B14 /* AppDelegate.swift */,
 			);
 			path = tdb_propositionSolution;
 			sourceTree = "<group>";
@@ -200,6 +212,9 @@
 				5F252B54232F79AB0050546E /* Itinerary.swift */,
 				5F713ADD2333A75900C2C8CC /* CarItinerary.swift */,
 				5F713ADF2333A77400C2C8CC /* TransitItinerary.swift */,
+				5FB3B4452334C84D00205719 /* ItinerariesList.swift */,
+				5FB3B4432334C83B00205719 /* CarItinerariesList.swift */,
+				5FB3B4412334C06300205719 /* TransitItinerariesList.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -349,10 +364,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FB3B4462334C84D00205719 /* ItinerariesList.swift in Sources */,
 				5F713ADC2333A3B300C2C8CC /* Network.swift in Sources */,
 				5F713AE02333A77400C2C8CC /* TransitItinerary.swift in Sources */,
 				5FA66EFD231FA92700A23B14 /* MapViewController.swift in Sources */,
 				5FADAC342327E5CA00316A55 /* LocationTableViewCell.swift in Sources */,
+				5FB3B4442334C83B00205719 /* CarItinerariesList.swift in Sources */,
 				5FADAC3823291C1D00316A55 /* LocationTableViewController.swift in Sources */,
 				5F728EA0232B981000ECA799 /* RoutesControl.swift in Sources */,
 				5F713AE82333B04B00C2C8CC /* CarWebService.swift in Sources */,
@@ -360,9 +377,12 @@
 				5FA66EF9231FA92700A23B14 /* AppDelegate.swift in Sources */,
 				5F713ADE2333A75900C2C8CC /* CarItinerary.swift in Sources */,
 				5F728EA2232B981B00ECA799 /* RouteControl.swift in Sources */,
+				5FB3B4422334C06300205719 /* TransitItinerariesList.swift in Sources */,
 				5FADAC302327E16D00316A55 /* Location.swift in Sources */,
 				5F252B55232F79AB0050546E /* Itinerary.swift in Sources */,
+				5FB3B44A2335023500205719 /* GoButtonControl.swift in Sources */,
 				5FA66EFB231FA92700A23B14 /* SceneDelegate.swift in Sources */,
+				5FB3B4482334E65100205719 /* ItinerariesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
