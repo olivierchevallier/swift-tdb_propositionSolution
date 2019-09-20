@@ -42,6 +42,30 @@ class TransitItinerary: Itinerary {
             return durationInMinutes
         }
     }
+    var departureTime: String {
+        get {
+            return makeTimePrensentable(time: connection.from.departure!)
+        }
+    }
+    var arrivalTime: String {
+        get {
+            return makeTimePrensentable(time: connection.to.arrival!)
+        }
+    }
+    var lines: [String] {
+        get {
+            var table = [String]()
+            let sections = connection.sections
+            for section in sections {
+                if section.journey == nil {
+                    table.append("Marche")
+                } else {
+                    table.append(section.journey!.number)
+                }
+            }
+            return table
+        }
+    }
     
     //MARK: - Initializers
     init(origin: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, connection: TransitWebService.Connection) {
@@ -50,5 +74,9 @@ class TransitItinerary: Itinerary {
     }
     
     //MARK: - Private methods
-    
+    private func makeTimePrensentable(time: String) -> String {
+        let subStrIndex = time.index(time.startIndex, offsetBy: 11)..<time.index(time.startIndex, offsetBy: 16)
+        let subStr = time[subStrIndex]
+        return String(subStr)
+    }
 }

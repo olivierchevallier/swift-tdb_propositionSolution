@@ -61,6 +61,7 @@ class ItinerariesViewController: UIViewController {
     
     private func getTransitItineraries() {
         btn_goTransit.isEnabled = false
+        transitItineraries = [TransitItinerary]()
         let transitItinerariesList = TransitItinerariesList(origin: userLocation!, destination: destination!.coordinate)
         transitItinerariesList.itinerariesCalculated {
             for transitIntnerary in transitItinerariesList.itineraries {
@@ -70,6 +71,16 @@ class ItinerariesViewController: UIViewController {
                 self.transitItineraries.append(transitIntnerary as! TransitItinerary)
             }
             self.btn_goTransit.isEnabled = true
+        }
+    }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showTransitItineraries" {
+            print("destination : \(segue.destination)")
+            if let destinationVC = segue.destination as? TransitItinerariesTableViewController {
+                destinationVC.itineraries = transitItineraries
+            }
         }
     }
 }

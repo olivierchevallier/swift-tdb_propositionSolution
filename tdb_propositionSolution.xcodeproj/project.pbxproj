@@ -30,6 +30,8 @@
 		5FB3B4462334C84D00205719 /* ItinerariesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3B4452334C84D00205719 /* ItinerariesList.swift */; };
 		5FB3B4482334E65100205719 /* ItinerariesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3B4472334E65100205719 /* ItinerariesViewController.swift */; };
 		5FB3B44A2335023500205719 /* GoButtonControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3B4492335023400205719 /* GoButtonControl.swift */; };
+		5FB3B44C23350CC900205719 /* TransitItinerariesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3B44B23350CC900205719 /* TransitItinerariesTableViewController.swift */; };
+		5FB3B44E23350D1200205719 /* TransitItineraryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3B44D23350D1200205719 /* TransitItineraryTableViewCell.swift */; };
 		B7679560919645BD498EE909 /* Pods_tdb_propositionSolution.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8900154E9FF7D018425BC509 /* Pods_tdb_propositionSolution.framework */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +73,8 @@
 		5FB3B4452334C84D00205719 /* ItinerariesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItinerariesList.swift; sourceTree = "<group>"; };
 		5FB3B4472334E65100205719 /* ItinerariesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItinerariesViewController.swift; sourceTree = "<group>"; };
 		5FB3B4492335023400205719 /* GoButtonControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoButtonControl.swift; sourceTree = "<group>"; };
+		5FB3B44B23350CC900205719 /* TransitItinerariesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitItinerariesTableViewController.swift; sourceTree = "<group>"; };
+		5FB3B44D23350D1200205719 /* TransitItineraryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitItineraryTableViewCell.swift; sourceTree = "<group>"; };
 		8900154E9FF7D018425BC509 /* Pods_tdb_propositionSolution.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tdb_propositionSolution.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B12E3DFF918C50BCBEE28DD1 /* Pods-tdb_propositionSolution.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tdb_propositionSolution.release.xcconfig"; path = "Target Support Files/Pods-tdb_propositionSolution/Pods-tdb_propositionSolution.release.xcconfig"; sourceTree = "<group>"; };
 		B1E66023352F09DCBF2E7F16 /* Pods-tdb_propositionSolution.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tdb_propositionSolution.debug.xcconfig"; path = "Target Support Files/Pods-tdb_propositionSolution/Pods-tdb_propositionSolution.debug.xcconfig"; sourceTree = "<group>"; };
@@ -118,6 +122,7 @@
 				5FA66EFC231FA92700A23B14 /* MapViewController.swift */,
 				5FADAC3723291C1D00316A55 /* LocationTableViewController.swift */,
 				5FB3B4472334E65100205719 /* ItinerariesViewController.swift */,
+				5FB3B44B23350CC900205719 /* TransitItinerariesTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -157,6 +162,7 @@
 				5F728EA1232B981B00ECA799 /* RouteControl.swift */,
 				5FADAC332327E5CA00316A55 /* LocationTableViewCell.swift */,
 				5FB3B4492335023400205719 /* GoButtonControl.swift */,
+				5FB3B44D23350D1200205719 /* TransitItineraryTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -377,8 +383,10 @@
 				5FA66EF9231FA92700A23B14 /* AppDelegate.swift in Sources */,
 				5F713ADE2333A75900C2C8CC /* CarItinerary.swift in Sources */,
 				5F728EA2232B981B00ECA799 /* RouteControl.swift in Sources */,
+				5FB3B44C23350CC900205719 /* TransitItinerariesTableViewController.swift in Sources */,
 				5FB3B4422334C06300205719 /* TransitItinerariesList.swift in Sources */,
 				5FADAC302327E16D00316A55 /* Location.swift in Sources */,
+				5FB3B44E23350D1200205719 /* TransitItineraryTableViewCell.swift in Sources */,
 				5F252B55232F79AB0050546E /* Itinerary.swift in Sources */,
 				5FB3B44A2335023500205719 /* GoButtonControl.swift in Sources */,
 				5FA66EFB231FA92700A23B14 /* SceneDelegate.swift in Sources */,
