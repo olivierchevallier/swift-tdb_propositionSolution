@@ -77,7 +77,6 @@ class ItinerariesViewController: UIViewController {
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showTransitItineraries" {
-            print("destination : \(segue.destination)")
             if let destinationVC = segue.destination as? TransitItinerariesTableViewController {
                 destinationVC.itineraries = transitItineraries
             }

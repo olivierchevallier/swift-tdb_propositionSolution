@@ -14,6 +14,7 @@ class TransitItinerariesTableViewController: UITableViewController {
     //MARK: - Properties
     //MARK: Var
     var itineraries = [TransitItinerary]()
+    var hideNavBar = true
     
     //MARK: Controls
     @IBOutlet var lbl_from: UILabel!
@@ -102,11 +103,28 @@ class TransitItinerariesTableViewController: UITableViewController {
 
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if segue.identifier == "showTransitItinerary" {
+            guard let destinationVC = segue.destination as? TransitItineraryController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            guard let selectedMealCell = sender as? TransitItineraryTableViewCell else {
+                fatalError("Unexpected sender: \(String(describing: sender))")
+            }
+            
+            guard let indexPath = tableView.indexPath(for: selectedMealCell) else {
+                fatalError("The selected view cell is not being displayed by the table")
+            }
+            
+            destinationVC.itinerary = itineraries[indexPath.row]
+            hideNavBar = false
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        if hideNavBar {
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
+        }
     }
 
 }

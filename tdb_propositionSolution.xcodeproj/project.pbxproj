@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5F252B55232F79AB0050546E /* Itinerary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F252B54232F79AB0050546E /* Itinerary.swift */; };
+		5F6BAB572338BB780089D5A8 /* TransitStepControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6BAB562338BB780089D5A8 /* TransitStepControl.swift */; };
+		5F6BAB5B2338FBC90089D5A8 /* TransitItineraryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6BAB5A2338FBC90089D5A8 /* TransitItineraryController.swift */; };
 		5F713ADC2333A3B300C2C8CC /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F713ADB2333A3B300C2C8CC /* Network.swift */; };
 		5F713ADE2333A75900C2C8CC /* CarItinerary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F713ADD2333A75900C2C8CC /* CarItinerary.swift */; };
 		5F713AE02333A77400C2C8CC /* TransitItinerary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F713ADF2333A77400C2C8CC /* TransitItinerary.swift */; };
@@ -47,6 +49,8 @@
 
 /* Begin PBXFileReference section */
 		5F252B54232F79AB0050546E /* Itinerary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Itinerary.swift; sourceTree = "<group>"; };
+		5F6BAB562338BB780089D5A8 /* TransitStepControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitStepControl.swift; sourceTree = "<group>"; };
+		5F6BAB5A2338FBC90089D5A8 /* TransitItineraryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitItineraryController.swift; sourceTree = "<group>"; };
 		5F713ADB2333A3B300C2C8CC /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		5F713ADD2333A75900C2C8CC /* CarItinerary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarItinerary.swift; sourceTree = "<group>"; };
 		5F713ADF2333A77400C2C8CC /* TransitItinerary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitItinerary.swift; sourceTree = "<group>"; };
@@ -123,6 +127,7 @@
 				5FADAC3723291C1D00316A55 /* LocationTableViewController.swift */,
 				5FB3B4472334E65100205719 /* ItinerariesViewController.swift */,
 				5FB3B44B23350CC900205719 /* TransitItinerariesTableViewController.swift */,
+				5F6BAB5A2338FBC90089D5A8 /* TransitItineraryController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -163,6 +168,7 @@
 				5FADAC332327E5CA00316A55 /* LocationTableViewCell.swift */,
 				5FB3B4492335023400205719 /* GoButtonControl.swift */,
 				5FB3B44D23350D1200205719 /* TransitItineraryTableViewCell.swift */,
+				5F6BAB562338BB780089D5A8 /* TransitStepControl.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -375,6 +381,7 @@
 				5F713AE02333A77400C2C8CC /* TransitItinerary.swift in Sources */,
 				5FA66EFD231FA92700A23B14 /* MapViewController.swift in Sources */,
 				5FADAC342327E5CA00316A55 /* LocationTableViewCell.swift in Sources */,
+				5F6BAB572338BB780089D5A8 /* TransitStepControl.swift in Sources */,
 				5FB3B4442334C83B00205719 /* CarItinerariesList.swift in Sources */,
 				5FADAC3823291C1D00316A55 /* LocationTableViewController.swift in Sources */,
 				5F728EA0232B981000ECA799 /* RoutesControl.swift in Sources */,
@@ -390,6 +397,7 @@
 				5F252B55232F79AB0050546E /* Itinerary.swift in Sources */,
 				5FB3B44A2335023500205719 /* GoButtonControl.swift in Sources */,
 				5FA66EFB231FA92700A23B14 /* SceneDelegate.swift in Sources */,
+				5F6BAB5B2338FBC90089D5A8 /* TransitItineraryController.swift in Sources */,
 				5FB3B4482334E65100205719 /* ItinerariesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
