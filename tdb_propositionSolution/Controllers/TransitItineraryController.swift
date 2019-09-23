@@ -46,7 +46,11 @@ class TransitItineraryController: UIViewController {
         for section in itinerary!.connection.sections {
             let step = TransitStepControl()
             steps.append(step)
+            step.arrivalStop = section.departure.station.name
             step.departureStop = section.arrival.station.name
+            step.departureTime = section.departure.departure
+            step.departureTime = section.arrival.arrival
+            step.line = section.journey!.number
             stk_details.addArrangedSubview(step)
         }
     }
