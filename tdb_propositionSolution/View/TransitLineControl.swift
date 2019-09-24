@@ -17,6 +17,7 @@ class TransitLineControl: UILabel {
     }
     
     private func setup() {
+        translatesAutoresizingMaskIntoConstraints = false
         if line != nil {
             self.backgroundColor = line!.backgroundColor
             self.textColor = line!.textColor
@@ -30,7 +31,7 @@ class TransitLineControl: UILabel {
             } else {
                 text = line!.number
                 layer.cornerRadius = 10
-                heightAnchor.constraint(equalToConstant: 20).isActive = true
+                //heightAnchor.constraint(equalToConstant: 20).isActive = true
                 widthAnchor.constraint(equalToConstant: 35).isActive = true
             }
         } else {
