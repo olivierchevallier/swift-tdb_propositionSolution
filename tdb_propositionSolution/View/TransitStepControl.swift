@@ -14,12 +14,23 @@ import UIKit
     
     var line: String? {
         didSet {
-            lbl_line.text = "Bus " + line!
+            if line! == "" {
+                lbl_line.text = "Marche"
+                terminus = ""
+                numberOfStops = 0
+            } else {
+                lbl_line.text = "Bus " + line!
+            }
+            lbl_line.sizeToFit()
         }
     }
     var terminus: String? {
         didSet {
-            lbl_terminus.text = "→" + terminus!
+            if terminus == "" {
+                lbl_terminus.text = ""
+            } else {
+                lbl_terminus.text = "→" + terminus!
+            }
             lbl_terminus.sizeToFit()
         }
     }
@@ -38,23 +49,30 @@ import UIKit
     var departureTime: String? {
         didSet {
             lbl_departureTime.text = departureTime!
+            lbl_departureTime.sizeToFit()
         }
     }
     var arrivalTime: String? {
         didSet {
             lbl_arrivalTime.text = arrivalTime!
+            lbl_arrivalTime.sizeToFit()
         }
     }
     var numberOfStops: Int? {
         didSet {
-            lbl_numberOfStops.text = "\(numberOfStops!) arrêt"
-            if numberOfStops! > 1 {
-                lbl_numberOfStops.text! += "s"
+            if numberOfStops == 0 {
+                lbl_numberOfStops.text = ""
+            } else {
+                lbl_numberOfStops.text = "\(numberOfStops!) arrêt"
+                if numberOfStops! > 1 {
+                    lbl_numberOfStops.text! += "s"
+                }
             }
         }
     }
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: 300, height: lineHeight + 50)
+        let width = max(lbl_departureStop.frame.width, lbl_arrivalStop.frame.width)
+        return CGSize(width: width, height: lineHeight + 50)
     }
     
     private var lbl_line = UILabel()
@@ -93,14 +111,7 @@ import UIKit
         showStops()
         showLineInfos()
         showJourneyInfos()
-        print("Avant")
-        print("frame : \(self.frame.size)")
-        print("bounds : \(self.bounds.size)")
-        self.frame.size = CGSize(width: intrinsicContentSize.width, height: intrinsicContentSize.height + 300)
-        self.bounds.size = self.frame.size
-        print("Après")
-        print("frame : \(self.frame.size)")
-        print("bounds : \(self.bounds.size)")
+        backgroundColor = UIColor.systemBackground
     }
     
     private func drawStop(position: CGPoint) {

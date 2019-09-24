@@ -44,12 +44,12 @@ class TransitItinerary: Itinerary {
     }
     var departureTime: String {
         get {
-            return makeTimePrensentable(time: connection.from.departure!)
+            return TransitItinerary.makeTimePrensentable(time: connection.from.departure!)
         }
     }
     var arrivalTime: String {
         get {
-            return makeTimePrensentable(time: connection.to.arrival!)
+            return TransitItinerary.makeTimePrensentable(time: connection.to.arrival!)
         }
     }
     var lines: [String] {
@@ -74,7 +74,7 @@ class TransitItinerary: Itinerary {
     }
     
     //MARK: - Private methods
-    private func makeTimePrensentable(time: String) -> String {
+    public static func makeTimePrensentable(time: String) -> String {
         let subStrIndex = time.index(time.startIndex, offsetBy: 11)..<time.index(time.startIndex, offsetBy: 16)
         let subStr = time[subStrIndex]
         return String(subStr)
