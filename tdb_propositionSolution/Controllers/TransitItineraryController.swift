@@ -51,10 +51,11 @@ class TransitItineraryController: UIViewController {
             step.departureTime = TransitItinerary.makeTimePrensentable(time: section.departure.departure!)
             step.arrivalTime = TransitItinerary.makeTimePrensentable(time: section.arrival.arrival!)
             if section.journey == nil {
-                step.line = ""
+                step.line = nil
             } else {
-                step.line = section.journey!.number
-                step.numberOfStops = section.journey!.passList.count
+                let journey = (section.journey)!
+                step.line = TransitLine(journey: journey)
+                step.numberOfStops = journey.passList.count
             }
             stk_details.addArrangedSubview(step)
         }

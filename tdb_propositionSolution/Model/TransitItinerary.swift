@@ -52,15 +52,16 @@ class TransitItinerary: Itinerary {
             return TransitItinerary.makeTimePrensentable(time: connection.to.arrival!)
         }
     }
-    var lines: [String] {
+    var lines: [TransitLine?] {
         get {
-            var table = [String]()
+            var table = [TransitLine?]()
             let sections = connection.sections
             for section in sections {
                 if section.journey == nil {
-                    table.append("Marche")
+                    table.append(nil)
                 } else {
-                    table.append(section.journey!.number)
+                    let journey = (section.journey)!
+                    table.append(TransitLine(journey: journey))
                 }
             }
             return table

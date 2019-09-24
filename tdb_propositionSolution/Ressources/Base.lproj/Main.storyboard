@@ -379,28 +379,26 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Numéros de ligne" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kix-UB-F9u">
-                                            <rect key="frame" x="16" y="38" width="288" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="opE-JG-sEL">
+                                            <rect key="frame" x="16" y="40" width="15" height="19"/>
+                                        </stackView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="Llb-6m-JMb" firstAttribute="leading" secondItem="vHa-gz-rqd" secondAttribute="leading" constant="16" id="1zL-NG-vW0"/>
-                                        <constraint firstItem="Kix-UB-F9u" firstAttribute="leading" secondItem="vHa-gz-rqd" secondAttribute="leading" constant="16" id="KSi-2b-Vtd"/>
+                                        <constraint firstItem="opE-JG-sEL" firstAttribute="leading" secondItem="vHa-gz-rqd" secondAttribute="leading" constant="16" id="Gu2-Do-siK"/>
                                         <constraint firstItem="nvI-4s-1ib" firstAttribute="leading" secondItem="Llb-6m-JMb" secondAttribute="trailing" constant="8" id="LTU-N9-G8H"/>
-                                        <constraint firstAttribute="bottom" secondItem="Kix-UB-F9u" secondAttribute="bottom" constant="11" id="RBo-PV-fxd"/>
+                                        <constraint firstItem="opE-JG-sEL" firstAttribute="top" secondItem="vHa-gz-rqd" secondAttribute="top" constant="40" id="TMa-vU-mcs"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="opE-JG-sEL" secondAttribute="trailing" constant="16" id="beZ-Zg-uHw"/>
+                                        <constraint firstAttribute="bottom" secondItem="opE-JG-sEL" secondAttribute="bottom" constant="11" id="j4t-qU-H74"/>
                                         <constraint firstAttribute="trailing" secondItem="nvI-4s-1ib" secondAttribute="trailing" constant="16" id="kb0-1E-vOO"/>
-                                        <constraint firstAttribute="trailing" secondItem="Kix-UB-F9u" secondAttribute="trailing" constant="16" id="tyj-dB-BZK"/>
                                         <constraint firstAttribute="bottom" secondItem="Llb-6m-JMb" secondAttribute="bottom" constant="38" id="zIL-fs-6bM"/>
                                         <constraint firstAttribute="bottom" secondItem="nvI-4s-1ib" secondAttribute="bottom" constant="38" id="zK9-rT-w71"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="lbl_lines" destination="Kix-UB-F9u" id="Mes-V0-R68"/>
                                     <outlet property="lbl_times" destination="Llb-6m-JMb" id="Q9y-j5-GRA"/>
                                     <outlet property="lbl_travelTime" destination="nvI-4s-1ib" id="Lut-lL-jaa"/>
+                                    <outlet property="stk_lines" destination="opE-JG-sEL" id="MfC-IS-gfS"/>
                                     <segue destination="Dlp-7Z-SHI" kind="show" identifier="showTransitItinerary" id="GN8-Qs-yUO"/>
                                 </connections>
                             </tableViewCell>

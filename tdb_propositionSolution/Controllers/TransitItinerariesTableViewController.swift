@@ -51,9 +51,10 @@ class TransitItinerariesTableViewController: UITableViewController {
         let lines = itineraries[indexPath.row].lines
         cell.lbl_times.text = "\(departureTime) - \(arrivalTime)"
         cell.lbl_travelTime.text = "\(duration) min."
-        cell.lbl_lines.text = ""
         for line in lines {
-            cell.lbl_lines.text?.append("\(line) ")
+            let lbl_line = TransitLineControl()
+            lbl_line.line = line
+            cell.stk_lines.addArrangedSubview(lbl_line)
         }
         return cell
     }

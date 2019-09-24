@@ -10,11 +10,18 @@
 import Foundation
 
 class TransitWebService {
-    public static let baseURL = "https://transport.opendata.ch/v1/"
-    
     //MARK: - Commands
     public static func getRoute(from: String, to: String) -> String {
+        let baseURL = "https://transport.opendata.ch/v1/"
         let stringURL = baseURL + "connections?from=" + from + "&to=" + to
+        return stringURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+    }
+    
+    public static func getLineColors() -> String {
+        let baseURL = "https://prod.ivtr-od.tpg.ch/v1/"
+        let accessKey = "82ecbba0-60d5-11e3-a274-0002a5d5c51b"
+        let stringURL = baseURL + "GetLinesColors.json?key=" + accessKey
+        print(stringURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
         return stringURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     }
     
@@ -64,7 +71,12 @@ class TransitWebService {
         let category: String
         let number: String
         let to: String
+        let transitOperator: String
         let passList: [TransitStop]
+        
+        private enum CodingKeys : String, CodingKey {
+            case name, category, number, to, transitOperator = "operator", passList
+        }
     }
     
     struct TransitStop: Decodable {
@@ -77,5 +89,17 @@ class TransitWebService {
     
     struct Walk: Decodable {
         let duration: Int?
+    }
+    
+    //MARK: getLineColors
+    struct LineColors: Decodable {
+        let colors: [LineColor]
+    }
+    
+    struct LineColor: Decodable {
+        let lineCode: String
+        let hexa: String
+        let background: String
+        let text: String
     }
 }

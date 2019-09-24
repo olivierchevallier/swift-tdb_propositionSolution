@@ -10,6 +10,10 @@
 		5F252B55232F79AB0050546E /* Itinerary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F252B54232F79AB0050546E /* Itinerary.swift */; };
 		5F6BAB572338BB780089D5A8 /* TransitStepControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6BAB562338BB780089D5A8 /* TransitStepControl.swift */; };
 		5F6BAB5B2338FBC90089D5A8 /* TransitItineraryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6BAB5A2338FBC90089D5A8 /* TransitItineraryController.swift */; };
+		5F6BAB5D233A3B5B0089D5A8 /* TransitLineColorsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6BAB5C233A3B5B0089D5A8 /* TransitLineColorsList.swift */; };
+		5F6BAB5F233A41570089D5A8 /* TransitLineControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6BAB5E233A41570089D5A8 /* TransitLineControl.swift */; };
+		5F6BAB62233A46430089D5A8 /* UIColor+HexInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6BAB61233A46430089D5A8 /* UIColor+HexInit.swift */; };
+		5F6BAB64233A60670089D5A8 /* TransitLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6BAB63233A60670089D5A8 /* TransitLine.swift */; };
 		5F713ADC2333A3B300C2C8CC /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F713ADB2333A3B300C2C8CC /* Network.swift */; };
 		5F713ADE2333A75900C2C8CC /* CarItinerary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F713ADD2333A75900C2C8CC /* CarItinerary.swift */; };
 		5F713AE02333A77400C2C8CC /* TransitItinerary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F713ADF2333A77400C2C8CC /* TransitItinerary.swift */; };
@@ -51,6 +55,10 @@
 		5F252B54232F79AB0050546E /* Itinerary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Itinerary.swift; sourceTree = "<group>"; };
 		5F6BAB562338BB780089D5A8 /* TransitStepControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitStepControl.swift; sourceTree = "<group>"; };
 		5F6BAB5A2338FBC90089D5A8 /* TransitItineraryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitItineraryController.swift; sourceTree = "<group>"; };
+		5F6BAB5C233A3B5B0089D5A8 /* TransitLineColorsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitLineColorsList.swift; sourceTree = "<group>"; };
+		5F6BAB5E233A41570089D5A8 /* TransitLineControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitLineControl.swift; sourceTree = "<group>"; };
+		5F6BAB61233A46430089D5A8 /* UIColor+HexInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+HexInit.swift"; sourceTree = "<group>"; };
+		5F6BAB63233A60670089D5A8 /* TransitLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitLine.swift; sourceTree = "<group>"; };
 		5F713ADB2333A3B300C2C8CC /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		5F713ADD2333A75900C2C8CC /* CarItinerary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarItinerary.swift; sourceTree = "<group>"; };
 		5F713ADF2333A77400C2C8CC /* TransitItinerary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitItinerary.swift; sourceTree = "<group>"; };
@@ -120,6 +128,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5F6BAB60233A46150089D5A8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5F6BAB61233A46430089D5A8 /* UIColor+HexInit.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		5F713AD82333A14C00C2C8CC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +185,7 @@
 				5FB3B4492335023400205719 /* GoButtonControl.swift */,
 				5FB3B44D23350D1200205719 /* TransitItineraryTableViewCell.swift */,
 				5F6BAB562338BB780089D5A8 /* TransitStepControl.swift */,
+				5F6BAB5E233A41570089D5A8 /* TransitLineControl.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -196,6 +213,7 @@
 		5FA66EF7231FA92700A23B14 /* tdb_propositionSolution */ = {
 			isa = PBXGroup;
 			children = (
+				5F6BAB60233A46150089D5A8 /* Extensions */,
 				5F713ADA2333A19E00C2C8CC /* Supporting files */,
 				5F713AD92333A17900C2C8CC /* Ressources */,
 				5F713AD82333A14C00C2C8CC /* Controllers */,
@@ -227,6 +245,8 @@
 				5FB3B4452334C84D00205719 /* ItinerariesList.swift */,
 				5FB3B4432334C83B00205719 /* CarItinerariesList.swift */,
 				5FB3B4412334C06300205719 /* TransitItinerariesList.swift */,
+				5F6BAB5C233A3B5B0089D5A8 /* TransitLineColorsList.swift */,
+				5F6BAB63233A60670089D5A8 /* TransitLine.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -377,6 +397,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FB3B4462334C84D00205719 /* ItinerariesList.swift in Sources */,
+				5F6BAB5D233A3B5B0089D5A8 /* TransitLineColorsList.swift in Sources */,
 				5F713ADC2333A3B300C2C8CC /* Network.swift in Sources */,
 				5F713AE02333A77400C2C8CC /* TransitItinerary.swift in Sources */,
 				5FA66EFD231FA92700A23B14 /* MapViewController.swift in Sources */,
@@ -387,12 +408,15 @@
 				5F728EA0232B981000ECA799 /* RoutesControl.swift in Sources */,
 				5F713AE82333B04B00C2C8CC /* CarWebService.swift in Sources */,
 				5F713AE32333AFDB00C2C8CC /* TransitWebService.swift in Sources */,
+				5F6BAB64233A60670089D5A8 /* TransitLine.swift in Sources */,
 				5FA66EF9231FA92700A23B14 /* AppDelegate.swift in Sources */,
 				5F713ADE2333A75900C2C8CC /* CarItinerary.swift in Sources */,
+				5F6BAB5F233A41570089D5A8 /* TransitLineControl.swift in Sources */,
 				5F728EA2232B981B00ECA799 /* RouteControl.swift in Sources */,
 				5FB3B44C23350CC900205719 /* TransitItinerariesTableViewController.swift in Sources */,
 				5FB3B4422334C06300205719 /* TransitItinerariesList.swift in Sources */,
 				5FADAC302327E16D00316A55 /* Location.swift in Sources */,
+				5F6BAB62233A46430089D5A8 /* UIColor+HexInit.swift in Sources */,
 				5FB3B44E23350D1200205719 /* TransitItineraryTableViewCell.swift in Sources */,
 				5F252B55232F79AB0050546E /* Itinerary.swift in Sources */,
 				5FB3B44A2335023500205719 /* GoButtonControl.swift in Sources */,

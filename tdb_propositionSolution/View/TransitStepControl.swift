@@ -12,26 +12,27 @@ import UIKit
 @IBDesignable class TransitStepControl: UIControl {
     let lineHeight = CGFloat(140)
     
-    var line: String? {
+    var line: TransitLine? {
         didSet {
-            if line! == "" {
-                lbl_line.text = "Marche"
-                terminus = ""
+            if line == nil {
+                lbl_line.text = "🚶‍♂️ Marche"
+                destination = ""
                 numberOfStops = 0
+                lbl_line.sizeToFit()
             } else {
-                lbl_line.text = "Bus " + line!
+                lbl_line.line = line!
+                destination = line!.destination
             }
-            lbl_line.sizeToFit()
         }
     }
-    var terminus: String? {
+    var destination: String? {
         didSet {
-            if terminus == "" {
-                lbl_terminus.text = ""
+            if destination == "" {
+                lbl_destination.text = ""
             } else {
-                lbl_terminus.text = "→" + terminus!
+                lbl_destination.text = "→" + destination!
             }
-            lbl_terminus.sizeToFit()
+            lbl_destination.sizeToFit()
         }
     }
     var departureStop: String? {
@@ -75,8 +76,8 @@ import UIKit
         return CGSize(width: width, height: lineHeight + 50)
     }
     
-    private var lbl_line = UILabel()
-    private var lbl_terminus = UILabel()
+    private var lbl_line = TransitLineControl()
+    private var lbl_destination = UILabel()
     private var lbl_departureTime = UILabel()
     private var lbl_arrivalTime = UILabel()
     private var lbl_departureStop = UILabel()
@@ -117,8 +118,13 @@ import UIKit
     private func drawStop(position: CGPoint) {
         let stop = UIBezierPath()
         stop.addArc(withCenter: position, radius: 5.0, startAngle: 0, endAngle: 360, clockwise: true)
-        UIColor.blue.setStroke()
-        UIColor.blue.setFill()
+        if line != nil {
+            line!.backgroundColor.setStroke()
+            line!.backgroundColor.setFill()
+        } else {
+            UIColor.gray.setStroke()
+            UIColor.gray.setFill()
+        }
         stop.fill()
     }
     
@@ -159,14 +165,14 @@ import UIKit
         let xPosition = CGFloat(0)
         let yPosition = CGFloat(0)
         addSubview(lbl_line)
-        addSubview(lbl_terminus)
+        addSubview(lbl_destination)
         lbl_line.text = "BUS X"
         lbl_line.sizeToFit()
         lbl_line.frame.origin = CGPoint(x: xPosition, y: yPosition)
-        lbl_terminus.text = "→ Terminus"
-        lbl_terminus.sizeToFit()
-        lbl_terminus.frame.origin.x = xPosition + lbl_line.frame.width + 10
-        lbl_terminus.frame.origin.y = yPosition
+        lbl_destination.text = "→ Terminus"
+        lbl_destination.sizeToFit()
+        lbl_destination.frame.origin.x = xPosition + lbl_line.frame.width + 10
+        lbl_destination.frame.origin.y = yPosition
     }
     
     private func showJourneyInfos() {

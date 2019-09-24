@@ -15,7 +15,8 @@ class TransitItineraryTableViewCell: UITableViewCell {
     //MARK: Controls
     @IBOutlet var lbl_times: UILabel!
     @IBOutlet var lbl_travelTime: UILabel!
-    @IBOutlet var lbl_lines: UILabel!
+    @IBOutlet var stk_lines: UIStackView!
+    
     
     //MARK: - 
     override func awakeFromNib() {
