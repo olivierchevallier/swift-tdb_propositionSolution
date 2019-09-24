@@ -96,8 +96,8 @@ class TransitItinerariesTableViewController: UITableViewController {
     //MARK: - Private methods
     private func showItinerary() {
         if itineraries.count > 0 {
-            lbl_from.text = itineraries.first?.connection.from.station.name
-            lbl_to.text = itineraries.first?.connection.to.station.name
+            lbl_from.text = TransitItinerary.splitAtFirst(str: (itineraries.first?.connection.from.station.name)!, delimiter: "@")!.first
+            lbl_to.text = TransitItinerary.splitAtFirst(str: (itineraries.first?.connection.to.station.name)!, delimiter: "@")!.first
         }
     }
 
@@ -125,6 +125,7 @@ class TransitItinerariesTableViewController: UITableViewController {
         if hideNavBar {
             self.navigationController?.setNavigationBarHidden(true, animated: true)
         }
+        hideNavBar = true
     }
 
 }

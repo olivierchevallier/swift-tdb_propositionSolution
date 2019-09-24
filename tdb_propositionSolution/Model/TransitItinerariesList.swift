@@ -26,7 +26,6 @@ class TransitItinerariesList: ItinerariesList {
         let originStr = getStrFormatedLocation(location: origin)
         let destinationStr = getStrFormatedLocation(location: destination)
         let url = URL(string: TransitWebService.getRoute(from: originStr, to: destinationStr))
-        print("URL :" + url!.absoluteString)
         Network.executeHTTPGet(url: url!, dataCompletionHandler: { data in
             do {
                 let connections = try JSONDecoder().decode(TransitWebService.Connections.self, from: data!)

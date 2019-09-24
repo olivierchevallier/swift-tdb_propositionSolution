@@ -34,6 +34,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
         }
         itinerariesVC = itinerariesController
         itinerariesVC!.view.isHidden = true
+        itinerariesVC!.view.superview!.isUserInteractionEnabled = false
         
         // Setting up the map
         mapView = NavigationMapView(frame: view.bounds)
@@ -61,7 +62,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
     
     @objc func didLongPressMap(_ sender: UILongPressGestureRecognizer) {
         guard sender.state == .began else { return }
-        print(sender)
         let point = sender.location(in: mapView)
         let coordinate = mapView.convert(point, toCoordinateFrom: mapView)
         let destination = Location(name: "Lieu pointé sur la carte", coordinate: coordinate)
@@ -117,6 +117,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
     /// Met à jour les itinéraires pour correspondre à la destination
     private func showItineraries(){
         itinerariesVC!.view.isHidden = false
+        itinerariesVC!.view.superview!.isUserInteractionEnabled = true
         itinerariesVC!.userLocation = self.mapView!.userLocation?.coordinate
         itinerariesVC!.destination = self.destination!
     }

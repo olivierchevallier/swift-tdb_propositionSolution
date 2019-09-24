@@ -345,7 +345,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="dLv-gM-F2i" firstAttribute="leading" secondItem="PNt-MH-ioX" secondAttribute="leading" constant="47" id="0ts-fB-LQc"/>
                                 <constraint firstAttribute="bottom" secondItem="dLv-gM-F2i" secondAttribute="bottom" constant="8" id="2r7-Vn-KcT"/>
@@ -466,7 +466,7 @@
                                     <constraint firstAttribute="trailing" secondItem="8zU-hf-UkI" secondAttribute="trailing" constant="10" id="MAG-pd-QYu"/>
                                     <constraint firstItem="8zU-hf-UkI" firstAttribute="width" secondItem="DBo-Bf-JhA" secondAttribute="width" constant="-20" id="Orr-0I-zUf"/>
                                     <constraint firstItem="8zU-hf-UkI" firstAttribute="leading" secondItem="DBo-Bf-JhA" secondAttribute="leading" constant="10" id="nUs-5V-YX4"/>
-                                    <constraint firstItem="8zU-hf-UkI" firstAttribute="top" secondItem="DBo-Bf-JhA" secondAttribute="top" id="wxJ-4j-4Sg"/>
+                                    <constraint firstItem="8zU-hf-UkI" firstAttribute="top" secondItem="DBo-Bf-JhA" secondAttribute="top" constant="10" id="wxJ-4j-4Sg"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="pcf-Vg-5AY"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="mMV-IY-a2p"/>
@@ -476,7 +476,6 @@
                         <constraints>
                             <constraint firstItem="DBo-Bf-JhA" firstAttribute="leading" secondItem="nCU-vw-2d9" secondAttribute="leading" id="35Q-Vy-VTo"/>
                             <constraint firstItem="nCU-vw-2d9" firstAttribute="trailing" secondItem="DBo-Bf-JhA" secondAttribute="trailing" id="9qq-tq-zEn"/>
-                            <constraint firstItem="DBo-Bf-JhA" firstAttribute="top" secondItem="GtH-y1-wQl" secondAttribute="bottom" id="JWS-J7-J4o"/>
                             <constraint firstItem="nCU-vw-2d9" firstAttribute="bottom" secondItem="DBo-Bf-JhA" secondAttribute="bottom" id="RYE-UF-Zmd"/>
                             <constraint firstItem="GtH-y1-wQl" firstAttribute="leading" secondItem="DBo-Bf-JhA" secondAttribute="leading" id="U8f-NL-OIt"/>
                             <constraint firstItem="GtH-y1-wQl" firstAttribute="top" secondItem="nCU-vw-2d9" secondAttribute="top" id="XaY-a9-7hR"/>

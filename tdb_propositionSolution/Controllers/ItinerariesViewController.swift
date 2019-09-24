@@ -65,9 +65,6 @@ class ItinerariesViewController: UIViewController {
         let transitItinerariesList = TransitItinerariesList(origin: userLocation!, destination: destination!.coordinate)
         transitItinerariesList.itinerariesCalculated {
             for transitIntnerary in transitItinerariesList.itineraries {
-                print("Départ : " + (transitIntnerary as! TransitItinerary).connection.from.departure!)
-                print("Arrivée : " + (transitIntnerary as! TransitItinerary).connection.to.arrival!)
-                print("Durée : \(transitIntnerary.expectedTime)")
                 self.transitItineraries.append(transitIntnerary as! TransitItinerary)
             }
             self.btn_goTransit.isEnabled = true
