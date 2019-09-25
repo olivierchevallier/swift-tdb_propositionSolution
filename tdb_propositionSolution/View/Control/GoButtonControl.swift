@@ -1,7 +1,7 @@
 //--------------------------------------------------
 // Travail de bachelor - Proposition de solution
 //
-// GoButtonControl :
+// GoButtonControl : Control basé sur un bouton avec bords arrondis et status de chargement
 //
 // Créé par : Olivier Chevallier le 20.09.19
 //--------------------------------------------------
@@ -27,6 +27,7 @@ class GoButtonControl: UIButton {
     }
     
     //MARK: - Public methods
+    /// Affiche / cache un indicateur de chargement à la place du texte du bouton et le désactive
     func isLoading(_ loading: Bool) {
         let tag = 4242
         if loading {

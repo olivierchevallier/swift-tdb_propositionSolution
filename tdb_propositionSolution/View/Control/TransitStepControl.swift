@@ -1,7 +1,7 @@
 //--------------------------------------------------
 // Travail de bachelor - Proposition de solution
 //
-// TransitStepControl :
+// TransitStepControl : Control permettant d'afficher une étape d'itinéraire de transports publics
 //
 // Créé par : Olivier Chevallier le 23.09.19
 //--------------------------------------------------

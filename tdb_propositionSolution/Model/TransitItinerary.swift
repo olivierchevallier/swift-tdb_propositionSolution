@@ -1,7 +1,7 @@
 //--------------------------------------------------
 // Travail de bachelor - Proposition de solution
 //
-// TransitItinerary :
+// TransitItinerary : Classe modélisant un itinéraire en transports publics
 //
 // Créé par : Olivier Chevallier le 19.09.19
 //--------------------------------------------------
@@ -79,12 +79,8 @@ class TransitItinerary: Itinerary {
         return String(subStr)
     }
     
-    /**
-     * Splits a string at the first occurrence of a delimiter string
-     * ## Examples:
-     * splitAtFirst(str: "element=value", delimiter: "=") // "element", "value"
-     * code from : https://stackoverflow.com/questions/27226128/what-is-the-more-elegant-way-to-remove-all-characters-after-specific-character-i
-     */
+    /// Fonction permettant de récupérer la sous-chaine de caractère se trouvant avant le caractère indiqué et celle se trouvant après.
+    /// Le code vient de : https://stackoverflow.com/questions/27226128/what-is-the-more-elegant-way-to-remove-all-characters-after-specific-character-i
     public static func splitAtFirst(str: String, delimiter: String) -> (first: String, last: String)? {
         guard let upperIndex = (str.range(of: delimiter)?.upperBound), let lowerIndex = (str.range(of: delimiter)?.lowerBound) else {
             return (str, str)

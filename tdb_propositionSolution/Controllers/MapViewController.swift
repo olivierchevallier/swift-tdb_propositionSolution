@@ -1,7 +1,7 @@
 //--------------------------------------------------
 // Travail de bachelor - Proposition de solution
 //
-// MapViewController : Controleur de la vue affichant la carte
+// MapViewController : Contrôleur de la vue affichant la carte
 //
 // Créé par : Olivier Chevallier le 04.09.19
 //--------------------------------------------------

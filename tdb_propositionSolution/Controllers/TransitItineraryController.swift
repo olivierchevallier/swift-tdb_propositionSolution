@@ -1,7 +1,7 @@
 //--------------------------------------------------
 // Travail de bachelor - Proposition de solution
 //
-// TransitItineraryController :
+// TransitItineraryController : Contrôleur de la vue affichant les détails d'un itinéraire de transports publics.
 //
 // Créé par : Olivier Chevallier le 20.09.19
 //--------------------------------------------------

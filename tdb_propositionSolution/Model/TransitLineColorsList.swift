@@ -1,7 +1,7 @@
 //--------------------------------------------------
 // Travail de bachelor - Proposition de solution
 //
-// TransitLineColorsList :
+// TransitLineColorsList : Classe permettant d'obtenir les couleurs correspondant aux lignes de transport publics. Ces informations ne changeant pas souvent, le design pattern du singleton est utilisé ici.
 //
 // Créé par : Olivier Chevallier le 24.09.19
 //--------------------------------------------------
@@ -38,6 +38,7 @@ class TransitLineColorsList {
     }
     
     //MARK: - Public methods
+    /// Permet de récupérer l'instance unique de la classe
     static func getInstance() -> TransitLineColorsList {
         return instance
     }

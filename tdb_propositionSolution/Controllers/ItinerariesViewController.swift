@@ -1,7 +1,7 @@
 //--------------------------------------------------
 // Travail de bachelor - Proposition de solution
 //
-// ItinerariesViewController :
+// ItinerariesViewController : Contrôleur de la vue affichant les différentes options d'itinéraires disponibles (voiture, TP, Mix)
 //
 // Créé par : Olivier Chevallier le 20.09.19
 //--------------------------------------------------

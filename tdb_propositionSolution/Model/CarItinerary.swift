@@ -1,7 +1,7 @@
 //--------------------------------------------------
 // Travail de bachelor - Proposition de solution
 //
-// CarItinerary :
+// CarItinerary : Class modélisant un itinéraire en voiture
 //
 // Créé par : Olivier Chevallier le 19.09.19
 //--------------------------------------------------

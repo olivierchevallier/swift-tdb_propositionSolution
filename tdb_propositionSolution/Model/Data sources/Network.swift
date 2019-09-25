@@ -1,7 +1,7 @@
 //--------------------------------------------------
 // Travail de bachelor - Proposition de solution
 //
-// Network :
+// Network : Class permettant d'effectuer des requêtes HTTP
 //
 // Créé par : Olivier Chevallier le 19.09.19
 //--------------------------------------------------

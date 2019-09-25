@@ -1,7 +1,7 @@
 //--------------------------------------------------
 // Travail de bachelor - Proposition de solution
 //
-// TransitLine :
+// TransitLine : Classe représentant une ligne de transports publics
 //
 // Créé par : Olivier Chevallier le 24.09.19
 //--------------------------------------------------

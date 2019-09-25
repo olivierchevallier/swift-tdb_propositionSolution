@@ -1,7 +1,7 @@
 //--------------------------------------------------
 // Travail de bachelor - Proposition de solution
 //
-// TransitItineraryTableViewCell :
+// TransitItineraryTableViewCell : Cellule de TableView affichant les informations essentielles un itinéraire de transports publics
 //
 // Créé par : Olivier Chevallier le 20.09.19
 //--------------------------------------------------

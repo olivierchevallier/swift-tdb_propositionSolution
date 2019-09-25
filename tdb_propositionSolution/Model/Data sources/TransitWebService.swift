@@ -1,7 +1,7 @@
 //--------------------------------------------------
 // Travail de bachelor - Proposition de solution
 //
-// TransitWebServiceNames :
+// TransitWebServiceNames : Class permettant de générer les liens des différents web services relatifs aux transport publics
 //
 // Créé par : Olivier Chevallier le 19.09.19
 //--------------------------------------------------

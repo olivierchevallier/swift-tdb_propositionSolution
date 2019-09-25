@@ -1,7 +1,7 @@
 //--------------------------------------------------
 // Travail de bachelor - Proposition de solution
 //
-// Itinerary : Modèle représentant un itinéraire
+// Itinerary : Classe modélisant un itinéraire
 //
 // Créé par : Olivier Chevallier le 16.09.19
 //--------------------------------------------------

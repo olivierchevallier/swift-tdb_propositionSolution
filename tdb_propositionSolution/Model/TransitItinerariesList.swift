@@ -1,7 +1,7 @@
 //--------------------------------------------------
 // Travail de bachelor - Proposition de solution
 //
-// TransitItinerariesList :
+// TransitItinerariesList : Classe permettant d'obtenir la liste des itinéraires en transports publics pour un lieu de départ et une destination donnés à l'initialisation de l'instance. 
 //
 // Créé par : Olivier Chevallier le 20.09.19
 //--------------------------------------------------

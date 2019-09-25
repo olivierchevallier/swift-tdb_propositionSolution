@@ -1,7 +1,7 @@
 //--------------------------------------------------
 // Travail de bachelor - Proposition de solution
 //
-// ItinerariesList :
+// ItinerariesList : Classe définissant les prporiétés et fonctions communes aux listes d'itinéraires tout type de transport confondus.
 //
 // Créé par : Olivier Chevallier le 20.09.19
 //--------------------------------------------------

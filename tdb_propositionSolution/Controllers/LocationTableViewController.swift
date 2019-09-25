@@ -1,7 +1,7 @@
 //--------------------------------------------------
 // Travail de bachelor - Proposition de solution
 //
-// LocationTableViewController : Controleur du tableau affichant les résultats de recherche de lieux
+// LocationTableViewController : Contrôleur du tableau affichant les résultats de recherche de lieux
 //
 // Créé par : Olivier Chevallier le 11.09.19
 //--------------------------------------------------

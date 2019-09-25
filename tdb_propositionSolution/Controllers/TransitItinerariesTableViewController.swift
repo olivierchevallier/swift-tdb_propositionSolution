@@ -1,7 +1,7 @@
 //--------------------------------------------------
 // Travail de bachelor - Proposition de solution
 //
-// TransitItinerariesTableViewController :
+// TransitItinerariesTableViewController : Controôleur de la vue affichant une liste d'itinéraires en transport publics
 //
 // Créé par : Olivier Chevallier le 20.09.19
 //--------------------------------------------------

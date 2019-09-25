@@ -1,7 +1,7 @@
 //--------------------------------------------------
 // Travail de bachelor - Proposition de solution
 //
-// Location : Modèle représentant un lieu
+// Location : Classe modélisant un lieu
 //
 // Créé par : Olivier Chevallier le 10.09.19
 //--------------------------------------------------

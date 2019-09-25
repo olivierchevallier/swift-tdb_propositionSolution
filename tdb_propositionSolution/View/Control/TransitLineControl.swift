@@ -1,7 +1,7 @@
 //--------------------------------------------------
 // Travail de bachelor - Proposition de solution
 //
-// TransitLineControl :
+// TransitLineControl : Control basé sur un label permettant d'afficher correctement une ligne de transports publics
 //
 // Créé par : Olivier Chevallier le 24.09.19
 //--------------------------------------------------
@@ -24,7 +24,6 @@ class TransitLineControl: UILabel {
             self.backgroundColor = line!.backgroundColor
             self.textColor = line!.textColor
             clipsToBounds = true
-            //layer.backgroundColor = line!.backgroundColor.cgColor
             textAlignment = .center
             if line!.transitOperator != "TPG" {
                 text = line!.type + line!.number
@@ -33,7 +32,6 @@ class TransitLineControl: UILabel {
             } else {
                 text = line!.number
                 layer.cornerRadius = 10
-                //heightAnchor.constraint(equalToConstant: 20).isActive = true
                 widthAnchor.constraint(equalToConstant: 35).isActive = true
             }
         } else {
