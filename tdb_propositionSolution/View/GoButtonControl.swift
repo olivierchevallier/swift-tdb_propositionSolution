@@ -26,4 +26,26 @@ class GoButtonControl: UIButton {
     private func setStyle() {
         layer.cornerRadius = 10
     }
+    
+    //MARK: Public methods
+    func isLoading(_ loading: Bool) {
+        let tag = 4242
+        if loading {
+            self.isEnabled = false
+            self.setTitleColor(UIColor.clear, for: .disabled)
+            let indic = UIActivityIndicatorView()
+            let buttonYCenter = self.bounds.size.height / 2
+            let buttonXCenter = self.bounds.size.width / 2
+            indic.center = CGPoint(x: buttonXCenter, y: buttonYCenter)
+            indic.tag = tag
+            self.addSubview(indic)
+            indic.startAnimating()
+        } else {
+            if let indic = self.viewWithTag(tag) as? UIActivityIndicatorView {
+                self.isEnabled = true
+                indic.stopAnimating()
+                indic.removeFromSuperview()
+            }
+        }
+    }
 }

@@ -28,9 +28,9 @@ class ItinerariesViewController: UIViewController {
     
     //MARK: Controls
     @IBOutlet var lbl_destination: UILabel!
-    @IBOutlet var btn_goCar: UIButton!
-    @IBOutlet var btn_goTransit: UIButton!
-    @IBOutlet var btn_goMix: UIButton!
+    @IBOutlet var btn_goCar: GoButtonControl!
+    @IBOutlet var btn_goTransit: GoButtonControl!
+    @IBOutlet var btn_goMix: GoButtonControl!
     
     //MARK: -
     override func viewDidLoad() {
@@ -51,23 +51,23 @@ class ItinerariesViewController: UIViewController {
     }
     
     private func getCarItinerary() {
-        btn_goCar.isEnabled = false
+        btn_goCar.isLoading(true)
         let carItinerariesList = CarItinerariesList(origin:userLocation!, destination: destination!.coordinate)
         carItinerariesList.itinerariesCalculated {
             self.carItinerary = carItinerariesList.itineraries.first! as! CarItinerary
-            self.btn_goCar.isEnabled = true
+            self.btn_goCar.isLoading(false)
         }
     }
     
     private func getTransitItineraries() {
-        btn_goTransit.isEnabled = false
+        btn_goTransit.isLoading(true)
         transitItineraries = [TransitItinerary]()
         let transitItinerariesList = TransitItinerariesList(origin: userLocation!, destination: destination!.coordinate)
         transitItinerariesList.itinerariesCalculated {
             for transitIntnerary in transitItinerariesList.itineraries {
                 self.transitItineraries.append(transitIntnerary as! TransitItinerary)
             }
-            self.btn_goTransit.isEnabled = true
+            self.btn_goTransit.isLoading(false)
         }
     }
     
