@@ -11,12 +11,10 @@ import os.log
 
 class LocationTableViewController: UITableViewController {
     //MARK: - Properties
-    //MARK: Var
+    //MARK: Mutable
     var str_userLocation: String?
     var destination: Location?
     var locations = [Location]()
-    
-    //MARK: Const
     
     //MARK: Controls
     @IBOutlet var txt_search: UITextField!

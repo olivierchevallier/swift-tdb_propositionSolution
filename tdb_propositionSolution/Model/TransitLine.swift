@@ -11,14 +11,17 @@ import UIKit
 
 class TransitLine {
     //MARK: - Properties
+    //MARK: Immutable
     let transitOperator: String
     let number: String
     let destination: String
     let type: String
+    
+    //MARK: Mutable
     var textColor: UIColor
     var backgroundColor: UIColor
     
-    //MARK: Initializer
+    //MARK: - Initializer
     init(transitOperator: String, number: String, destination: String, type: String) {
         self.transitOperator = transitOperator
         self.number = number

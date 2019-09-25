@@ -19,8 +19,6 @@
 		5F713AE02333A77400C2C8CC /* TransitItinerary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F713ADF2333A77400C2C8CC /* TransitItinerary.swift */; };
 		5F713AE32333AFDB00C2C8CC /* TransitWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F713AE22333AFDB00C2C8CC /* TransitWebService.swift */; };
 		5F713AE82333B04B00C2C8CC /* CarWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F713AE72333B04B00C2C8CC /* CarWebService.swift */; };
-		5F728EA0232B981000ECA799 /* RoutesControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F728E9F232B981000ECA799 /* RoutesControl.swift */; };
-		5F728EA2232B981B00ECA799 /* RouteControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F728EA1232B981B00ECA799 /* RouteControl.swift */; };
 		5FA66EF9231FA92700A23B14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA66EF8231FA92700A23B14 /* AppDelegate.swift */; };
 		5FA66EFB231FA92700A23B14 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA66EFA231FA92700A23B14 /* SceneDelegate.swift */; };
 		5FA66EFD231FA92700A23B14 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA66EFC231FA92700A23B14 /* MapViewController.swift */; };
@@ -64,8 +62,6 @@
 		5F713ADF2333A77400C2C8CC /* TransitItinerary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitItinerary.swift; sourceTree = "<group>"; };
 		5F713AE22333AFDB00C2C8CC /* TransitWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitWebService.swift; sourceTree = "<group>"; };
 		5F713AE72333B04B00C2C8CC /* CarWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarWebService.swift; sourceTree = "<group>"; };
-		5F728E9F232B981000ECA799 /* RoutesControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesControl.swift; sourceTree = "<group>"; };
-		5F728EA1232B981B00ECA799 /* RouteControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteControl.swift; sourceTree = "<group>"; };
 		5FA66EF5231FA92700A23B14 /* tdb_propositionSolution.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tdb_propositionSolution.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FA66EF8231FA92700A23B14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5FA66EFA231FA92700A23B14 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -179,8 +175,6 @@
 		5F728EA3232B982800ECA799 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				5F728E9F232B981000ECA799 /* RoutesControl.swift */,
-				5F728EA1232B981B00ECA799 /* RouteControl.swift */,
 				5FADAC332327E5CA00316A55 /* LocationTableViewCell.swift */,
 				5FB3B4492335023400205719 /* GoButtonControl.swift */,
 				5FB3B44D23350D1200205719 /* TransitItineraryTableViewCell.swift */,
@@ -405,14 +399,12 @@
 				5F6BAB572338BB780089D5A8 /* TransitStepControl.swift in Sources */,
 				5FB3B4442334C83B00205719 /* CarItinerariesList.swift in Sources */,
 				5FADAC3823291C1D00316A55 /* LocationTableViewController.swift in Sources */,
-				5F728EA0232B981000ECA799 /* RoutesControl.swift in Sources */,
 				5F713AE82333B04B00C2C8CC /* CarWebService.swift in Sources */,
 				5F713AE32333AFDB00C2C8CC /* TransitWebService.swift in Sources */,
 				5F6BAB64233A60670089D5A8 /* TransitLine.swift in Sources */,
 				5FA66EF9231FA92700A23B14 /* AppDelegate.swift in Sources */,
 				5F713ADE2333A75900C2C8CC /* CarItinerary.swift in Sources */,
 				5F6BAB5F233A41570089D5A8 /* TransitLineControl.swift in Sources */,
-				5F728EA2232B981B00ECA799 /* RouteControl.swift in Sources */,
 				5FB3B44C23350CC900205719 /* TransitItinerariesTableViewController.swift in Sources */,
 				5FB3B4422334C06300205719 /* TransitItinerariesList.swift in Sources */,
 				5FADAC302327E16D00316A55 /* Location.swift in Sources */,

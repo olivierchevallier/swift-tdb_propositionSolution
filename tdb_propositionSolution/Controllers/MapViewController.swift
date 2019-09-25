@@ -16,7 +16,7 @@ import os.log
 class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelegate, UINavigationControllerDelegate {
 
     //MARK: - Properties
-    //MARK: Var
+    //MARK: Mutable
     var mapView: NavigationMapView!
     var str_userLocation: String?
     var destination: Location?

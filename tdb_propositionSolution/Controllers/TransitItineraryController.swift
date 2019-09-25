@@ -15,7 +15,7 @@ import MapboxDirections
 
 class TransitItineraryController: UIViewController {
     //MARK: - Properties
-    //MARK: Var
+    //MARK: Mutable
     var itinerary: TransitItinerary?
     var steps = [TransitStepControl]()
     
@@ -33,10 +33,7 @@ class TransitItineraryController: UIViewController {
         showItinerarySteps()
     }
     
-    //MARK: - Actions
-    
-    
-    //MARK: - Private function
+    //MARK: - Private methods
     private func showItineraryInfos() {
         lbl_times.text = "\(itinerary!.departureTime) - \(itinerary!.arrivalTime)"
         lbl_duration.text = "\(itinerary!.expectedTime) min."
@@ -60,7 +57,4 @@ class TransitItineraryController: UIViewController {
             stk_details.addArrangedSubview(step)
         }
     }
-    
-    // MARK: - Navigation
-    
 }

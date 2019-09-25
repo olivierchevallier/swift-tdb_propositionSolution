@@ -10,12 +10,14 @@
 import UIKit
 
 class TransitLineControl: UILabel {
+    //MARK: - Properties
     var line: TransitLine? {
         didSet {
             setup()
         }
     }
     
+    //MARK: - Private methods
     private func setup() {
         translatesAutoresizingMaskIntoConstraints = false
         if line != nil {
@@ -38,13 +40,4 @@ class TransitLineControl: UILabel {
             text = "🚶‍♂️"
         }
     }
-    
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
 }

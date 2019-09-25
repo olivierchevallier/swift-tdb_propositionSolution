@@ -12,7 +12,7 @@ import CoreLocation
 class Location {
     
     //MARK: - Properties
-    //MARK: Var
+    //MARK: Mutable
     var name: String
     var coordinate: CLLocationCoordinate2D
     

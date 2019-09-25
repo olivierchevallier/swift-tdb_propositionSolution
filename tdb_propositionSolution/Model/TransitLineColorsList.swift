@@ -11,16 +11,16 @@ import Foundation
 
 class TransitLineColorsList {
     //MARK: - Properties
-    //MARK: Var
+    //MARK: Immutable
+    let dispatchGroup = DispatchGroup()
+    
+    //MARK: Mutable
     private static var instance: TransitLineColorsList = {
         let transitLineColorsList = TransitLineColorsList()
         transitLineColorsList.dispatchGroup.wait()
         return transitLineColorsList
     }()
     var lineColors = [TransitWebService.LineColor]()
-    
-    //MARK: Const
-    let dispatchGroup = DispatchGroup()
     
     //MARK: - Initializers
     private init() {
@@ -37,6 +37,7 @@ class TransitLineColorsList {
         })
     }
     
+    //MARK: - Public methods
     static func getInstance() -> TransitLineColorsList {
         return instance
     }

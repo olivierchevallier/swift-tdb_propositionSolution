@@ -11,8 +11,11 @@ import Foundation
 import os.log
 
 class Network {
+    //MARK: - Properties
+    //MARK: Immutable
     static let dispatchGroup = DispatchGroup()
     
+    //MARK: - Public methods
     /// Exécute un requête HTTP GET sur l'URL donnée en permettant de traiter les données retournée par la requête dans le dataCompletionHandler (explication dataCompletionHandler : https://fluffy.es/return-value-from-a-closure/)
     static func executeHTTPGet(url: URL, dataCompletionHandler: @escaping(Data?) -> Void) {
         dispatchGroup.enter()

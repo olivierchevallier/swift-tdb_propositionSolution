@@ -10,8 +10,11 @@
 import UIKit
 
 @IBDesignable class TransitStepControl: UIControl {
+    //MARK: Properties
+    //MARK: Immutable
     let lineHeight = CGFloat(140)
     
+    //MARK: Mutable
     var line: TransitLine? {
         didSet {
             if line == nil {
@@ -76,6 +79,7 @@ import UIKit
         return CGSize(width: width, height: lineHeight + 50)
     }
     
+    //MARK: Controls
     private var lbl_line = TransitLineControl()
     private var lbl_destination = UILabel()
     private var lbl_departureTime = UILabel()
@@ -84,6 +88,7 @@ import UIKit
     private var lbl_arrivalStop = UILabel()
     private var lbl_numberOfStops = UILabel()
     
+    //MARK: - Initializer
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -94,8 +99,7 @@ import UIKit
         setupView()
     }
     
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
+    //MARK: -
     override func draw(_ rect: CGRect) {
         let xPosition = lbl_departureTime.frame.size.width + 15
         let yPosition = lbl_line.frame.height + 20
@@ -106,6 +110,7 @@ import UIKit
         drawLine(from: fromStop, to: toStop)
     }
     
+    //MARK: - Private methods
     private func setupView() {
         translatesAutoresizingMaskIntoConstraints = false
         showTimes()

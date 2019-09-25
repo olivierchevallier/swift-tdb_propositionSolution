@@ -12,16 +12,16 @@ import Mapbox
 
 class ItinerariesList {
     //MARK: - Properties
-    //MARK: Var
+    //MARK: Immutable
+    internal let dispatchGroup = DispatchGroup()
+    
+    //MARK: Mutable
     var itineraries = [Itinerary]()
     var origin: CLLocationCoordinate2D
     var destination: CLLocationCoordinate2D
     var transport: String
     
-    //MARK: Const
-    internal let dispatchGroup = DispatchGroup()
     
-    //MARK: - Initializer
     //MARK: - Initializer
     init(origin: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, transport: String) {
         self.origin = origin

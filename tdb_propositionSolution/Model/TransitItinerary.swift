@@ -13,12 +13,10 @@ import Mapbox
 class TransitItinerary: Itinerary {
     
     //MARK: - Properties
-    //MARK: Var
-    
-    //MARK: Const
+    //MARK: Immutable
     let connection: TransitWebService.Connection
     
-    //MARK: Computed
+    //MARK: Mutable
     override var emissions: Double {
         get {
             return 0

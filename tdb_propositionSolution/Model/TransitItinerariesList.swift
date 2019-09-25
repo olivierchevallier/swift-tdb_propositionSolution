@@ -10,10 +10,7 @@
 import Foundation
 import CoreLocation
 
-class TransitItinerariesList: ItinerariesList {
-    //MARK: - Properties
-    //MARK: Const
-    
+class TransitItinerariesList: ItinerariesList {    
     //MARK: - Initializers
     init(origin: CLLocationCoordinate2D, destination: CLLocationCoordinate2D) {
         super.init(origin: origin, destination: destination, transport: "Transports publics")

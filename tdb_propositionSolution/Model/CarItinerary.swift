@@ -16,11 +16,9 @@ import MapboxDirections
 class CarItinerary: Itinerary {
     
     //MARK: - Properties
-    //MARK: Var
+    //MARK: Mutable
     var distance: Double
     var route: Route?
-    
-    //MARK: Computed
     override var emissions: Double {
         get {
             return self.route!.distance * 137.8 / 1000
@@ -43,8 +41,4 @@ class CarItinerary: Itinerary {
         self.route = route
         super.init(origin: origin, destination: destination, transport: "Voiture")
     }
-    
-    //MARK: - Private methods
-    
-    //MARK: - Public methods
 }

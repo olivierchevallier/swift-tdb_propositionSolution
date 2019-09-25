@@ -15,8 +15,6 @@ import MapboxDirections
 
 
 class CarItinerariesList: ItinerariesList {
-    
-    
     //MARK: - Initializers
     init(origin: CLLocationCoordinate2D, destination: CLLocationCoordinate2D) {
         super.init(origin: origin, destination: destination, transport: "Voiture")

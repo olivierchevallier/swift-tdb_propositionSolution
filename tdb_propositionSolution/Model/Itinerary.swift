@@ -15,14 +15,10 @@ import MapboxDirections
 class Itinerary {
     
     //MARK: - Properties
-    //MARK: Var
+    //MARK: Mutable
     var origin: CLLocationCoordinate2D
     var destination: CLLocationCoordinate2D
     var transport: String
-    
-    //MARK: Const
-    
-    //MARK: Computed
     var emissions: Double {
         get {
             return 0
@@ -45,8 +41,4 @@ class Itinerary {
         self.destination = destination
         self.transport = transport
     }
-    
-    //MARK: - Private methods
-    
-    //MARK: - Public methods
 }

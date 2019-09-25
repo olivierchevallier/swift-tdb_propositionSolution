@@ -15,16 +15,18 @@ import MapboxDirections
 
 class ItinerariesViewController: UIViewController {
     //MARK: - Properties
-    //MARK: Var
+    //MARK: Mutable
+    var carItinerary: CarItinerary?
+    var transitItineraries = [TransitItinerary]()
+    var userLocation: CLLocationCoordinate2D?
+    
+    //MARK: Observed
     var destination:Location? {
         didSet {
             lbl_destination.text = destination!.name
             getItineraries()
         }
     }
-    var carItinerary: CarItinerary?
-    var transitItineraries = [TransitItinerary]()
-    var userLocation: CLLocationCoordinate2D?
     
     //MARK: Controls
     @IBOutlet var lbl_destination: UILabel!
@@ -43,7 +45,7 @@ class ItinerariesViewController: UIViewController {
         present(navigationVC, animated: true, completion: nil)
     }
     
-    //MARK: - Private function
+    //MARK: - Private methods
     private func getItineraries() {
         getCarItinerary()
         getTransitItineraries()

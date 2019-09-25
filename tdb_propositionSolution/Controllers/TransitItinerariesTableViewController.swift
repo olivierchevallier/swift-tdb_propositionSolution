@@ -12,22 +12,30 @@ import UIKit
 class TransitItinerariesTableViewController: UITableViewController {
     
     //MARK: - Properties
-    //MARK: Var
+    //MARK: Mutable
     var itineraries = [TransitItinerary]()
     
     //MARK: Controls
     @IBOutlet var lbl_from: UILabel!
     @IBOutlet var lbl_to: UILabel!
 
+    //MARK: -
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         showItinerary()
     }
+    
+    //MARK: - Private methods
+    private func showItinerary() {
+        if itineraries.count > 0 {
+            lbl_from.text = TransitItinerary.splitAtFirst(str: (itineraries.first?.connection.from.station.name)!, delimiter: "@")!.first
+            lbl_to.text = TransitItinerary.splitAtFirst(str: (itineraries.first?.connection.to.station.name)!, delimiter: "@")!.first
+        }
+    }
 
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -56,14 +64,6 @@ class TransitItinerariesTableViewController: UITableViewController {
             cell.stk_lines.addArrangedSubview(lbl_line)
         }
         return cell
-    }
-    
-    //MARK: - Private methods
-    private func showItinerary() {
-        if itineraries.count > 0 {
-            lbl_from.text = TransitItinerary.splitAtFirst(str: (itineraries.first?.connection.from.station.name)!, delimiter: "@")!.first
-            lbl_to.text = TransitItinerary.splitAtFirst(str: (itineraries.first?.connection.to.station.name)!, delimiter: "@")!.first
-        }
     }
 
     // MARK: - Navigation

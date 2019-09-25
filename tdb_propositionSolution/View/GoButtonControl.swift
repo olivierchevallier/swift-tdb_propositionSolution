@@ -10,7 +10,6 @@
 import UIKit
 
 class GoButtonControl: UIButton {
-    
     //MARK: - Initializer
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,12 +21,12 @@ class GoButtonControl: UIButton {
         setStyle()
     }
     
-    //MARK: Private methods
+    //MARK: - Private methods
     private func setStyle() {
         layer.cornerRadius = 10
     }
     
-    //MARK: Public methods
+    //MARK: - Public methods
     func isLoading(_ loading: Bool) {
         let tag = 4242
         if loading {
