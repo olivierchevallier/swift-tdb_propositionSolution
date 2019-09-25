@@ -105,9 +105,10 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
         
         switch userInterfaceStyle {
         case .dark :
-            mapView.styleURL = MGLStyle.darkStyleURL
+            let styleURL = URL(string: "mapbox://styles/olivierchevallier/ck0zcm1s40dcj1cmn87ye8wlc")
+            mapView.styleURL = styleURL
         default:
-            mapView.styleURL = MGLStyle.lightStyleURL
+            mapView.styleURL = MGLStyle.streetsStyleURL
         }
     }
     
