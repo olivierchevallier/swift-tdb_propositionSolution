@@ -54,6 +54,10 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
     //MARK: - Actions
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)

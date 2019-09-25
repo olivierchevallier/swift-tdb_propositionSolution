@@ -198,7 +198,7 @@
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ocg-NK-DtW" customClass="GoButtonControl" customModule="tdb_propositionSolution" customModuleProvider="target">
                                                 <rect key="frame" x="250" y="0.0" width="50" height="50"/>
-                                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="3W4-Qd-7ds"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="PYa-jL-sym"/>
@@ -228,7 +228,7 @@
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xl1-wH-WZI" customClass="GoButtonControl" customModule="tdb_propositionSolution" customModuleProvider="target">
                                                 <rect key="frame" x="250" y="0.0" width="50" height="50"/>
-                                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="J6l-kM-Y7u"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="tad-ZY-puP"/>
@@ -258,7 +258,7 @@
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ls9-Jz-qfp" customClass="GoButtonControl" customModule="tdb_propositionSolution" customModuleProvider="target">
                                                 <rect key="frame" x="250" y="0.0" width="50" height="50"/>
-                                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="4TU-s7-MbU"/>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="MKI-Ii-rfk"/>
@@ -308,10 +308,10 @@
             </objects>
             <point key="canvasLocation" x="1031" y="777"/>
         </scene>
-        <!--Transit Itineraries Table View Controller-->
+        <!--Choix de itinéraire-->
         <scene sceneID="MgX-vi-cFf">
             <objects>
-                <tableViewController id="CZP-T7-baF" customClass="TransitItinerariesTableViewController" customModule="tdb_propositionSolution" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="CZP-T7-baF" userLabel="Choix de itinéraire" customClass="TransitItinerariesTableViewController" customModule="tdb_propositionSolution" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Tfs-gJ-BUb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="242"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -345,7 +345,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="dLv-gM-F2i" firstAttribute="leading" secondItem="PNt-MH-ioX" secondAttribute="leading" constant="47" id="0ts-fB-LQc"/>
                                 <constraint firstAttribute="bottom" secondItem="dLv-gM-F2i" secondAttribute="bottom" constant="8" id="2r7-Vn-KcT"/>
@@ -418,10 +418,10 @@
             </objects>
             <point key="canvasLocation" x="1878.75" y="776.4084507042254"/>
         </scene>
-        <!--Transit Itinerary Controller-->
+        <!--Itinéraire-->
         <scene sceneID="OV2-3U-Kxd">
             <objects>
-                <viewController id="Dlp-7Z-SHI" customClass="TransitItineraryController" customModule="tdb_propositionSolution" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Dlp-7Z-SHI" userLabel="Itinéraire" customClass="TransitItineraryController" customModule="tdb_propositionSolution" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JuH-hE-4Da">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="242"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -442,7 +442,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="7fd-iK-Jn9" secondAttribute="trailing" constant="15.5" id="9HV-N8-Ca4"/>
                                     <constraint firstItem="Hfg-5m-ehi" firstAttribute="top" secondItem="GtH-y1-wQl" secondAttribute="top" constant="15" id="E7G-k2-BRD"/>
@@ -454,7 +454,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DBo-Bf-JhA">
                                 <rect key="frame" x="0.0" y="50" width="320" height="193"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8zU-hf-UkI">
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="8zU-hf-UkI">
                                         <rect key="frame" x="10" y="0.0" width="300" height="193"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </stackView>
