@@ -36,6 +36,10 @@
 		5FB3B44C23350CC900205719 /* TransitItinerariesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3B44B23350CC900205719 /* TransitItinerariesTableViewController.swift */; };
 		5FB3B44E23350D1200205719 /* TransitItineraryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3B44D23350D1200205719 /* TransitItineraryTableViewCell.swift */; };
 		5FFA4528233B805900EB2237 /* TransitStepControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6BAB562338BB780089D5A8 /* TransitStepControl.swift */; };
+		5FFA452A233CE43900EB2237 /* parkingData.json in Resources */ = {isa = PBXBuildFile; fileRef = 5FFA4529233CE43800EB2237 /* parkingData.json */; };
+		5FFA452C233CE52400EB2237 /* Parking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFA452B233CE52400EB2237 /* Parking.swift */; };
+		5FFA452E233CE79900EB2237 /* ParkingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFA452D233CE79900EB2237 /* ParkingList.swift */; };
+		5FFA4530233CFB1600EB2237 /* ParkingRessource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFA452F233CFB1600EB2237 /* ParkingRessource.swift */; };
 		B7679560919645BD498EE909 /* Pods_tdb_propositionSolution.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8900154E9FF7D018425BC509 /* Pods_tdb_propositionSolution.framework */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +87,10 @@
 		5FB3B4492335023400205719 /* GoButtonControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoButtonControl.swift; sourceTree = "<group>"; };
 		5FB3B44B23350CC900205719 /* TransitItinerariesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitItinerariesTableViewController.swift; sourceTree = "<group>"; };
 		5FB3B44D23350D1200205719 /* TransitItineraryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitItineraryTableViewCell.swift; sourceTree = "<group>"; };
+		5FFA4529233CE43800EB2237 /* parkingData.json */ = {isa = PBXFileReference; explicitFileType = text.json; name = parkingData.json; path = /Users/olivierchevallier/Documents/Coding/iPhone/tdb_propositionSolution/tdb_propositionSolution/Ressources/parkingData.json; sourceTree = "<absolute>"; };
+		5FFA452B233CE52400EB2237 /* Parking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parking.swift; sourceTree = "<group>"; };
+		5FFA452D233CE79900EB2237 /* ParkingList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingList.swift; sourceTree = "<group>"; };
+		5FFA452F233CFB1600EB2237 /* ParkingRessource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingRessource.swift; sourceTree = "<group>"; };
 		8900154E9FF7D018425BC509 /* Pods_tdb_propositionSolution.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tdb_propositionSolution.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B12E3DFF918C50BCBEE28DD1 /* Pods-tdb_propositionSolution.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tdb_propositionSolution.release.xcconfig"; path = "Target Support Files/Pods-tdb_propositionSolution/Pods-tdb_propositionSolution.release.xcconfig"; sourceTree = "<group>"; };
 		B1E66023352F09DCBF2E7F16 /* Pods-tdb_propositionSolution.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tdb_propositionSolution.debug.xcconfig"; path = "Target Support Files/Pods-tdb_propositionSolution/Pods-tdb_propositionSolution.debug.xcconfig"; sourceTree = "<group>"; };
@@ -150,6 +158,7 @@
 				5FA66EFE231FA92700A23B14 /* Main.storyboard */,
 				5FA66F01231FA92A00A23B14 /* Assets.xcassets */,
 				5FA66F03231FA92A00A23B14 /* LaunchScreen.storyboard */,
+				5FFA4529233CE43800EB2237 /* parkingData.json */,
 			);
 			path = Ressources;
 			sourceTree = "<group>";
@@ -168,6 +177,7 @@
 				5F713ADB2333A3B300C2C8CC /* Network.swift */,
 				5F713AE72333B04B00C2C8CC /* CarWebService.swift */,
 				5F713AE22333AFDB00C2C8CC /* TransitWebService.swift */,
+				5FFA452F233CFB1600EB2237 /* ParkingRessource.swift */,
 			);
 			path = "Data sources";
 			sourceTree = "<group>";
@@ -239,6 +249,8 @@
 				5FB3B4412334C06300205719 /* TransitItinerariesList.swift */,
 				5F6BAB5C233A3B5B0089D5A8 /* TransitLineColorsList.swift */,
 				5F6BAB63233A60670089D5A8 /* TransitLine.swift */,
+				5FFA452B233CE52400EB2237 /* Parking.swift */,
+				5FFA452D233CE79900EB2237 /* ParkingList.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -337,6 +349,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FA66F05231FA92A00A23B14 /* LaunchScreen.storyboard in Resources */,
+				5FFA452A233CE43900EB2237 /* parkingData.json in Resources */,
 				5FA66F02231FA92A00A23B14 /* Assets.xcassets in Resources */,
 				5FA66F00231FA92700A23B14 /* Main.storyboard in Resources */,
 			);
@@ -406,12 +419,15 @@
 				5FADAC342327E5CA00316A55 /* LocationTableViewCell.swift in Sources */,
 				5FB3B4442334C83B00205719 /* CarItinerariesList.swift in Sources */,
 				5FADAC3823291C1D00316A55 /* LocationTableViewController.swift in Sources */,
+				5FFA452C233CE52400EB2237 /* Parking.swift in Sources */,
 				5F713AE82333B04B00C2C8CC /* CarWebService.swift in Sources */,
 				5F713AE32333AFDB00C2C8CC /* TransitWebService.swift in Sources */,
 				5FFA4528233B805900EB2237 /* TransitStepControl.swift in Sources */,
 				5F6BAB64233A60670089D5A8 /* TransitLine.swift in Sources */,
 				5FA66EF9231FA92700A23B14 /* AppDelegate.swift in Sources */,
+				5FFA452E233CE79900EB2237 /* ParkingList.swift in Sources */,
 				5F713ADE2333A75900C2C8CC /* CarItinerary.swift in Sources */,
+				5FFA4530233CFB1600EB2237 /* ParkingRessource.swift in Sources */,
 				5F6BAB5F233A41570089D5A8 /* TransitLineControl.swift in Sources */,
 				5FB3B44C23350CC900205719 /* TransitItinerariesTableViewController.swift in Sources */,
 				5FB3B4422334C06300205719 /* TransitItinerariesList.swift in Sources */,

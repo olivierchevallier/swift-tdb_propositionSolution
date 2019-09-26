@@ -49,7 +49,7 @@ class ItinerariesViewController: UIViewController {
     private func getItineraries() {
         getCarItinerary()
         getTransitItineraries()
-        
+        getMultimodalItinerary()
     }
     
     private func getCarItinerary() {
@@ -70,6 +70,13 @@ class ItinerariesViewController: UIViewController {
                 self.transitItineraries.append(transitIntnerary as! TransitItinerary)
             }
             self.btn_goTransit.isLoading(false)
+        }
+    }
+    
+    private func getMultimodalItinerary() {
+        let parkingList = ParkingList.getInstance()
+        for parking in parkingList.parkings {
+            print(parking.nom)
         }
     }
     
