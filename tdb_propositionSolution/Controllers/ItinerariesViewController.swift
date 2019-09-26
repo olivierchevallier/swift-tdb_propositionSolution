@@ -75,8 +75,24 @@ class ItinerariesViewController: UIViewController {
     
     private func getMultimodalItinerary() {
         let parkingList = ParkingList.getInstance()
+        let dispatchGroup = DispatchGroup()
+        //var itineraries = Dictionary<Int, Parking>
+        btn_goMix.isLoading(true)
         for parking in parkingList.parkings {
-            print(parking.nom)
+            dispatchGroup.enter()
+            let carItinerariesList = CarItinerariesList(origin:userLocation!, destination: parking.location)
+            carItinerariesList.itinerariesCalculated {
+                let myCarItinerary = carItinerariesList.itineraries.first! as! CarItinerary
+                let transitItinerariesList = TransitItinerariesList(origin: parking.location, destination: self.destination!.coordinate)
+                transitItinerariesList.itinerariesCalculated {
+                    let myTransitItinerary = transitItinerariesList.itineraries.first!
+        
+                    dispatchGroup.leave()
+                }
+            }
+        }
+        dispatchGroup.notify(queue: .main) {
+            self.btn_goMix.isLoading(false)
         }
     }
     
