@@ -32,8 +32,12 @@ class ItinerariesViewController: UIViewController {
     //MARK: Controls
     @IBOutlet var lbl_destination: UILabel!
     @IBOutlet var btn_goCar: GoButtonControl!
+    @IBOutlet var lbl_carTime: UILabel!
     @IBOutlet var btn_goTransit: GoButtonControl!
+    @IBOutlet var lbl_transitTime: UILabel!
     @IBOutlet var btn_goMix: GoButtonControl!
+    @IBOutlet var lbl_mixTime: UILabel!
+    @IBOutlet var lbl_mixVia: UILabel!
     
     //MARK: -
     override func viewDidLoad() {
@@ -55,15 +59,18 @@ class ItinerariesViewController: UIViewController {
     
     private func getCarItinerary() {
         btn_goCar.isLoading(true)
+        lbl_carTime.text = "Chargement..."
         let carItinerariesList = CarItinerariesList(origin:userLocation!, destination: destination!.coordinate)
         carItinerariesList.itinerariesCalculated {
             self.carItinerary = carItinerariesList.itineraries.first! as! CarItinerary
             self.btn_goCar.isLoading(false)
+            self.lbl_carTime.text = "\(self.carItinerary!.expectedTime) min."
         }
     }
     
     private func getTransitItineraries() {
         btn_goTransit.isLoading(true)
+        lbl_transitTime.text = "Chargement..."
         transitItineraries = [TransitItinerary]()
         let transitItinerariesList = TransitItinerariesList(origin: userLocation!, destination: destination!.coordinate)
         transitItinerariesList.itinerariesCalculated {
@@ -71,13 +78,17 @@ class ItinerariesViewController: UIViewController {
                 self.transitItineraries.append(transitIntnerary as! TransitItinerary)
             }
             self.btn_goTransit.isLoading(false)
+            self.lbl_transitTime.text = "\(self.transitItineraries.first!.expectedTime) min."
         }
     }
     
     private func getMultimodalItinerary() {
         let parkingList = ParkingList.getInstance()
+        var retainedParking: Parking?
         let dispatchGroup = DispatchGroup()
         btn_goMix.isLoading(true)
+        lbl_mixTime.text = "Chargement..."
+        lbl_mixVia.text = ""
         
         for parking in parkingList.parkings {
             dispatchGroup.enter()
@@ -97,12 +108,21 @@ class ItinerariesViewController: UIViewController {
                     dispatchGroup.leave()
                 }
             }
-            if multimodalItinerary.itineraries.count < 1 { multimodalItinerary = tempMultimodalItinerary }
-            else if multimodalItinerary.expectedTime > tempMultimodalItinerary.expectedTime { multimodalItinerary = tempMultimodalItinerary }
+            dispatchGroup.notify(queue: .main) {
+                if self.multimodalItinerary.itineraries.count < 1 {
+                    self.multimodalItinerary = tempMultimodalItinerary
+                    retainedParking = parking
+                }
+                else if self.multimodalItinerary.expectedTime > tempMultimodalItinerary.expectedTime {
+                    self.multimodalItinerary = tempMultimodalItinerary
+                    retainedParking = parking
+                }
+            }
         }
         
         dispatchGroup.notify(queue: .main) {
-            print("(check) Retained itinerary travel time : \(self.multimodalItinerary.expectedTime)")
+            self.lbl_mixTime.text = "\(self.multimodalItinerary.expectedTime) min."
+            self.lbl_mixVia.text = "via \(retainedParking!.nom)"
             self.btn_goMix.isLoading(false)
         }
     }
