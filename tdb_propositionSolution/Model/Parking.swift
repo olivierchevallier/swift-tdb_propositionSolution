@@ -39,7 +39,7 @@ class Parking {
             - 0.0140 * pow(civilCoordinates.n, 3)
         latitude = latitude * 100 / 36
         longitude = longitude * 100 / 36
-        return (latitude, longitude)
+        return (longitude, latitude)
     }
     
     private static func mn95_to_civil(e: Double, n: Double) -> (e: Double, n: Double) {

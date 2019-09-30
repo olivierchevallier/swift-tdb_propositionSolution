@@ -18,6 +18,7 @@ class ItinerariesViewController: UIViewController {
     //MARK: Mutable
     var carItinerary: CarItinerary?
     var transitItineraries = [TransitItinerary]()
+    var multimodalItinerary = ItinerariesList()
     var userLocation: CLLocationCoordinate2D?
     
     //MARK: Observed
@@ -76,22 +77,32 @@ class ItinerariesViewController: UIViewController {
     private func getMultimodalItinerary() {
         let parkingList = ParkingList.getInstance()
         let dispatchGroup = DispatchGroup()
-        //var itineraries = Dictionary<Int, Parking>
         btn_goMix.isLoading(true)
+        
         for parking in parkingList.parkings {
             dispatchGroup.enter()
+            let tempMultimodalItinerary = ItinerariesList()
             let carItinerariesList = CarItinerariesList(origin:userLocation!, destination: parking.location)
             carItinerariesList.itinerariesCalculated {
                 let myCarItinerary = carItinerariesList.itineraries.first! as! CarItinerary
+                tempMultimodalItinerary.itineraries.append(myCarItinerary)
+                
                 let transitItinerariesList = TransitItinerariesList(origin: parking.location, destination: self.destination!.coordinate)
                 transitItinerariesList.itinerariesCalculated {
                     let myTransitItinerary = transitItinerariesList.itineraries.first!
-        
+                    tempMultimodalItinerary.itineraries.append(myTransitItinerary)
+                    
+                    let totalTravelTime = myTransitItinerary.expectedTime + (myCarItinerary.expectedTime)
+                    print("(check) Total expected travel time (\(myTransitItinerary.expectedTime) (transit)+\(myCarItinerary.expectedTime)(car)): \(totalTravelTime)")
                     dispatchGroup.leave()
                 }
             }
+            if multimodalItinerary.itineraries.count < 1 { multimodalItinerary = tempMultimodalItinerary }
+            else if multimodalItinerary.expectedTime > tempMultimodalItinerary.expectedTime { multimodalItinerary = tempMultimodalItinerary }
         }
+        
         dispatchGroup.notify(queue: .main) {
+            print("(check) Retained itinerary travel time : \(self.multimodalItinerary.expectedTime)")
             self.btn_goMix.isLoading(false)
         }
     }

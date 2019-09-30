@@ -21,8 +21,28 @@ class ItinerariesList {
     var destination: CLLocationCoordinate2D
     var transport: String
     
+    //MARK: Computed
+    var expectedTime: Int {
+        get {
+            if itineraries.count < 1 { return 0 }
+            else {
+                var total = 0
+                for itinerary in itineraries {
+                    total += itinerary.expectedTime
+                }
+                return total
+            }
+        }
+    }
+    
     
     //MARK: - Initializer
+    init() {
+        self.origin = CLLocationCoordinate2D()
+        self.destination = CLLocationCoordinate2D()
+        self.transport = ""
+    }
+    
     init(origin: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, transport: String) {
         self.origin = origin
         self.destination = destination
