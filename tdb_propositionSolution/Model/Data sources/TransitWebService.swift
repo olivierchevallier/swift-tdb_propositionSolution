@@ -17,6 +17,14 @@ class TransitWebService {
         return stringURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     }
     
+    public static func getRoute(from: String, to: String, at: Date) -> String {
+        let baseURL = "https://transport.opendata.ch/v1/"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        let stringURL = baseURL + "connections?from=" + from + "&to=" + to + "&datetime=" + dateFormatter.string(from: at)
+        return stringURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+    }
+    
     public static func getLineColors() -> String {
         let baseURL = "https://prod.ivtr-od.tpg.ch/v1/"
         let accessKey = "82ecbba0-60d5-11e3-a274-0002a5d5c51b"

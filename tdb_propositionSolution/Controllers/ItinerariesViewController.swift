@@ -15,6 +15,9 @@ import MapboxDirections
 
 class ItinerariesViewController: UIViewController {
     //MARK: - Properties
+    //MARK: Immutable
+    let multimodalMargin = 10
+    
     //MARK: Mutable
     var carItinerary: CarItinerary?
     var transitItineraries = [TransitItinerary]()
@@ -85,6 +88,7 @@ class ItinerariesViewController: UIViewController {
     private func getMultimodalItinerary() {
         let parkingList = ParkingList.getInstance()
         var retainedParking: Parking?
+        self.multimodalItinerary = ItinerariesList()
         let dispatchGroup = DispatchGroup()
         btn_goMix.isLoading(true)
         lbl_mixTime.text = "Chargement..."
@@ -97,8 +101,9 @@ class ItinerariesViewController: UIViewController {
             carItinerariesList.itinerariesCalculated {
                 let myCarItinerary = carItinerariesList.itineraries.first! as! CarItinerary
                 tempMultimodalItinerary.itineraries.append(myCarItinerary)
-                
-                let transitItinerariesList = TransitItinerariesList(origin: parking.location, destination: self.destination!.coordinate)
+                //TODO: séparer en plusieurs lignes
+                let departureTime = Date().advanced(by: Double((myCarItinerary.expectedTime + self.multimodalMargin) * 60))
+                let transitItinerariesList = TransitItinerariesList(origin: parking.location, destination: self.destination!.coordinate, departureTime: departureTime)
                 transitItinerariesList.itinerariesCalculated {
                     let myTransitItinerary = transitItinerariesList.itineraries.first!
                     tempMultimodalItinerary.itineraries.append(myTransitItinerary)
@@ -109,11 +114,7 @@ class ItinerariesViewController: UIViewController {
                 }
             }
             dispatchGroup.notify(queue: .main) {
-                if self.multimodalItinerary.itineraries.count < 1 {
-                    self.multimodalItinerary = tempMultimodalItinerary
-                    retainedParking = parking
-                }
-                else if self.multimodalItinerary.expectedTime > tempMultimodalItinerary.expectedTime {
+                if self.multimodalItinerary.itineraries.count < 1 || self.multimodalItinerary.expectedTime > tempMultimodalItinerary.expectedTime {
                     self.multimodalItinerary = tempMultimodalItinerary
                     retainedParking = parking
                 }
@@ -121,7 +122,7 @@ class ItinerariesViewController: UIViewController {
         }
         
         dispatchGroup.notify(queue: .main) {
-            self.lbl_mixTime.text = "\(self.multimodalItinerary.expectedTime) min."
+            self.lbl_mixTime.text = "\(self.multimodalItinerary.expectedTime + self.multimodalMargin) min."
             self.lbl_mixVia.text = "via \(retainedParking!.nom)"
             self.btn_goMix.isLoading(false)
         }

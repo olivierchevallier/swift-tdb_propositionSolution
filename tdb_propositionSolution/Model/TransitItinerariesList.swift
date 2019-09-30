@@ -10,11 +10,21 @@
 import Foundation
 import CoreLocation
 
-class TransitItinerariesList: ItinerariesList {    
+class TransitItinerariesList: ItinerariesList {
+    //MARK: - Properties
+    //MARK: Mutable
+    var departureTime: Date?
+    
     //MARK: - Initializers
     init(origin: CLLocationCoordinate2D, destination: CLLocationCoordinate2D) {
         super.init(origin: origin, destination: destination, transport: "Transports publics")
     }
+    
+    init(origin: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, departureTime: Date) {
+        self.departureTime = departureTime
+        super.init(origin: origin, destination: destination, transport: "Transports publics")
+    }
+    
     
     //MARK: - Private methods
     /// Calcul l'itinéraire
@@ -22,7 +32,7 @@ class TransitItinerariesList: ItinerariesList {
         dispatchGroup.enter()
         let originStr = getStrFormatedLocation(location: origin)
         let destinationStr = getStrFormatedLocation(location: destination)
-        let url = URL(string: TransitWebService.getRoute(from: originStr, to: destinationStr))
+        let url = departureTime == nil ? URL(string: TransitWebService.getRoute(from: originStr, to: destinationStr)) : URL(string: TransitWebService.getRoute(from: originStr, to: destinationStr, at: departureTime!))
         Network.executeHTTPGet(url: url!, dataCompletionHandler: { data in
             do {
                 let connections = try JSONDecoder().decode(TransitWebService.Connections.self, from: data!)
