@@ -316,6 +316,9 @@
                                                 <state key="normal" title="GO">
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="btn_goMixTapped:" destination="dMV-aL-sPU" eventType="touchUpInside" id="tMV-Qh-aVU"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -351,11 +354,12 @@
                         <outlet property="lbl_mixTime" destination="td1-z6-kXx" id="PKq-xK-otD"/>
                         <outlet property="lbl_mixVia" destination="F0H-Rq-Wby" id="P0A-0b-oEw"/>
                         <outlet property="lbl_transitTime" destination="4BA-rb-s0f" id="hr5-UX-0iF"/>
+                        <segue destination="CZP-T7-baF" kind="show" identifier="showMultimodalItineraries" id="EJ5-6o-0Mw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dBp-oB-W8d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1031" y="777"/>
+            <point key="canvasLocation" x="1669" y="765"/>
         </scene>
         <!--Choix de itinéraire-->
         <scene sceneID="MgX-vi-cFf">
@@ -465,7 +469,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="62v-lp-VFR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1878.75" y="776.4084507042254"/>
+            <point key="canvasLocation" x="2518" y="765"/>
         </scene>
         <!--Itinéraire-->
         <scene sceneID="OV2-3U-Kxd">
@@ -541,7 +545,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ikb-cn-Vm6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2737.5" y="775.35211267605632"/>
+            <point key="canvasLocation" x="3377" y="764"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="EJ5-6o-0Mw"/>
+    </inferredMetricsTieBreakers>
 </document>

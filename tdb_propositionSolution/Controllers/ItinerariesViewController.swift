@@ -45,11 +45,18 @@ class ItinerariesViewController: UIViewController {
     //MARK: -
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.layer.cornerRadius = 10
     }
     
     //MARK: - Actions
     @IBAction func btn_goCarTapped(_ sender: Any) {
         let navigationVC = NavigationViewController(for: carItinerary!.route!)
+        present(navigationVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func btn_goMixTapped(_ sender: Any) {
+        let navigationVC = NavigationViewController(for: (multimodalItinerary.itineraries.first! as? CarItinerary)!.route!)
+        performSegue(withIdentifier: "showMultimodalItineraries", sender: self)
         present(navigationVC, animated: true, completion: nil)
     }
     
@@ -101,7 +108,6 @@ class ItinerariesViewController: UIViewController {
             carItinerariesList.itinerariesCalculated {
                 let myCarItinerary = carItinerariesList.itineraries.first! as! CarItinerary
                 tempMultimodalItinerary.itineraries.append(myCarItinerary)
-                //TODO: séparer en plusieurs lignes
                 let departureTime = Date().advanced(by: Double((myCarItinerary.expectedTime + self.multimodalMargin) * 60))
                 let transitItinerariesList = TransitItinerariesList(origin: parking.location, destination: self.destination!.coordinate, departureTime: departureTime)
                 transitItinerariesList.itinerariesCalculated {
@@ -130,10 +136,18 @@ class ItinerariesViewController: UIViewController {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showTransitItineraries" {
-            if let destinationVC = segue.destination as? TransitItinerariesTableViewController {
-                destinationVC.itineraries = transitItineraries
+        if let destinationVC = segue.destination as? TransitItinerariesTableViewController {
+            var itineraries = [Itinerary]()
+            if segue.identifier == "showTransitItineraries" {
+                itineraries = transitItineraries
+            } else if segue.identifier == "showMultimodalItineraries" {
+                for itinerary in multimodalItinerary.itineraries {
+                    if itinerary as? TransitItinerary != nil {
+                        itineraries.append(itinerary)
+                    }
+                }
             }
+            destinationVC.itineraries = (itineraries as? [TransitItinerary])!
         }
     }
 }
