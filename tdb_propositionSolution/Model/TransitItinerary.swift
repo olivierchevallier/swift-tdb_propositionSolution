@@ -40,6 +40,18 @@ class TransitItinerary: Itinerary {
             return durationInMinutes
         }
     }
+    override var timeToDestination: Int {
+        get {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+            if let date = dateFormatter.date(from:connection.to.arrival!) {
+                return Int(date.timeIntervalSinceNow) / 60
+            }
+            return 0
+            
+        }
+    }
     var departureTime: String {
         get {
             return TransitItinerary.makeTimePrensentable(time: connection.from.departure!)

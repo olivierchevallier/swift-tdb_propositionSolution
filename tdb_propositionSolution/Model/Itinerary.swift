@@ -34,6 +34,11 @@ class Itinerary {
             return 0
         }
     }
+    var timeToDestination: Int {
+        get {
+            return expectedTime
+        }
+    }
     
     //MARK: - Initializer
     init(origin: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, transport: String) {

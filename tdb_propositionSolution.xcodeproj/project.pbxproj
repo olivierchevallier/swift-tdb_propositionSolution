@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5F252B55232F79AB0050546E /* Itinerary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F252B54232F79AB0050546E /* Itinerary.swift */; };
+		5F3E277D2343470400EFBF85 /* MultimodalItinerariesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3E277C2343470400EFBF85 /* MultimodalItinerariesList.swift */; };
 		5F6BAB5B2338FBC90089D5A8 /* TransitItineraryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6BAB5A2338FBC90089D5A8 /* TransitItineraryController.swift */; };
 		5F6BAB5D233A3B5B0089D5A8 /* TransitLineColorsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6BAB5C233A3B5B0089D5A8 /* TransitLineColorsList.swift */; };
 		5F6BAB5F233A41570089D5A8 /* TransitLineControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6BAB5E233A41570089D5A8 /* TransitLineControl.swift */; };
@@ -55,6 +56,7 @@
 
 /* Begin PBXFileReference section */
 		5F252B54232F79AB0050546E /* Itinerary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Itinerary.swift; sourceTree = "<group>"; };
+		5F3E277C2343470400EFBF85 /* MultimodalItinerariesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultimodalItinerariesList.swift; sourceTree = "<group>"; };
 		5F6BAB562338BB780089D5A8 /* TransitStepControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitStepControl.swift; sourceTree = "<group>"; };
 		5F6BAB5A2338FBC90089D5A8 /* TransitItineraryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitItineraryController.swift; sourceTree = "<group>"; };
 		5F6BAB5C233A3B5B0089D5A8 /* TransitLineColorsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitLineColorsList.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 				5FB3B4452334C84D00205719 /* ItinerariesList.swift */,
 				5FB3B4432334C83B00205719 /* CarItinerariesList.swift */,
 				5FB3B4412334C06300205719 /* TransitItinerariesList.swift */,
+				5F3E277C2343470400EFBF85 /* MultimodalItinerariesList.swift */,
 				5F6BAB5C233A3B5B0089D5A8 /* TransitLineColorsList.swift */,
 				5F6BAB63233A60670089D5A8 /* TransitLine.swift */,
 				5FFA452B233CE52400EB2237 /* Parking.swift */,
@@ -422,6 +425,7 @@
 				5FFA452C233CE52400EB2237 /* Parking.swift in Sources */,
 				5F713AE82333B04B00C2C8CC /* CarWebService.swift in Sources */,
 				5F713AE32333AFDB00C2C8CC /* TransitWebService.swift in Sources */,
+				5F3E277D2343470400EFBF85 /* MultimodalItinerariesList.swift in Sources */,
 				5FFA4528233B805900EB2237 /* TransitStepControl.swift in Sources */,
 				5F6BAB64233A60670089D5A8 /* TransitLine.swift in Sources */,
 				5FA66EF9231FA92700A23B14 /* AppDelegate.swift in Sources */,
