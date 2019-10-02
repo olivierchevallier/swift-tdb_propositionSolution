@@ -11,6 +11,8 @@ import UIKit
 
 class HomeAdressViewController: UIViewController {
     //MARK: - Properties
+    //MARK: Mutable
+    
     //MARK: Controls
     @IBOutlet var txt_adress: UITextField!
     @IBOutlet var btn_finish: ConfigButtonControl!
@@ -22,12 +24,14 @@ class HomeAdressViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    //MARK: - Actions
+    
 
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let defaults = UserDefaults.standard
         defaults.set(true, forKey: "configured")
-        segue.destination.modalPresentationStyle = .fullScreen
+        //segue.destination.modalPresentationStyle = .fullScreen
         resignFirstResponder()
     }
 

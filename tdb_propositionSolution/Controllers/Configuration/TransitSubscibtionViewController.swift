@@ -24,7 +24,22 @@ class TransitSubscibtionViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func btn_tapped(_ sender: Any) {
+    //MARK: - Actions
+    @IBAction func btn_tapped(_ sender: UIButton) {
+        let defaults = UserDefaults.standard
+        
+        switch sender {
+            case btn_no:
+                defaults.set("none", forKey: "transitSubscription")
+            case btn_yesAG:
+                defaults.set("AG", forKey: "transitSubscription")
+            case btn_yesHalf:
+                defaults.set("half", forKey: "transitSubscription")
+            case btn_yesUnireseau:
+                defaults.set("unireseau", forKey: "transitSubscription")
+            default:
+                defaults.set("", forKey: "transitSubscription")
+        }
         performSegue(withIdentifier: "WalkSpeedSegue", sender: self)
     }
     /*

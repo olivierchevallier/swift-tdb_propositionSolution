@@ -23,7 +23,20 @@ class WalkSpeedViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func btn_tapped(_ sender: Any) {
+    //MARK: - Actions
+    @IBAction func btn_tapped(_ sender: UIButton) {
+        let defaults = UserDefaults.standard
+        
+        switch sender {
+        case btn_fast:
+            defaults.set(5.5, forKey: "walkSpeed")
+        case btn_average:
+            defaults.set(4.5, forKey: "walkSpeed")
+        case btn_slow:
+            defaults.set(3.5, forKey: "walkSpeed")
+        default:
+            defaults.set(0.0, forKey: "walkSpeed")
+        }
         performSegue(withIdentifier: "HomeAdressSegue", sender: self)
     }
     

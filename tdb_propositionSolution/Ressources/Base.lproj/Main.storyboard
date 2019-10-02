@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -517,7 +518,7 @@
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DBo-Bf-JhA">
-                                <rect key="frame" x="0.0" y="50" width="320" height="193"/>
+                                <rect key="frame" x="0.0" y="193" width="320" height="77"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="8zU-hf-UkI">
                                         <rect key="frame" x="10" y="0.0" width="300" height="193"/>
@@ -534,6 +535,62 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="pcf-Vg-5AY"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="mMV-IY-a2p"/>
                             </scrollView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="h71-ME-KJF">
+                                <rect key="frame" x="10" y="60" width="300" height="128"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="XjI-A1-mB0"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vJA-b1-GBd">
+                                    <size key="itemSize" width="300" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="transitNavigationCollectionViewCell" id="qnR-Uq-qD0" customClass="TransitNavigationCollectionViewCell" customModule="tdb_propositionSolution" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="EWx-ub-mY9">
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hub-Ay-xZA">
+                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="128"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mfl-UF-2J5">
+                                                            <rect key="frame" x="8" y="8" width="284" height="20.5"/>
+                                                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstItem="Mfl-UF-2J5" firstAttribute="leading" secondItem="hub-Ay-xZA" secondAttribute="leading" constant="8" id="2bF-QI-0ib"/>
+                                                        <constraint firstItem="Mfl-UF-2J5" firstAttribute="top" secondItem="hub-Ay-xZA" secondAttribute="top" constant="8" id="Kcf-5a-Vp1"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Mfl-UF-2J5" secondAttribute="trailing" constant="8" id="iph-Vt-08q"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="hub-Ay-xZA" firstAttribute="top" secondItem="EWx-ub-mY9" secondAttribute="top" id="5Xt-AM-kpd"/>
+                                                <constraint firstAttribute="bottom" secondItem="hub-Ay-xZA" secondAttribute="bottom" id="A5e-Ut-dbV"/>
+                                                <constraint firstItem="hub-Ay-xZA" firstAttribute="leading" secondItem="EWx-ub-mY9" secondAttribute="leading" id="L5N-S0-T83"/>
+                                                <constraint firstAttribute="trailing" secondItem="hub-Ay-xZA" secondAttribute="trailing" id="iRB-0i-Q3C"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="300" height="128"/>
+                                        <connections>
+                                            <outlet property="lbl_infos" destination="Mfl-UF-2J5" id="Yml-4t-2ty"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="Dlp-7Z-SHI" id="Zwn-PF-C8r"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -542,13 +599,17 @@
                             <constraint firstItem="nCU-vw-2d9" firstAttribute="bottom" secondItem="DBo-Bf-JhA" secondAttribute="bottom" id="RYE-UF-Zmd"/>
                             <constraint firstItem="GtH-y1-wQl" firstAttribute="leading" secondItem="DBo-Bf-JhA" secondAttribute="leading" id="U8f-NL-OIt"/>
                             <constraint firstItem="GtH-y1-wQl" firstAttribute="top" secondItem="nCU-vw-2d9" secondAttribute="top" id="XaY-a9-7hR"/>
-                            <constraint firstItem="DBo-Bf-JhA" firstAttribute="top" secondItem="nCU-vw-2d9" secondAttribute="top" constant="50" id="bGe-M2-nHj"/>
+                            <constraint firstItem="DBo-Bf-JhA" firstAttribute="top" secondItem="h71-ME-KJF" secondAttribute="bottom" constant="10" id="bGe-M2-nHj"/>
                             <constraint firstItem="GtH-y1-wQl" firstAttribute="trailing" secondItem="DBo-Bf-JhA" secondAttribute="trailing" id="c5e-SE-7xe"/>
+                            <constraint firstItem="nCU-vw-2d9" firstAttribute="trailing" secondItem="h71-ME-KJF" secondAttribute="trailing" constant="10" id="cB7-ow-ubw"/>
+                            <constraint firstItem="h71-ME-KJF" firstAttribute="leading" secondItem="nCU-vw-2d9" secondAttribute="leading" constant="10" id="g3L-A1-OkN"/>
+                            <constraint firstItem="h71-ME-KJF" firstAttribute="top" secondItem="GtH-y1-wQl" secondAttribute="bottom" constant="10" id="nsP-nm-yMn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nCU-vw-2d9"/>
                     </view>
                     <navigationItem key="navigationItem" id="kbD-Ws-zgp"/>
                     <connections>
+                        <outlet property="col_navigation" destination="h71-ME-KJF" id="o80-Mm-mG1"/>
                         <outlet property="lbl_duration" destination="7fd-iK-Jn9" id="pFb-Qx-rKj"/>
                         <outlet property="lbl_times" destination="Hfg-5m-ehi" id="i5H-vE-gey"/>
                         <outlet property="scrl_details" destination="DBo-Bf-JhA" id="Rfj-rh-5xx"/>
@@ -557,7 +618,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ikb-cn-Vm6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3377" y="764"/>
+            <point key="canvasLocation" x="3376.875" y="763.73239436619724"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
