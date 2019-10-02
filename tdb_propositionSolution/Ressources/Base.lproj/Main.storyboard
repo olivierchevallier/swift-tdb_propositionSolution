@@ -558,9 +558,50 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hub-Ay-xZA">
                                                     <rect key="frame" x="0.0" y="0.0" width="300" height="128"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mfl-UF-2J5">
-                                                            <rect key="frame" x="8" y="8" width="284" height="20.5"/>
-                                                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marchez jusqu'à" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mfl-UF-2J5">
+                                                            <rect key="frame" x="8" y="8" width="125" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Puis prenez" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WLc-kr-36Y">
+                                                            <rect key="frame" x="8" y="65" width="89.5" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Arrêt" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XcZ-5B-JBi">
+                                                            <rect key="frame" x="8" y="36.5" width="284" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ligne" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="39q-7A-ABM" customClass="TransitLineControl" customModule="tdb_propositionSolution" customModuleProvider="target">
+                                                            <rect key="frame" x="105.5" y="65" width="37" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ligne" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GD0-gy-gqu" customClass="TransitLineControl" customModule="tdb_propositionSolution" customModuleProvider="target">
+                                                            <rect key="frame" x="141" y="8" width="37" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Direction" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Inq-gh-3Pp">
+                                                            <rect key="frame" x="8" y="93.5" width="284" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dans x min." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M5D-2N-FCw">
+                                                            <rect key="frame" x="150" y="65.5" width="87" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dans x min. à" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RBi-mK-bxf">
+                                                            <rect key="frame" x="186" y="8" width="100.5" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -568,9 +609,24 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
+                                                        <constraint firstItem="XcZ-5B-JBi" firstAttribute="leading" secondItem="hub-Ay-xZA" secondAttribute="leading" constant="8" id="2PR-ip-9dT"/>
                                                         <constraint firstItem="Mfl-UF-2J5" firstAttribute="leading" secondItem="hub-Ay-xZA" secondAttribute="leading" constant="8" id="2bF-QI-0ib"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Inq-gh-3Pp" secondAttribute="trailing" constant="8" id="5SQ-Kb-jQQ"/>
+                                                        <constraint firstItem="WLc-kr-36Y" firstAttribute="top" secondItem="XcZ-5B-JBi" secondAttribute="bottom" constant="7.5" id="7tf-AH-h7z"/>
                                                         <constraint firstItem="Mfl-UF-2J5" firstAttribute="top" secondItem="hub-Ay-xZA" secondAttribute="top" constant="8" id="Kcf-5a-Vp1"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Mfl-UF-2J5" secondAttribute="trailing" constant="8" id="iph-Vt-08q"/>
+                                                        <constraint firstItem="39q-7A-ABM" firstAttribute="top" secondItem="XcZ-5B-JBi" secondAttribute="bottom" constant="7.5" id="MYB-y1-AyS"/>
+                                                        <constraint firstAttribute="trailing" secondItem="XcZ-5B-JBi" secondAttribute="trailing" constant="8" id="RK2-Aa-5Ns"/>
+                                                        <constraint firstItem="GD0-gy-gqu" firstAttribute="leading" secondItem="Mfl-UF-2J5" secondAttribute="trailing" constant="8" id="S13-GQ-cNH"/>
+                                                        <constraint firstItem="M5D-2N-FCw" firstAttribute="leading" secondItem="39q-7A-ABM" secondAttribute="trailing" constant="7.5" id="VBu-zk-tO3"/>
+                                                        <constraint firstItem="Inq-gh-3Pp" firstAttribute="top" secondItem="WLc-kr-36Y" secondAttribute="bottom" constant="7.5" id="bp2-Kn-n68"/>
+                                                        <constraint firstItem="RBi-mK-bxf" firstAttribute="top" secondItem="hub-Ay-xZA" secondAttribute="top" constant="8" id="cYz-3Z-332"/>
+                                                        <constraint firstItem="39q-7A-ABM" firstAttribute="leading" secondItem="WLc-kr-36Y" secondAttribute="trailing" constant="8" id="ebI-AF-2JO"/>
+                                                        <constraint firstItem="WLc-kr-36Y" firstAttribute="leading" secondItem="hub-Ay-xZA" secondAttribute="leading" constant="8" id="f6B-n7-HJV"/>
+                                                        <constraint firstItem="RBi-mK-bxf" firstAttribute="leading" secondItem="GD0-gy-gqu" secondAttribute="trailing" constant="8" id="ooU-cQ-BgD"/>
+                                                        <constraint firstItem="Inq-gh-3Pp" firstAttribute="leading" secondItem="hub-Ay-xZA" secondAttribute="leading" constant="8" id="rER-2B-pzF"/>
+                                                        <constraint firstItem="M5D-2N-FCw" firstAttribute="top" secondItem="XcZ-5B-JBi" secondAttribute="bottom" constant="8" id="tqh-cb-2k1"/>
+                                                        <constraint firstItem="GD0-gy-gqu" firstAttribute="top" secondItem="hub-Ay-xZA" secondAttribute="top" constant="8" id="y5T-tc-U0r"/>
+                                                        <constraint firstItem="XcZ-5B-JBi" firstAttribute="top" secondItem="Mfl-UF-2J5" secondAttribute="bottom" constant="7.5" id="zV0-iy-FCy"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -583,7 +639,14 @@
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="300" height="128"/>
                                         <connections>
-                                            <outlet property="lbl_infos" destination="Mfl-UF-2J5" id="Yml-4t-2ty"/>
+                                            <outlet property="lbl_connection" destination="Mfl-UF-2J5" id="Yml-4t-2ty"/>
+                                            <outlet property="lbl_connectionLine" destination="GD0-gy-gqu" id="8fh-Hh-788"/>
+                                            <outlet property="lbl_leaveAt" destination="RBi-mK-bxf" id="QUU-ew-Jvo"/>
+                                            <outlet property="lbl_nextConnection" destination="WLc-kr-36Y" id="Cf1-rN-02N"/>
+                                            <outlet property="lbl_nextConnectionDirection" destination="Inq-gh-3Pp" id="Imp-U3-tBr"/>
+                                            <outlet property="lbl_nextConnectionIn" destination="M5D-2N-FCw" id="4UF-ds-GA9"/>
+                                            <outlet property="lbl_nextConnectionLine" destination="39q-7A-ABM" id="xed-yR-EVa"/>
+                                            <outlet property="lbl_nextStop" destination="XcZ-5B-JBi" id="89P-PW-JvX"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
