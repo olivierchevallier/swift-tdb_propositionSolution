@@ -28,6 +28,11 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
     //MARK: -
     override func viewDidLoad() {
         super.viewDidLoad()
+        let defaults = UserDefaults.standard
+        if defaults.bool(forKey: "configured") == false {
+            performSegue(withIdentifier: "ConfigurationSegue", sender: self)
+        }
+        defaults.set(false, forKey: "configured")
         
         guard let itinerariesController = children.first as? ItinerariesViewController else {
             fatalError("Error while getting itineraries child view")

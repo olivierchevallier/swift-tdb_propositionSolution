@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="keu-sj-HhX">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
@@ -22,8 +22,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EBZ-JY-NFw" customClass="ConfigButtonControl" customModule="tdb_propositionSolution" customModuleProvider="target">
-                                <rect key="frame" x="10" y="515" width="300" height="33"/>
+                                <rect key="frame" x="10" y="508" width="300" height="40"/>
                                 <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="cZT-nN-0z2"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Allons-y !"/>
@@ -37,7 +40,7 @@
                             <constraint firstItem="EBZ-JY-NFw" firstAttribute="leading" secondItem="Vbu-dO-JxP" secondAttribute="leading" constant="10" id="2Tc-Og-VmI"/>
                             <constraint firstItem="Vbu-dO-JxP" firstAttribute="trailing" secondItem="WrQ-xZ-EhE" secondAttribute="trailing" constant="10" id="9XG-zC-Tbb"/>
                             <constraint firstItem="Vbu-dO-JxP" firstAttribute="trailing" secondItem="EBZ-JY-NFw" secondAttribute="trailing" constant="10" id="Qvf-dT-XNC"/>
-                            <constraint firstItem="WrQ-xZ-EhE" firstAttribute="centerY" secondItem="Vbu-dO-JxP" secondAttribute="centerY" id="XS4-af-SAa"/>
+                            <constraint firstItem="WrQ-xZ-EhE" firstAttribute="centerY" secondItem="AbI-Aa-9KO" secondAttribute="centerY" id="XS4-af-SAa"/>
                             <constraint firstItem="WrQ-xZ-EhE" firstAttribute="leading" secondItem="Vbu-dO-JxP" secondAttribute="leading" constant="10" id="kbP-Re-YQa"/>
                             <constraint firstItem="Vbu-dO-JxP" firstAttribute="bottom" secondItem="EBZ-JY-NFw" secondAttribute="bottom" constant="20" id="mlB-ot-jF1"/>
                         </constraints>
@@ -49,10 +52,10 @@
             </objects>
             <point key="canvasLocation" x="-381" y="16"/>
         </scene>
-        <!--View Controller-->
+        <!--Transit Subscibtion View Controller-->
         <scene sceneID="T2A-XK-E0f">
             <objects>
-                <viewController id="7bQ-hd-HTW" sceneMemberID="viewController">
+                <viewController id="7bQ-hd-HTW" customClass="TransitSubscibtionViewController" customModule="tdb_propositionSolution" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gdT-vG-dvr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -63,55 +66,79 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="QB4-0j-y8L">
-                                <rect key="frame" x="10" y="203" width="300" height="162"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l7S-jb-f4I" customClass="ConfigButtonControl" customModule="tdb_propositionSolution" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="33"/>
-                                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="Oui, j'ai un abonnement uniresau"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nks-S4-jWi" customClass="ConfigButtonControl" customModule="tdb_propositionSolution" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="43" width="300" height="33"/>
-                                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="Oui, j'ai un abonnement général"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ypR-vZ-19F" customClass="ConfigButtonControl" customModule="tdb_propositionSolution" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="86" width="300" height="33"/>
-                                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="Oui, j'ai un demi-tarif"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emZ-N7-JQ6" customClass="ConfigButtonControl" customModule="tdb_propositionSolution" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="129" width="300" height="33"/>
-                                        <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="Non"/>
-                                    </button>
-                                </subviews>
-                            </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cette information est utilisée pour calculer les coûts relatifs au différents itinéraires" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNs-JM-OJ9">
                                 <rect key="frame" x="10" y="88" width="300" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="QB4-0j-y8L">
+                                <rect key="frame" x="10" y="358" width="300" height="190"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l7S-jb-f4I" customClass="ConfigButtonControl" customModule="tdb_propositionSolution" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="40"/>
+                                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="u38-Ir-xPK"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Oui, j'ai un abonnement uniresau"/>
+                                        <connections>
+                                            <action selector="btn_tapped:" destination="7bQ-hd-HTW" eventType="touchUpInside" id="os2-Jm-vR1"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nks-S4-jWi" customClass="ConfigButtonControl" customModule="tdb_propositionSolution" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="300" height="40"/>
+                                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="bNA-fw-OKY"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Oui, j'ai un abonnement général"/>
+                                        <connections>
+                                            <action selector="btn_tapped:" destination="7bQ-hd-HTW" eventType="touchUpInside" id="evt-cF-frh"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ypR-vZ-19F" customClass="ConfigButtonControl" customModule="tdb_propositionSolution" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="100" width="300" height="40"/>
+                                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="skU-4S-AVo"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Oui, j'ai un demi-tarif"/>
+                                        <connections>
+                                            <action selector="btn_tapped:" destination="7bQ-hd-HTW" eventType="touchUpInside" id="9sa-7Y-5gI"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emZ-N7-JQ6" customClass="ConfigButtonControl" customModule="tdb_propositionSolution" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="150" width="300" height="40"/>
+                                        <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="ato-UH-PRI"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Non"/>
+                                        <connections>
+                                            <action selector="btn_tapped:" destination="7bQ-hd-HTW" eventType="touchUpInside" id="dSF-oC-EHc"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="gNs-JM-OJ9" firstAttribute="leading" secondItem="mWU-rP-tWh" secondAttribute="leading" constant="10" id="0qZ-Vd-8Vi"/>
                             <constraint firstItem="mWU-rP-tWh" firstAttribute="trailing" secondItem="1RA-tp-LW9" secondAttribute="trailing" constant="10" id="5ZN-48-JY4"/>
-                            <constraint firstItem="QB4-0j-y8L" firstAttribute="centerY" secondItem="mWU-rP-tWh" secondAttribute="centerY" id="9qZ-Mp-PE6"/>
                             <constraint firstItem="1RA-tp-LW9" firstAttribute="leading" secondItem="mWU-rP-tWh" secondAttribute="leading" constant="10" id="KIh-h7-Ccf"/>
                             <constraint firstItem="1RA-tp-LW9" firstAttribute="top" secondItem="mWU-rP-tWh" secondAttribute="top" constant="20" id="Puv-I3-CAo"/>
                             <constraint firstItem="mWU-rP-tWh" firstAttribute="trailing" secondItem="QB4-0j-y8L" secondAttribute="trailing" constant="10" id="QRn-aC-pXl"/>
                             <constraint firstItem="QB4-0j-y8L" firstAttribute="leading" secondItem="mWU-rP-tWh" secondAttribute="leading" constant="10" id="SOY-dZ-CMo"/>
+                            <constraint firstItem="mWU-rP-tWh" firstAttribute="bottom" secondItem="QB4-0j-y8L" secondAttribute="bottom" constant="20" id="aQJ-BZ-lqJ"/>
                             <constraint firstItem="mWU-rP-tWh" firstAttribute="trailing" secondItem="gNs-JM-OJ9" secondAttribute="trailing" constant="10" id="ipj-z6-yOA"/>
                             <constraint firstItem="gNs-JM-OJ9" firstAttribute="top" secondItem="1RA-tp-LW9" secondAttribute="bottom" constant="8" id="pWi-6l-i6p"/>
                         </constraints>
@@ -120,17 +147,21 @@
                     <navigationItem key="navigationItem" id="oQP-np-5AL"/>
                     <splitViewMasterSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <segue destination="yr8-A3-PO1" kind="show" id="bCn-jS-sB7"/>
+                        <outlet property="btn_no" destination="emZ-N7-JQ6" id="nU9-Ug-YYW"/>
+                        <outlet property="btn_yesAG" destination="Nks-S4-jWi" id="2Po-BJ-Xe1"/>
+                        <outlet property="btn_yesHalf" destination="ypR-vZ-19F" id="Xea-KX-q7E"/>
+                        <outlet property="btn_yesUnireseau" destination="l7S-jb-f4I" id="ebq-mL-KOC"/>
+                        <segue destination="yr8-A3-PO1" kind="show" identifier="WalkSpeedSegue" id="bCn-jS-sB7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q5W-jw-Amt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="480" y="15.845070422535212"/>
         </scene>
-        <!--View Controller-->
+        <!--Walk Speed View Controller-->
         <scene sceneID="agc-N7-9SO">
             <objects>
-                <viewController id="yr8-A3-PO1" sceneMemberID="viewController">
+                <viewController id="yr8-A3-PO1" customClass="WalkSpeedViewController" customModule="tdb_propositionSolution" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="p9U-ak-V6Q">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -141,38 +172,56 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="RQg-rG-B6k">
-                                <rect key="frame" x="12" y="224.5" width="297" height="119"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oid-ZL-1x0" customClass="ConfigButtonControl" customModule="tdb_propositionSolution" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="297" height="33"/>
-                                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="J'ai la pêche ! Marche à 5-6 km/h"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWN-T9-rfq" customClass="ConfigButtonControl" customModule="tdb_propositionSolution" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="43" width="297" height="33"/>
-                                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="Dans la moyenne. Marche à 4-5 km/h"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HE4-qJ-Upq" customClass="ConfigButtonControl" customModule="tdb_propositionSolution" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="86" width="297" height="33"/>
-                                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="Force tranquille. Marche à 3-4 km/h"/>
-                                    </button>
-                                </subviews>
-                            </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cette information est utilisée pour indiquer des temps réalistes pour les déplacements à pieds" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kXQ-PJ-kDz">
                                 <rect key="frame" x="10" y="88" width="300" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="RQg-rG-B6k">
+                                <rect key="frame" x="12" y="408" width="297" height="140"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oid-ZL-1x0" customClass="ConfigButtonControl" customModule="tdb_propositionSolution" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="297" height="40"/>
+                                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Oid-qb-YDV"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="J'ai la pêche ! Marche à 5-6 km/h"/>
+                                        <connections>
+                                            <action selector="btn_tapped:" destination="yr8-A3-PO1" eventType="touchUpInside" id="4U8-YV-1rz"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWN-T9-rfq" customClass="ConfigButtonControl" customModule="tdb_propositionSolution" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="297" height="40"/>
+                                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="LW1-PN-cjl"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Dans la moyenne. Marche à 4-5 km/h"/>
+                                        <connections>
+                                            <action selector="btn_tapped:" destination="yr8-A3-PO1" eventType="touchUpInside" id="YdS-TB-8DK"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HE4-qJ-Upq" customClass="ConfigButtonControl" customModule="tdb_propositionSolution" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="100" width="297" height="40"/>
+                                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="E6i-iV-urR"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Force tranquille. Marche à 3-4 km/h"/>
+                                        <connections>
+                                            <action selector="btn_tapped:" destination="yr8-A3-PO1" eventType="touchUpInside" id="EUf-sJ-ZG7"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -184,24 +233,27 @@
                             <constraint firstItem="MPK-Vf-axW" firstAttribute="trailing" secondItem="jiL-Ke-FRO" secondAttribute="trailing" constant="10" id="Uyt-j5-jdJ"/>
                             <constraint firstItem="MPK-Vf-axW" firstAttribute="trailing" secondItem="kXQ-PJ-kDz" secondAttribute="trailing" constant="10" id="gRC-GK-d35"/>
                             <constraint firstItem="jiL-Ke-FRO" firstAttribute="top" secondItem="MPK-Vf-axW" secondAttribute="top" constant="20" id="pWP-gC-vQC"/>
-                            <constraint firstItem="RQg-rG-B6k" firstAttribute="centerY" secondItem="MPK-Vf-axW" secondAttribute="centerY" id="rnS-cm-1Te"/>
+                            <constraint firstItem="MPK-Vf-axW" firstAttribute="bottom" secondItem="RQg-rG-B6k" secondAttribute="bottom" constant="20" id="qwM-00-vyE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MPK-Vf-axW"/>
                     </view>
                     <navigationItem key="navigationItem" id="lfO-hz-mgd"/>
                     <splitViewMasterSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <segue destination="5zj-mU-rjp" kind="show" id="lTi-po-Ra5"/>
+                        <outlet property="btn_average" destination="IWN-T9-rfq" id="ha0-s5-mc4"/>
+                        <outlet property="btn_fast" destination="Oid-ZL-1x0" id="73g-vN-XAr"/>
+                        <outlet property="btn_slow" destination="HE4-qJ-Upq" id="Ec7-DE-A4T"/>
+                        <segue destination="5zj-mU-rjp" kind="show" identifier="HomeAdressSegue" id="lTi-po-Ra5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z8V-U7-9ou" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1306.875" y="15.845070422535212"/>
         </scene>
-        <!--View Controller-->
+        <!--Home Adress View Controller-->
         <scene sceneID="ogZ-nP-TEn">
             <objects>
-                <viewController id="5zj-mU-rjp" sceneMemberID="viewController">
+                <viewController id="5zj-mU-rjp" customClass="HomeAdressViewController" customModule="tdb_propositionSolution" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GTD-hW-Tio">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -221,27 +273,36 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cS5-KB-s1T" customClass="ConfigButtonControl" customModule="tdb_propositionSolution" customModuleProvider="target">
-                                <rect key="frame" x="12" y="515" width="297" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cS5-KB-s1T" customClass="ConfigButtonControl" customModule="tdb_propositionSolution" customModuleProvider="target">
+                                <rect key="frame" x="10" y="508" width="300" height="40"/>
                                 <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="4Yw-os-W8C"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Terminer"/>
+                                <connections>
+                                    <segue destination="oi4-ZC-YM7" kind="show" id="jyp-Py-ehV"/>
+                                </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Entrez votr adresse ici..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GFR-33-wzj">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Entrez votr adresse ici..." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="GFR-33-wzj">
                                 <rect key="frame" x="10" y="125" width="300" height="34"/>
+                                <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="search" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="street-address"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="n4Y-ht-YY2" firstAttribute="leading" secondItem="rtv-0y-MwP" secondAttribute="leading" constant="10" id="2TF-rk-HBH"/>
+                            <constraint firstItem="rtv-0y-MwP" firstAttribute="trailing" secondItem="cS5-KB-s1T" secondAttribute="trailing" constant="10" id="Fxo-Bu-Lfp"/>
                             <constraint firstItem="GFR-33-wzj" firstAttribute="top" secondItem="v41-nb-r7q" secondAttribute="bottom" constant="8" id="HrY-RB-Lrj"/>
                             <constraint firstItem="rtv-0y-MwP" firstAttribute="trailing" secondItem="v41-nb-r7q" secondAttribute="trailing" constant="10" id="K8l-Oo-MUF"/>
                             <constraint firstItem="rtv-0y-MwP" firstAttribute="trailing" secondItem="GFR-33-wzj" secondAttribute="trailing" constant="10" id="R7n-BN-Oce"/>
+                            <constraint firstItem="rtv-0y-MwP" firstAttribute="bottom" secondItem="cS5-KB-s1T" secondAttribute="bottom" constant="20" id="S9m-6U-O8U"/>
                             <constraint firstItem="v41-nb-r7q" firstAttribute="top" secondItem="n4Y-ht-YY2" secondAttribute="bottom" constant="8" id="Wl3-i7-Slh"/>
+                            <constraint firstItem="cS5-KB-s1T" firstAttribute="leading" secondItem="rtv-0y-MwP" secondAttribute="leading" constant="10" id="YDp-51-8Uy"/>
                             <constraint firstItem="rtv-0y-MwP" firstAttribute="trailing" secondItem="n4Y-ht-YY2" secondAttribute="trailing" constant="10" id="bF1-7Z-tnN"/>
                             <constraint firstItem="v41-nb-r7q" firstAttribute="leading" secondItem="rtv-0y-MwP" secondAttribute="leading" constant="10" id="rNq-Ze-oe0"/>
                             <constraint firstItem="GFR-33-wzj" firstAttribute="leading" secondItem="rtv-0y-MwP" secondAttribute="leading" constant="10" id="uBF-eO-efz"/>
@@ -251,10 +312,24 @@
                     </view>
                     <navigationItem key="navigationItem" id="akI-AG-IfE"/>
                     <splitViewMasterSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="btn_finish" destination="cS5-KB-s1T" id="ccq-sj-efc"/>
+                        <outlet property="txt_adress" destination="GFR-33-wzj" id="ruw-Mx-vCP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sBW-sq-zI3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2268.75" y="15.845070422535212"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="IrS-oh-ZeB">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="oi4-ZC-YM7" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="eEO-IE-kil"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v0n-Yj-MNZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2897" y="16"/>
         </scene>
     </scenes>
 </document>

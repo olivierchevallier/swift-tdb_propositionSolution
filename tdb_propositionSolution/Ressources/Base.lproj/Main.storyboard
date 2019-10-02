@@ -52,8 +52,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Plan" id="PTD-MI-5x1"/>
+                    <splitViewMasterSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="txt_search" destination="TMr-K3-9at" id="vgW-q2-SPa"/>
+                        <segue destination="d9h-Cp-SvJ" kind="show" identifier="ConfigurationSegue" id="qQ7-0b-J8N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -152,6 +154,16 @@
                 <exit id="tcO-np-QQq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1879.2" y="92.364532019704441"/>
+        </scene>
+        <!--Configuration-->
+        <scene sceneID="wy1-1y-uR8">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Configuration" id="d9h-Cp-SvJ" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="s7y-QV-QPz"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a1W-gG-LvE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="638" y="587"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="IwB-JL-WvO">
@@ -549,6 +561,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="EJ5-6o-0Mw"/>
+        <segue reference="AJe-tp-ZOB"/>
     </inferredMetricsTieBreakers>
 </document>

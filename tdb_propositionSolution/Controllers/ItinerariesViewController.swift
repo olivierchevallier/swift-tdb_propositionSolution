@@ -104,47 +104,6 @@ class ItinerariesViewController: UIViewController {
             self.btn_goMix.isLoading(false)
         }
     }
-    /*
-    private func getMultimodalItinerary() {
-        let parkingList = ParkingList.getInstance()
-        var retainedParking: Parking?
-        self.multimodalItinerary = ItinerariesList()
-        let dispatchGroup = DispatchGroup()
-        btn_goMix.isLoading(true)
-        lbl_mixTime.text = "Chargement..."
-        lbl_mixVia.text = ""
-        
-        for parking in parkingList.parkings {
-            dispatchGroup.enter()
-            let tempMultimodalItinerary = ItinerariesList()
-            let carItinerariesList = CarItinerariesList(origin:userLocation!, destination: parking.location)
-            carItinerariesList.itinerariesCalculated {
-                let myCarItinerary = carItinerariesList.itineraries.first! as! CarItinerary
-                tempMultimodalItinerary.itineraries.append(myCarItinerary)
-                let departureTime = Date().advanced(by: Double((myCarItinerary.expectedTime + self.multimodalMargin) * 60))
-                let transitItinerariesList = TransitItinerariesList(origin: parking.location, destination: self.destination!.coordinate, departureTime: departureTime)
-                transitItinerariesList.itinerariesCalculated {
-                    let myTransitItinerary = transitItinerariesList.itineraries.first!
-                    tempMultimodalItinerary.itineraries.append(myTransitItinerary)
-                    dispatchGroup.leave()
-                }
-            }
-            dispatchGroup.notify(queue: .main) {
-                if self.multimodalItinerary.itineraries.count < 1 || self.multimodalItinerary.itineraries.last!.timeToDestination > tempMultimodalItinerary.itineraries.last!.timeToDestination {
-                    self.multimodalItinerary = tempMultimodalItinerary
-                    retainedParking = parking
-                }
-            }
-        }
-        
-        dispatchGroup.notify(queue: .main) {
-            self.lbl_mixTime.text = "\(self.multimodalItinerary.itineraries.last!.timeToDestination) min."
-            print("\(self.multimodalItinerary.expectedTime + self.multimodalMargin) min.")
-            self.lbl_mixVia.text = "via \(retainedParking!.nom)"
-            self.btn_goMix.isLoading(false)
-        }
-    }
- */
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
