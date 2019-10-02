@@ -56,7 +56,7 @@ class ItinerariesViewController: UIViewController {
     }
     
     @IBAction func btn_goMixTapped(_ sender: Any) {
-        let navigationVC = NavigationViewController(for: (multimodalItinerary.itineraries.first! as? CarItinerary)!.route!)
+        let navigationVC = NavigationViewController(for: multimodalItineraries!.carItinerary!.route!)
         performSegue(withIdentifier: "showMultimodalItineraries", sender: self)
         present(navigationVC, animated: true, completion: nil)
     }

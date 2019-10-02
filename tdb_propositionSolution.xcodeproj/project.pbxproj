@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5F252B55232F79AB0050546E /* Itinerary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F252B54232F79AB0050546E /* Itinerary.swift */; };
 		5F3E277D2343470400EFBF85 /* MultimodalItinerariesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3E277C2343470400EFBF85 /* MultimodalItinerariesList.swift */; };
+		5F3E277F2344ABBD00EFBF85 /* Configuration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F3E277E2344ABBD00EFBF85 /* Configuration.storyboard */; };
+		5F3E27812344AD6700EFBF85 /* ConfigButtonControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3E27802344AD6700EFBF85 /* ConfigButtonControl.swift */; };
 		5F6BAB5B2338FBC90089D5A8 /* TransitItineraryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6BAB5A2338FBC90089D5A8 /* TransitItineraryController.swift */; };
 		5F6BAB5D233A3B5B0089D5A8 /* TransitLineColorsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6BAB5C233A3B5B0089D5A8 /* TransitLineColorsList.swift */; };
 		5F6BAB5F233A41570089D5A8 /* TransitLineControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6BAB5E233A41570089D5A8 /* TransitLineControl.swift */; };
@@ -57,6 +59,8 @@
 /* Begin PBXFileReference section */
 		5F252B54232F79AB0050546E /* Itinerary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Itinerary.swift; sourceTree = "<group>"; };
 		5F3E277C2343470400EFBF85 /* MultimodalItinerariesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultimodalItinerariesList.swift; sourceTree = "<group>"; };
+		5F3E277E2344ABBD00EFBF85 /* Configuration.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Configuration.storyboard; sourceTree = "<group>"; };
+		5F3E27802344AD6700EFBF85 /* ConfigButtonControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigButtonControl.swift; sourceTree = "<group>"; };
 		5F6BAB562338BB780089D5A8 /* TransitStepControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitStepControl.swift; sourceTree = "<group>"; };
 		5F6BAB5A2338FBC90089D5A8 /* TransitItineraryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitItineraryController.swift; sourceTree = "<group>"; };
 		5F6BAB5C233A3B5B0089D5A8 /* TransitLineColorsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitLineColorsList.swift; sourceTree = "<group>"; };
@@ -157,9 +161,10 @@
 		5F713AD92333A17900C2C8CC /* Ressources */ = {
 			isa = PBXGroup;
 			children = (
+				5FA66F03231FA92A00A23B14 /* LaunchScreen.storyboard */,
+				5F3E277E2344ABBD00EFBF85 /* Configuration.storyboard */,
 				5FA66EFE231FA92700A23B14 /* Main.storyboard */,
 				5FA66F01231FA92A00A23B14 /* Assets.xcassets */,
-				5FA66F03231FA92A00A23B14 /* LaunchScreen.storyboard */,
 				5FFA4529233CE43800EB2237 /* parkingData.json */,
 			);
 			path = Ressources;
@@ -262,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				5FB3B4492335023400205719 /* GoButtonControl.swift */,
+				5F3E27802344AD6700EFBF85 /* ConfigButtonControl.swift */,
 				5F6BAB562338BB780089D5A8 /* TransitStepControl.swift */,
 				5F6BAB5E233A41570089D5A8 /* TransitLineControl.swift */,
 			);
@@ -355,6 +361,7 @@
 				5FFA452A233CE43900EB2237 /* parkingData.json in Resources */,
 				5FA66F02231FA92A00A23B14 /* Assets.xcassets in Resources */,
 				5FA66F00231FA92700A23B14 /* Main.storyboard in Resources */,
+				5F3E277F2344ABBD00EFBF85 /* Configuration.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,6 +434,7 @@
 				5F713AE32333AFDB00C2C8CC /* TransitWebService.swift in Sources */,
 				5F3E277D2343470400EFBF85 /* MultimodalItinerariesList.swift in Sources */,
 				5FFA4528233B805900EB2237 /* TransitStepControl.swift in Sources */,
+				5F3E27812344AD6700EFBF85 /* ConfigButtonControl.swift in Sources */,
 				5F6BAB64233A60670089D5A8 /* TransitLine.swift in Sources */,
 				5FA66EF9231FA92700A23B14 /* AppDelegate.swift in Sources */,
 				5FFA452E233CE79900EB2237 /* ParkingList.swift in Sources */,
