@@ -27,9 +27,10 @@ class ParkingRessource {
         let north: Double
         let nom: String
         let vocation: String
+        let realTime: String
         
         private enum CodingKeys: String, CodingKey {
-            case east = "E", north = "N", nom = "NOM", vocation = "VOCATION"
+            case east = "E", north = "N", nom = "NOM", vocation = "VOCATION", realTime = "DONNEES_TEMPS_REEL"
         }
     }
 }

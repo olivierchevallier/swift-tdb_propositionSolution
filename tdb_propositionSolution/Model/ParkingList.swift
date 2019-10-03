@@ -29,7 +29,7 @@ class ParkingList {
                 let parkings = try JSONDecoder().decode(ParkingRessource.Parkings.self, from: data)
                 for parking in parkings.parkings {
                     if parking.vocation == filter {
-                        let parking = Parking(nom: parking.nom, east: parking.east, north: parking.north)
+                        let parking = Parking(nom: parking.nom, east: parking.east, north: parking.north, realTime: parking.realTime)
                         self.parkings.append(parking)
                     }
                 }

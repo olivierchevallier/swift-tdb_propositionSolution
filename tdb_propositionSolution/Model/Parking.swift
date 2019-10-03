@@ -15,12 +15,14 @@ class Parking {
     //MARK: Immutable
     let nom: String
     let location: CLLocationCoordinate2D
+    let realTime: Bool
     
     //MARK: Initializer
-    init(nom: String, east: Double, north: Double) {
+    init(nom: String, east: Double, north: Double, realTime: String) {
         let coordinates = Parking.mn95_to_wgs84(e: east, n: north)
         self.nom = nom
         location = CLLocationCoordinate2D(latitude: coordinates.latitude, longitude: coordinates.longitude)
+        self.realTime = realTime == "VRAI"
     }
     
     //MARK: Private methods
