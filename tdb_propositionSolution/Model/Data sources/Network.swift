@@ -30,11 +30,6 @@ class Network {
                 os_log("Server error", log: OSLog.default, type: .debug)
                 return
             }
-            
-            guard let mime = response.mimeType, mime == "application/vnd.geo+json" || mime == "application/json" else {
-                os_log("Wrong MIME type", log: OSLog.default, type: .debug)
-                return
-            }
             //Execution du code défini dans le dataCompletionHandler à l'appel de la méthode
             dataCompletionHandler(data)
             self.dispatchGroup.leave()

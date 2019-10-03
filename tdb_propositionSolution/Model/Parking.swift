@@ -10,19 +10,22 @@
 import Foundation
 import CoreLocation
 
+
 class Parking {
     //MARK: - Properties
     //MARK: Immutable
     let nom: String
     let location: CLLocationCoordinate2D
     let realTime: Bool
+    let mn95Coordinates: [Double] //[east,north]
     
     //MARK: Initializer
-    init(nom: String, east: Double, north: Double, realTime: String) {
+    init(nom: String, east: Double, north: Double, realTime: String, mn95Coordinates: [Double]) {
         let coordinates = Parking.mn95_to_wgs84(e: east, n: north)
         self.nom = nom
         location = CLLocationCoordinate2D(latitude: coordinates.latitude, longitude: coordinates.longitude)
-        self.realTime = realTime == "VRAI"
+        self.realTime = realTime.lowercased() == "vrai"
+        self.mn95Coordinates = mn95Coordinates
     }
     
     //MARK: Private methods
@@ -50,5 +53,35 @@ class Parking {
         let eCivil = (e - referenceE) / 1000000
         let nCivil = (n - referenceN) / 1000000
         return(eCivil, nCivil)
+    }
+    
+    //MARK: - Public methods
+    /// Cette méthode retourne le nombre de place disponibles dans le parking et -1 si aucune information n'est disponible
+    public func getDispo() -> Int {
+        let dispatchGroup = DispatchGroup()
+        var dispo = -1
+        
+        if self.realTime == false {
+            return dispo
+        }
+        dispatchGroup.enter()
+        let url = URL(string: ParkingRessource.getFillingRate())
+        Network.executeHTTPGet(url: url!, dataCompletionHandler: { data in
+            do {
+                let parkingsFillRate = try JSONDecoder().decode(ParkingRessource.ParkingsFillingDatas.self, from: data!)
+                for feature in parkingsFillRate.features {
+                    if Int(feature.geometry.east) == Int(self.mn95Coordinates[0]) &&
+                        Int(feature.geometry.north) == Int(self.mn95Coordinates[1]) {
+                        dispo = feature.attributes.available
+                    }
+                }
+                dispatchGroup.leave()
+            } catch {
+                print("JSON error : \(error)")
+            }
+        })
+        dispatchGroup.wait()
+        
+        return dispo
     }
 }

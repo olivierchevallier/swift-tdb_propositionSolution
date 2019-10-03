@@ -383,7 +383,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="PNt-MH-ioX">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="106"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="De :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B3A-gu-xYq">
@@ -399,35 +399,53 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="À :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ShE-Q4-OVh">
-                                    <rect key="frame" x="8" y="41" width="20.5" height="20.5"/>
+                                    <rect key="frame" x="8" y="38.5" width="20.5" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="destination" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dLv-gM-F2i">
-                                    <rect key="frame" x="47" y="41" width="265" height="21"/>
+                                    <rect key="frame" x="47" y="39" width="265" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e7a-qo-b4s">
+                                    <rect key="frame" x="8" y="67" width="52" height="30"/>
+                                    <state key="normal" title="Plus tôt"/>
+                                    <connections>
+                                        <action selector="btn_soonerTapped:" destination="CZP-T7-baF" eventType="touchUpInside" id="jO1-Fz-bh1"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yrX-RA-a98">
+                                    <rect key="frame" x="251" y="67" width="61" height="30"/>
+                                    <state key="normal" title="Plus tard"/>
+                                    <connections>
+                                        <action selector="btn_laterTapped:" destination="CZP-T7-baF" eventType="touchUpInside" id="XCx-GK-nCP"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="dLv-gM-F2i" firstAttribute="leading" secondItem="PNt-MH-ioX" secondAttribute="leading" constant="47" id="0ts-fB-LQc"/>
-                                <constraint firstAttribute="bottom" secondItem="dLv-gM-F2i" secondAttribute="bottom" constant="8" id="2r7-Vn-KcT"/>
+                                <constraint firstItem="dLv-gM-F2i" firstAttribute="top" secondItem="MD3-Ui-sz0" secondAttribute="bottom" constant="10" id="48H-R3-lNb"/>
                                 <constraint firstItem="B3A-gu-xYq" firstAttribute="leading" secondItem="PNt-MH-ioX" secondAttribute="leading" constant="8" id="4Ie-wx-5o6"/>
                                 <constraint firstAttribute="trailing" secondItem="dLv-gM-F2i" secondAttribute="trailing" constant="8" id="BjG-Hz-Rut"/>
-                                <constraint firstAttribute="bottom" secondItem="ShE-Q4-OVh" secondAttribute="bottom" constant="8.5" id="ICa-HX-WgH"/>
+                                <constraint firstAttribute="trailing" secondItem="yrX-RA-a98" secondAttribute="trailing" constant="8" id="KVf-rO-UdV"/>
+                                <constraint firstItem="e7a-qo-b4s" firstAttribute="top" secondItem="ShE-Q4-OVh" secondAttribute="bottom" constant="8" id="SQr-ad-pVY"/>
+                                <constraint firstItem="e7a-qo-b4s" firstAttribute="leading" secondItem="PNt-MH-ioX" secondAttribute="leading" constant="8" id="Xe1-4Y-30l"/>
                                 <constraint firstItem="ShE-Q4-OVh" firstAttribute="leading" secondItem="PNt-MH-ioX" secondAttribute="leading" constant="8" id="YQF-aG-2ws"/>
                                 <constraint firstAttribute="trailing" secondItem="MD3-Ui-sz0" secondAttribute="trailing" constant="8" id="b5u-jz-Kdz"/>
                                 <constraint firstItem="MD3-Ui-sz0" firstAttribute="top" secondItem="PNt-MH-ioX" secondAttribute="top" constant="8" id="hIw-eN-EiK"/>
+                                <constraint firstItem="yrX-RA-a98" firstAttribute="top" secondItem="dLv-gM-F2i" secondAttribute="bottom" constant="7" id="htR-JJ-7u9"/>
+                                <constraint firstItem="ShE-Q4-OVh" firstAttribute="top" secondItem="B3A-gu-xYq" secondAttribute="bottom" constant="10" id="nPh-1Y-fPS"/>
                                 <constraint firstItem="MD3-Ui-sz0" firstAttribute="leading" secondItem="PNt-MH-ioX" secondAttribute="leading" constant="47" id="tTV-1w-8yF"/>
                                 <constraint firstItem="B3A-gu-xYq" firstAttribute="top" secondItem="PNt-MH-ioX" secondAttribute="top" constant="8" id="vkY-j7-Kjm"/>
                             </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TransitItineraryTableViewCell" rowHeight="70" id="0ft-lq-CJr" customClass="TransitItineraryTableViewCell" customModule="tdb_propositionSolution" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="98" width="320" height="70"/>
+                                <rect key="frame" x="0.0" y="134" width="320" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0ft-lq-CJr" id="vHa-gz-rqd">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
@@ -476,13 +494,15 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="dqK-0i-Wuc"/>
                     <connections>
+                        <outlet property="btn_later" destination="yrX-RA-a98" id="YVP-e3-W2u"/>
+                        <outlet property="btn_sooner" destination="e7a-qo-b4s" id="kUv-BM-RDe"/>
                         <outlet property="lbl_from" destination="MD3-Ui-sz0" id="M2M-gp-nY0"/>
                         <outlet property="lbl_to" destination="dLv-gM-F2i" id="YOc-ue-8O8"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="62v-lp-VFR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2518" y="765"/>
+            <point key="canvasLocation" x="2516.25" y="764.78873239436621"/>
         </scene>
         <!--Itinéraire-->
         <scene sceneID="OV2-3U-Kxd">

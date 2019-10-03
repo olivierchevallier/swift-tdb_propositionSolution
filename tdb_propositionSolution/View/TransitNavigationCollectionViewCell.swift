@@ -98,19 +98,21 @@ class TransitNavigationCollectionViewCell: UICollectionViewCell {
     //MARK: Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
-        let timer = Timer.scheduledTimer(withTimeInterval: 15, repeats: true, block: {_ in
-            self.updateTimeInfos()
-        })
+        initialize()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        initialize()
+    }
+    
+    //MARK: - Private methods
+    private func initialize() {
         let timer = Timer.scheduledTimer(withTimeInterval: 15, repeats: true, block: {_ in
             self.updateTimeInfos()
         })
     }
     
-    //MARK: - Private methods
     private func resizeLabels() {
         lbl_connection.sizeToFit()
         lbl_nextConnection.sizeToFit()
