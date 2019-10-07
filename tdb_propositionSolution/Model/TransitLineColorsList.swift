@@ -25,8 +25,9 @@ class TransitLineColorsList {
     //MARK: - Initializers
     private init() {
         dispatchGroup.enter()
-        let url = URL(string: TransitWebService.getLineColors())
-        Network.executeHTTPGet(url: url!, dataCompletionHandler: { data in
+        let url = URL(string: TransitWebService.getLineColors())!
+        Network.executeHTTPGet(url: url, dataCompletionHandler: { data in
+            print("JE NE RENTRE PAS ICI POJUR TE CASSER LES COUILLES !")
             do {
                 let lineColors = try JSONDecoder().decode(TransitWebService.LineColors.self, from: data!)
                 self.lineColors = lineColors.colors

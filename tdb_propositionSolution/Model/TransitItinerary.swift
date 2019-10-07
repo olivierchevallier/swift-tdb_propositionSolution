@@ -77,10 +77,15 @@ class TransitItinerary: Itinerary {
             return table
         }
     }
+    var transitSections = [TransitSection]()
     
     //MARK: - Initializers
     init(origin: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, connection: TransitWebService.Connection) {
         self.connection = connection
+        for section in self.connection.sections {
+            let journey = section.journey != nil ? section.journey! : nil
+            transitSections.append(TransitSection(journey: journey, departure: section.departure, arrival: section.arrival))
+        }
         super.init(origin: origin, destination: destination, transport: "Transports publics")
     }
     

@@ -99,10 +99,11 @@ class ItinerariesViewController: UIViewController {
         lbl_mixVia.text = ""
         multimodalItineraries = MultimodalItinerariesList(origin: userLocation!, destination: destination!.coordinate)
         multimodalItineraries!.itinerariesCalculated {
-            let available = self.multimodalItineraries!.parking!.getDispo()
-            let nombrePlaceStr = available >= 0 ? "(\(available)  places)" : "(disp. inconnue)"
+            self.multimodalItineraries!.parking!.getDispo(completion: { available in
+                let nombrePlaceStr = available >= 0 ? "(\(available)  places)" : "(disp. inconnue)"
+                self.lbl_mixVia.text = "via \(self.multimodalItineraries!.parking!.nom) \(nombrePlaceStr)"
+            })
             self.lbl_mixTime.text = "\(self.multimodalItineraries!.timeToDestination) min."
-            self.lbl_mixVia.text = "via \(self.multimodalItineraries!.parking!.nom) \(nombrePlaceStr)"
             self.btn_goMix.isLoading(false)
         }
     }

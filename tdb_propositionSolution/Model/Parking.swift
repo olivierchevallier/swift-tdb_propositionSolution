@@ -57,12 +57,13 @@ class Parking {
     
     //MARK: - Public methods
     /// Cette méthode retourne le nombre de place disponibles dans le parking et -1 si aucune information n'est disponible
-    public func getDispo() -> Int {
+    public func getDispo(completion: @escaping(Int) -> Void) {
         let dispatchGroup = DispatchGroup()
         var dispo = -1
         
         if self.realTime == false {
-            return dispo
+            completion(dispo)
+            return
         }
         dispatchGroup.enter()
         let url = URL(string: ParkingRessource.getFillingRate(id: id))
@@ -76,8 +77,8 @@ class Parking {
             }
         })
         //TODO: Résoudre problème de lenteur du à la ligne ci-dessous
-        dispatchGroup.wait()
-        
-        return dispo
+        dispatchGroup.notify(queue: .main, execute: {
+            completion(dispo)
+        })
     }
 }

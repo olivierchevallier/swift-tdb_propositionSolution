@@ -59,6 +59,8 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
         mapView.setUserTrackingMode(.follow, animated: true) {
             
         }
+        
+        TransitLineColorsList.getInstance()
     }
     
     override func viewWillAppear(_ animated: Bool) {

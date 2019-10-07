@@ -44,21 +44,22 @@ class MultimodalItinerariesList: ItinerariesList {
         
         for parking in parkingList.parkings {
             dispatchGroup.enter()
-            let parkingDispo = parking.getDispo()
-            if parkingDispo < 0 || parkingDispo > 0 {
-                let carItinerariesList = CarItinerariesList(origin:origin, destination: parking.location)
-                carItinerariesList.itinerariesCalculated {
-                    let tempCarItinerary = (carItinerariesList.itineraries.first! as? CarItinerary)!
-                    let tempTransitItineraries = TransitItinerariesList(origin: parking.location, destination: self.destination, departureTime: self.departureTime(carItinerary: tempCarItinerary))
-                    tempTransitItineraries.itinerariesCalculated {
-                        let actualTimeToDestination = (self.transitItineraries?.itineraries.first as? TransitItinerary)?.timeToDestination
-                        let newTimeToDestination = (tempTransitItineraries.itineraries.first as? TransitItinerary)!.timeToDestination
-                        if self.carItinerary == nil || actualTimeToDestination ?? 0 > newTimeToDestination {
-                            self.parking = parking
-                            self.carItinerary = tempCarItinerary
-                            self.transitItineraries = tempTransitItineraries
+            parking.getDispo { available in
+                if available < 0 || available > 0 {
+                    let carItinerariesList = CarItinerariesList(origin:self.origin, destination: parking.location)
+                    carItinerariesList.itinerariesCalculated {
+                        let tempCarItinerary = (carItinerariesList.itineraries.first! as? CarItinerary)!
+                        let tempTransitItineraries = TransitItinerariesList(origin: parking.location, destination: self.destination, departureTime: self.departureTime(carItinerary: tempCarItinerary))
+                        tempTransitItineraries.itinerariesCalculated {
+                            let actualTimeToDestination = (self.transitItineraries?.itineraries.first as? TransitItinerary)?.timeToDestination
+                            let newTimeToDestination = (tempTransitItineraries.itineraries.first as? TransitItinerary)!.timeToDestination
+                            if self.carItinerary == nil || actualTimeToDestination ?? 0 > newTimeToDestination {
+                                self.parking = parking
+                                self.carItinerary = tempCarItinerary
+                                self.transitItineraries = tempTransitItineraries
+                            }
+                            self.dispatchGroup.leave()
                         }
-                        self.dispatchGroup.leave()
                     }
                 }
             }
