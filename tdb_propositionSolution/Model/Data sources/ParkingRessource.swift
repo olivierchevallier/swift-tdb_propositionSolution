@@ -13,8 +13,8 @@ class ParkingRessource {
     //MARK: - Data sources
     static let file = "parkingData"
     
-    public static func getFillingRate() -> String {
-        let stringURL = "https://ge.ch/sitgags1/rest/services/VECTOR/SITG_OPENDATA_03/MapServer/4869/query?geometry=1&outFields=*&returnGeometry=true&f=pjson"
+    public static func getFillingRate(id: Int) -> String {
+        let stringURL = "https://ge.ch/sitgags1/rest/services/VECTOR/SITG_OPENDATA_03/MapServer/4869/query?where=ID=\(id)&geometry=1&outFields=*&returnGeometry=true&f=pjson"
         return stringURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     }
     
@@ -29,6 +29,7 @@ class ParkingRessource {
     }
     
     struct Parking: Decodable {
+        let id: Int
         let east: Double
         let north: Double
         let nom: String
@@ -36,7 +37,7 @@ class ParkingRessource {
         let realTime: String
         
         private enum CodingKeys: String, CodingKey {
-            case east = "E", north = "N", nom = "NOM", vocation = "VOCATION", realTime = "DONNEES_TEMPS_REEL"
+            case id = "ID_PARKING", east = "E", north = "N", nom = "NOM", vocation = "VOCATION", realTime = "DONNEES_TEMPS_REEL"
         }
     }
     
