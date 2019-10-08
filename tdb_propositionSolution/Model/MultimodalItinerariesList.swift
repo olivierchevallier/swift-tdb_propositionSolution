@@ -32,6 +32,12 @@ class MultimodalItinerariesList: ItinerariesList {
         }
     }
     
+    var emissions: Double {
+        get {
+            return getEmissions()
+        }
+    }
+    
     //MARK: - Initializers
     init(origin: CLLocationCoordinate2D, destination: CLLocationCoordinate2D) {
         super.init(origin: origin, destination: destination, transport: "Multimodal")
@@ -75,5 +81,10 @@ class MultimodalItinerariesList: ItinerariesList {
         carItinerariesList.itinerariesCalculated {
             self.carItinerary = carItinerariesList.itineraries.first! as? CarItinerary
         }
+    }
+    
+    private func getEmissions() -> Double {
+        var emissions = carItinerary!.emissions + transitItineraries!.avgEmissions
+        return emissions
     }
 }
