@@ -21,7 +21,8 @@ class CarItinerary: Itinerary {
     var route: Route?
     override var emissions: Double {
         get {
-            return self.route!.distance * 137.8 / 1000
+            // Selon mobitool.ch
+            return self.route!.distance * 197.57 / 1000
         }
     }
     override var cost: Double {

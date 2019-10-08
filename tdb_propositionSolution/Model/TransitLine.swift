@@ -40,4 +40,22 @@ class TransitLine {
     convenience init(journey: TransitWebService.Journey) {
         self.init(transitOperator: journey.transitOperator, number: journey.number, destination: journey.to, type: journey.category)
     }
+    
+    //MARK: - Public methods
+    public func getAvgSpeed() -> Double {
+        guard let urlPath = Bundle.main.url(forResource: "TPGAvgSpeed", withExtension: "plist") else {
+            fatalError("Could not read average speed file")
+        }
+        if let avgSpeeds = NSDictionary(contentsOf: urlPath) as? Dictionary<String, Double> {
+            guard let avgSpeed = avgSpeeds[self.number] else {
+                var total = 0.0
+                for value in avgSpeeds.values {
+                    total += value
+                }
+                return total / Double(avgSpeeds.count)
+            }
+            return avgSpeed
+        }
+        return 0.0
+    }
 }

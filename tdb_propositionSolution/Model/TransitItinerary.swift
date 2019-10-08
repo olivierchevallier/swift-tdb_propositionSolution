@@ -15,11 +15,12 @@ class TransitItinerary: Itinerary {
     //MARK: - Properties
     //MARK: Immutable
     let connection: TransitWebService.Connection
+    let dateFormatter = DateFormatter()
     
     //MARK: Mutable
     override var emissions: Double {
         get {
-            return 0
+            return self.computeEmissions()
         }
     }
     override var cost: Double {
@@ -42,9 +43,6 @@ class TransitItinerary: Itinerary {
     }
     override var timeToDestination: Int {
         get {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
             if let date = dateFormatter.date(from:connection.to.arrival!) {
                 return Int(date.timeIntervalSinceNow) / 60
             }
@@ -77,14 +75,15 @@ class TransitItinerary: Itinerary {
             return table
         }
     }
-    var transitSections = [TransitSection]()
     
     //MARK: - Initializers
     init(origin: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, connection: TransitWebService.Connection) {
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        
         self.connection = connection
         for section in self.connection.sections {
             let journey = section.journey != nil ? section.journey! : nil
-            transitSections.append(TransitSection(journey: journey, departure: section.departure, arrival: section.arrival))
         }
         super.init(origin: origin, destination: destination, transport: "Transports publics")
     }
@@ -105,5 +104,34 @@ class TransitItinerary: Itinerary {
         let firstPart: String = .init(str.prefix(upTo: lowerIndex))
         let lastPart: String = .init(str.suffix(from: upperIndex))
         return (firstPart, lastPart)
+    }
+    
+    //MARK: - Private methods
+    /// Fonction permettant de récupérer les émissions relatives à un itinéraire en TP. Le résultat est en équivalent de grammes de CO2
+    private func computeEmissions() -> Double {
+        // Selon mobitool.ch
+        let transitAvgEmissions = 24.89
+        var emissions = 0.0
+        
+        for index in 0..<lines.count {
+            var distance = computeSectionDistance(index: index)
+            emissions += distance / 1000 * transitAvgEmissions
+        }
+        return emissions
+    }
+    
+    /// Fonction permettant de récuper la distance d'une étape en transports publics. La distance est donnée en mètres
+    private func computeSectionDistance(index: Int) -> Double {
+        var avgSpeed = 0.0
+        var time = 0.0
+        if lines[index] != nil {
+            avgSpeed = lines[index]!.getAvgSpeed()
+            let departure = connection.sections[index].departure.departure
+            let arrival = connection.sections[index].arrival.arrival
+            if let arrivalDate = dateFormatter.date(from:arrival!), let departureDate = dateFormatter.date(from: departure!) {
+                time = Double(arrivalDate.timeIntervalSince(departureDate))
+            }
+        }
+        return avgSpeed / 3.6 * time
     }
 }

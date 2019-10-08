@@ -65,7 +65,7 @@ class ItinerariesViewController: UIViewController {
     private func getItineraries() {
         getCarItinerary()
         getTransitItineraries()
-        getMultimodalItineraries()
+        //getMultimodalItineraries()
     }
     
     private func getCarItinerary() {
@@ -75,7 +75,8 @@ class ItinerariesViewController: UIViewController {
         carItinerariesList.itinerariesCalculated {
             self.carItinerary = carItinerariesList.itineraries.first! as? CarItinerary
             self.btn_goCar.isLoading(false)
-            self.lbl_carTime.text = "\(self.carItinerary!.timeToDestination) min."
+            let emissions = round(self.carItinerary!.emissions*100)/100
+            self.lbl_carTime.text = "\(self.carItinerary!.timeToDestination) min. - \(emissions)g. de CO2"
         }
     }
     
@@ -89,7 +90,9 @@ class ItinerariesViewController: UIViewController {
                 self.transitItineraries.append(transitIntnerary as! TransitItinerary)
             }
             self.btn_goTransit.isLoading(false)
-            self.lbl_transitTime.text = "\(self.transitItineraries.first!.timeToDestination) min."
+            //self.lbl_transitTime.text = "\(self.transitItineraries.first!.timeToDestination) min. - 0g. de CO2"
+            let avgEmissions = round(transitItinerariesList.avgEmissions*100)/100
+            self.lbl_transitTime.text = "\(self.transitItineraries.first!.timeToDestination) min. - \(avgEmissions)g. de CO2"
         }
     }
     

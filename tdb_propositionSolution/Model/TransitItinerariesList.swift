@@ -15,6 +15,8 @@ class TransitItinerariesList: ItinerariesList {
     //MARK: Mutable
     var departureTime: Date?
     
+    //MARK: Computed
+    
     //MARK: - Initializers
     init(origin: CLLocationCoordinate2D, destination: CLLocationCoordinate2D) {
         super.init(origin: origin, destination: destination, transport: "Transports publics")

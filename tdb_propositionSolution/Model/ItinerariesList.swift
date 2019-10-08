@@ -22,6 +22,11 @@ class ItinerariesList {
     var transport: String
     
     //MARK: Computed
+    var avgEmissions: Double {
+        get {
+            return computeAvgEmissions()
+        }
+    }
     var expectedTime: Int {
         get {
             if itineraries.count < 1 { return 0 }
@@ -58,6 +63,15 @@ class ItinerariesList {
     /// Calcul l'itinéraire
     internal func calculateItineraries(completion: @escaping(Error?) -> Void){
         assert(false, "This method must be overriden by the subclass")
+    }
+    
+    /// Cette fonction permet de calculer la moyenne des émissions des itinéraires
+    private func computeAvgEmissions() -> Double {
+        var totalEmissions = 0.0
+        for itinerary in itineraries {
+            totalEmissions += itinerary.emissions
+        }
+        return totalEmissions / Double(itineraries.count)
     }
     
     //MARK: - Public methods
