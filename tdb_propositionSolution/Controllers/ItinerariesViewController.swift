@@ -19,6 +19,7 @@ class ItinerariesViewController: UIViewController {
     let multimodalMargin = 10
     
     //MARK: Mutable
+    var mapView: NavigationMapView!
     var carItinerary: CarItinerary?
     var transitItineraries = [TransitItinerary]()
     var multimodalItineraries: MultimodalItinerariesList?
@@ -77,6 +78,7 @@ class ItinerariesViewController: UIViewController {
             self.btn_goCar.isLoading(false)
             let emissions = round(self.carItinerary!.emissions*100)/100
             self.lbl_carTime.text = "\(self.carItinerary!.timeToDestination) min. - \(emissions)g. de CO2"
+            self.drawRoute(route: self.carItinerary!.route!, color: UIColor.red, identifier: "car")
         }
     }
     
@@ -107,7 +109,34 @@ class ItinerariesViewController: UIViewController {
             })
             let emissions = round(self.multimodalItineraries!.emissions*100)/100
             self.lbl_mixTime.text = "\(self.multimodalItineraries!.timeToDestination) min. - \(emissions)g. de CO2"
+            self.drawRoute(route: self.multimodalItineraries!.carItinerary!.route!, color: UIColor.blue, identifier: "multimodal")
+            self.showParking()
             self.btn_goMix.isLoading(false)
+        }
+    }
+    
+    private func showParking() {
+        let destinationAnnotation = ParkingAnnotation()
+        destinationAnnotation.coordinate = multimodalItineraries!.parking!.location
+        mapView.addAnnotation(destinationAnnotation)
+    }
+    
+    private func drawRoute(route: Route, color: UIColor, identifier: String) {
+        guard route.coordinateCount > 0 else { return }
+        var routeCoordinates = route.coordinates!
+        let polyline = MGLPolylineFeature(coordinates: &routeCoordinates, count: route.coordinateCount)
+        
+        if let source = mapView.style?.source(withIdentifier: identifier + "-source") as? MGLShapeSource {
+            source.shape = polyline
+        } else {
+            let source = MGLShapeSource(identifier: identifier + "-source", features: [polyline], options: nil)
+            
+            let lineStyle = MGLLineStyleLayer(identifier: identifier + "-style", source: source)
+            lineStyle.lineColor = NSExpression(forConstantValue: color)
+            lineStyle.lineWidth = NSExpression(forConstantValue: 4.0)
+            
+            mapView.style?.addSource(source)
+            mapView.style?.addLayer(lineStyle)
         }
     }
     

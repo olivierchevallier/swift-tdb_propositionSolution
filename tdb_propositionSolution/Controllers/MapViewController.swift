@@ -134,6 +134,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
         itinerariesVC!.view.superview!.isUserInteractionEnabled = true
         itinerariesVC!.userLocation = self.mapView!.userLocation?.coordinate
         itinerariesVC!.destination = self.destination!
+        itinerariesVC!.mapView = mapView
     }
     
     /// Change la destination et met à jour la vue en conséquence
@@ -155,6 +156,29 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
         performSegue(withIdentifier: "showResults", sender: nil)
     }
     
+    //MARK: - MGLMapViewDelegate
+    func mapView(_ mapView: MGLMapView, imageFor annotation: MGLAnnotation) -> MGLAnnotationImage? {
+        
+        if annotation as? ParkingAnnotation == nil {
+            return nil
+        }
+        
+        // For better performance, always try to reuse existing annotations.
+        var annotationImage = mapView.dequeueReusableAnnotationImage(withIdentifier: "parking")
+        
+        // If there is no reusable annotation image available, initialize a new one.
+        if(annotationImage == nil) {
+            annotationImage = MGLAnnotationImage(image: UIImage(named: "parking")!, reuseIdentifier: "parking")
+        }
+        
+        return annotationImage
+    }
+    
+    func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
+        // Always allow callouts to popup when annotations are tapped.
+        return true
+    }
+    
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showResults" {
@@ -172,3 +196,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
     
 }
 
+class ParkingAnnotation: MGLPointAnnotation {
+    
+}
