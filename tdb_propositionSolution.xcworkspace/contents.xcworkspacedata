@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:chancy.gpx">
+   </FileRef>
+   <FileRef
       location = "group:tdb_propositionSolution.xcodeproj">
    </FileRef>
    <FileRef

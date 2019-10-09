@@ -43,6 +43,7 @@
 		5FB3B44A2335023500205719 /* GoButtonControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3B4492335023400205719 /* GoButtonControl.swift */; };
 		5FB3B44C23350CC900205719 /* TransitItinerariesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3B44B23350CC900205719 /* TransitItinerariesTableViewController.swift */; };
 		5FB3B44E23350D1200205719 /* TransitItineraryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3B44D23350D1200205719 /* TransitItineraryTableViewCell.swift */; };
+		5FE32D3B234E206A00287264 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE32D3A234E206A00287264 /* SettingsViewController.swift */; };
 		5FF022E0234C913A00A08C53 /* TPGAvgSpeed.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5FF022DF234C913A00A08C53 /* TPGAvgSpeed.plist */; };
 		5FFA4528233B805900EB2237 /* TransitStepControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6BAB562338BB780089D5A8 /* TransitStepControl.swift */; };
 		5FFA452A233CE43900EB2237 /* parkingData.json in Resources */ = {isa = PBXBuildFile; fileRef = 5FFA4529233CE43800EB2237 /* parkingData.json */; };
@@ -104,6 +105,7 @@
 		5FB3B4492335023400205719 /* GoButtonControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoButtonControl.swift; sourceTree = "<group>"; };
 		5FB3B44B23350CC900205719 /* TransitItinerariesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitItinerariesTableViewController.swift; sourceTree = "<group>"; };
 		5FB3B44D23350D1200205719 /* TransitItineraryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitItineraryTableViewCell.swift; sourceTree = "<group>"; };
+		5FE32D3A234E206A00287264 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		5FF022DF234C913A00A08C53 /* TPGAvgSpeed.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TPGAvgSpeed.plist; sourceTree = "<group>"; };
 		5FFA4529233CE43800EB2237 /* parkingData.json */ = {isa = PBXFileReference; explicitFileType = text.json; name = parkingData.json; path = /Users/olivierchevallier/Documents/Coding/iPhone/tdb_propositionSolution/tdb_propositionSolution/Ressources/parkingData.json; sourceTree = "<absolute>"; };
 		5FFA452B233CE52400EB2237 /* Parking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parking.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				5FB3B4472334E65100205719 /* ItinerariesViewController.swift */,
 				5FB3B44B23350CC900205719 /* TransitItinerariesTableViewController.swift */,
 				5F6BAB5A2338FBC90089D5A8 /* TransitItineraryController.swift */,
+				5FE32D3A234E206A00287264 /* SettingsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				5FA66EFB231FA92700A23B14 /* SceneDelegate.swift in Sources */,
 				5F6BAB5B2338FBC90089D5A8 /* TransitItineraryController.swift in Sources */,
 				5FB3B4482334E65100205719 /* ItinerariesViewController.swift in Sources */,
+				5FE32D3B234E206A00287264 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
