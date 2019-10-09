@@ -38,7 +38,7 @@
                                 <rect key="frame" x="10" y="203" width="300" height="38"/>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <textInputTraits key="textInputTraits" textContentType="street-address"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" textContentType="street-address"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vehicule" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YE5-3d-dwt">
                                 <rect key="frame" x="10" y="266" width="97.5" height="30"/>
@@ -114,6 +114,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Préférences " id="YR1-aO-FGk"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="sw_electric" destination="oLw-kM-hSt" id="KGe-KM-4OS"/>
+                        <outlet property="txt_consumption" destination="eCi-QH-akE" id="z9o-GH-cna"/>
+                        <outlet property="txt_homeAdress" destination="i8R-PG-2aA" id="GOF-Cs-32n"/>
+                        <outlet property="txt_walkSpeed" destination="Qv0-PQ-9Sm" id="Des-wR-n4O"/>
+                        <outlet property="txt_weight" destination="7lo-H3-D2g" id="f6n-9j-kKm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z57-vo-zwA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
