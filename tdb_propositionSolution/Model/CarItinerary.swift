@@ -19,27 +19,14 @@ class CarItinerary: Itinerary {
     //MARK: Mutable
     var distance: Double
     var route: Route?
-    override var emissions: Double {
-        get {
-            // Selon mobitool.ch
-            return self.route!.distance * 197.57 / 1000
-        }
-    }
-    override var cost: Double {
-        get {
-            return self.route!.distance * 0.8 / 1000
-        }
-    }
-    override var expectedTime: Int {
-        get {
-            return Int(self.route!.expectedTravelTime) / 60
-        }
-    }
     
     //MARK: - Initializers    
     init(origin: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, route: Route) {
         self.distance = route.distance
         self.route = route
         super.init(origin: origin, destination: destination, transport: "Voiture")
+        self.emissions = self.route!.distance * 197.57 / 1000
+        self.cost = self.route!.distance * 0.8 / 1000
+        self.expectedTime = Int(self.route!.expectedTravelTime) / 60
     }
 }

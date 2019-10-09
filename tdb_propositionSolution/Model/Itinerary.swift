@@ -19,21 +19,9 @@ class Itinerary {
     var origin: CLLocationCoordinate2D
     var destination: CLLocationCoordinate2D
     var transport: String
-    var emissions: Double {
-        get {
-            return 0
-        }
-    }
-    var cost: Double {
-        get {
-            return 0
-        }
-    }
-    var expectedTime: Int {
-        get {
-            return 0
-        }
-    }
+    var emissions: Double = 0
+    var cost: Double = 0
+    var expectedTime: Int = 0
     var timeToDestination: Int {
         get {
             return expectedTime

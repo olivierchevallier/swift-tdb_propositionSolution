@@ -29,15 +29,7 @@ class ItinerariesList {
     }
     var expectedTime: Int {
         get {
-            if itineraries.count < 1 { return 0 }
-            else {
-                var total = 0
-                for itinerary in itineraries {
-                    total += itinerary.expectedTime
-                }
-                return total
-            }
-        }
+            return getExpectedTime()        }
     }
     
     
@@ -72,6 +64,17 @@ class ItinerariesList {
             totalEmissions += itinerary.emissions
         }
         return totalEmissions / Double(itineraries.count)
+    }
+    
+    private func getExpectedTime() -> Int {
+        if itineraries.count < 1 { return 0 }
+        else {
+            var total = 0
+            for itinerary in itineraries {
+                total += itinerary.expectedTime
+            }
+            return total
+        }
     }
     
     //MARK: - Public methods

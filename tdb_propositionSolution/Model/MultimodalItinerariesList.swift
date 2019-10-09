@@ -19,28 +19,17 @@ class MultimodalItinerariesList: ItinerariesList {
     var parking: Parking?
     
     //MARK: Computed
-    var timeToDestination: Int {
-        get {
-            var value = 0
-            for itinerary in self.transitItineraries!.itineraries {
-                let timeToDestination = (itinerary as? TransitItinerary)!.timeToDestination
-                if value == 0 || value > timeToDestination {
-                    value = timeToDestination
-                }
-            }
-            return value
-        }
-    }
+    var timeToDestination: Int = 0
     
-    var emissions: Double {
-        get {
-            return getEmissions()
-        }
-    }
+    var emissions: Double = 0
     
     //MARK: - Initializers
     init(origin: CLLocationCoordinate2D, destination: CLLocationCoordinate2D) {
         super.init(origin: origin, destination: destination, transport: "Multimodal")
+        itinerariesCalculated {
+            self.emissions = self.getEmissions()
+            self.timeToDestination = self.computeTimeToDestination()
+        }
     }
     
     //MARK: - Private methods
@@ -86,5 +75,16 @@ class MultimodalItinerariesList: ItinerariesList {
     private func getEmissions() -> Double {
         var emissions = carItinerary!.emissions + transitItineraries!.avgEmissions
         return emissions
+    }
+    
+    private func computeTimeToDestination() -> Int {
+        var value = 0
+        for itinerary in self.transitItineraries!.itineraries {
+            let timeToDestination = (itinerary as? TransitItinerary)!.timeToDestination
+            if value == 0 || value > timeToDestination {
+                value = timeToDestination
+            }
+        }
+        return value
     }
 }

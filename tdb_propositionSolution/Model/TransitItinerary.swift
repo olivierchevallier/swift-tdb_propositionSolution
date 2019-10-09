@@ -18,61 +18,17 @@ class TransitItinerary: Itinerary {
     let dateFormatter = DateFormatter()
     
     //MARK: Mutable
-    override var emissions: Double {
-        get {
-            return self.computeEmissions()
-        }
-    }
-    override var cost: Double {
-        get {
-            return 0
-        }
-    }
-    override var expectedTime: Int {
-        get {
-            let duration = connection.duration
-            let daysStr = duration.startIndex..<duration.index(duration.startIndex, offsetBy: 2)
-            let hoursStr = duration.index(duration.startIndex, offsetBy: 3)..<duration.index(duration.startIndex, offsetBy: 5)
-            let minutesStr = duration.index(duration.startIndex, offsetBy: 6)..<duration.index(duration.startIndex, offsetBy: 8)
-            let days = Int(duration[daysStr])!
-            let hours = Int(duration[hoursStr])!
-            let minutes = Int(duration[minutesStr])!
-            let durationInMinutes = days * 24 * 60 + hours * 60 + minutes
-            return durationInMinutes
-        }
-    }
+    var departureTime: String = ""
+    var arrivalTime: String = ""
+    var lines: [TransitLine?] = [TransitLine?]()
+    
+    //MARK: Computed
     override var timeToDestination: Int {
         get {
             if let date = dateFormatter.date(from:connection.to.arrival!) {
                 return Int(date.timeIntervalSinceNow) / 60
             }
             return 0
-            
-        }
-    }
-    var departureTime: String {
-        get {
-            return TransitItinerary.makeTimePrensentable(time: connection.from.departure!)
-        }
-    }
-    var arrivalTime: String {
-        get {
-            return TransitItinerary.makeTimePrensentable(time: connection.to.arrival!)
-        }
-    }
-    var lines: [TransitLine?] {
-        get {
-            var table = [TransitLine?]()
-            let sections = connection.sections
-            for section in sections {
-                if section.journey == nil {
-                    table.append(nil)
-                } else {
-                    let journey = (section.journey)!
-                    table.append(TransitLine(journey: journey))
-                }
-            }
-            return table
         }
     }
     
@@ -86,6 +42,11 @@ class TransitItinerary: Itinerary {
             let journey = section.journey != nil ? section.journey! : nil
         }
         super.init(origin: origin, destination: destination, transport: "Transports publics")
+        self.lines = self.getLines()
+        self.departureTime = self.getDepartureTime()
+        self.arrivalTime = self.getArrivalTime()
+        self.expectedTime = self.computeExpectedTime()
+        self.emissions = self.computeEmissions()
     }
     
     //MARK: - Public methods
@@ -133,5 +94,40 @@ class TransitItinerary: Itinerary {
             }
         }
         return avgSpeed / 3.6 * time
+    }
+    
+    /// Fonction calculant le temps total de l'itinéraire
+    private func computeExpectedTime() -> Int {
+        let duration = connection.duration
+        let daysStr = duration.startIndex..<duration.index(duration.startIndex, offsetBy: 2)
+        let hoursStr = duration.index(duration.startIndex, offsetBy: 3)..<duration.index(duration.startIndex, offsetBy: 5)
+        let minutesStr = duration.index(duration.startIndex, offsetBy: 6)..<duration.index(duration.startIndex, offsetBy: 8)
+        let days = Int(duration[daysStr])!
+        let hours = Int(duration[hoursStr])!
+        let minutes = Int(duration[minutesStr])!
+        let durationInMinutes = days * 24 * 60 + hours * 60 + minutes
+        return durationInMinutes
+    }
+    
+    private func getDepartureTime() -> String {
+        return TransitItinerary.makeTimePrensentable(time: connection.from.departure!)
+    }
+    
+    private func getArrivalTime() -> String {
+        return TransitItinerary.makeTimePrensentable(time: connection.to.arrival!)
+    }
+    
+    private func getLines() -> [TransitLine?] {
+        var table = [TransitLine?]()
+        let sections = connection.sections
+        for section in sections {
+            if section.journey == nil {
+                table.append(nil)
+            } else {
+                let journey = (section.journey)!
+                table.append(TransitLine(journey: journey))
+            }
+        }
+        return table
     }
 }
