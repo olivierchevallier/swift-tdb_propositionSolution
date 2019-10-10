@@ -8,6 +8,7 @@
 
 
 import UIKit
+import CoreLocation
 
 class SettingsViewController: UIViewController, UITextFieldDelegate {
     //MARK: - Properties
@@ -15,6 +16,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     let defaults = UserDefaults.standard
     
     //MARK: Mutable
+    var userLocation: CLLocationCoordinate2D?
     var walkSpeed: Double = 4.5
     var homeAdress: String = ""
     var electric: Bool = false
@@ -99,7 +101,21 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func txt_homeAdressEdited(_ sender: Any) {
+        guard userLocation != nil  else {
+            fatalError("User location unknown")
+        }
         
+        let locations = LocationsList(proximity: userLocation!)
+        locations.searchTxt = txt_homeAdress.text
+        locations.locationsObtained {
+            if let location = locations.locations.first {
+                self.txt_homeAdress.text = location.name
+                self.btn_save.isEnabled = true
+            } else {
+                self.txt_homeAdress.text = ""
+                self.btn_save.isEnabled = false
+            }
+        }
     }
     
     @IBAction func sw_electricChanged(_ sender: UISwitch) {
@@ -118,6 +134,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     @IBAction func btn_savePressed(_ sender: Any) {
         castPreferences()
         savePreferences()
+        btn_save.isEnabled = false
     }
     
     //MARK: - UITextFieldDelegate

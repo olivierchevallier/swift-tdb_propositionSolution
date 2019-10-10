@@ -186,6 +186,11 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
                 destinationVC.str_userLocation = self.str_userLocation
             }
         }
+        if segue.identifier == "showPreferences" {
+            if let destinationVC = segue.destination as? SettingsViewController {
+                destinationVC.userLocation = mapView.userLocation!.coordinate
+            }
+        }
     }
     
     @IBAction func unwindToMap(_ unwindSegue: UIStoryboardSegue) {
