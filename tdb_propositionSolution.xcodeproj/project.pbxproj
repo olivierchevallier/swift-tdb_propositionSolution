@@ -10,7 +10,7 @@
 		5F252B55232F79AB0050546E /* Itinerary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F252B54232F79AB0050546E /* Itinerary.swift */; };
 		5F3E277D2343470400EFBF85 /* MultimodalItinerariesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3E277C2343470400EFBF85 /* MultimodalItinerariesList.swift */; };
 		5F3E27812344AD6700EFBF85 /* ConfigButtonControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3E27802344AD6700EFBF85 /* ConfigButtonControl.swift */; };
-		5F3E27842344CCA300EFBF85 /* TransitSubscibtionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3E27832344CCA300EFBF85 /* TransitSubscibtionViewController.swift */; };
+		5F3E27842344CCA300EFBF85 /* CarConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3E27832344CCA300EFBF85 /* CarConfigViewController.swift */; };
 		5F3E27862344CCCF00EFBF85 /* WalkSpeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3E27852344CCCF00EFBF85 /* WalkSpeedViewController.swift */; };
 		5F3E27882344CCEC00EFBF85 /* HomeAdressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3E27872344CCEC00EFBF85 /* HomeAdressViewController.swift */; };
 		5F3E278A2344CD1B00EFBF85 /* Configuration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F3E27892344CD1A00EFBF85 /* Configuration.storyboard */; };
@@ -69,7 +69,7 @@
 		5F252B54232F79AB0050546E /* Itinerary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Itinerary.swift; sourceTree = "<group>"; };
 		5F3E277C2343470400EFBF85 /* MultimodalItinerariesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultimodalItinerariesList.swift; sourceTree = "<group>"; };
 		5F3E27802344AD6700EFBF85 /* ConfigButtonControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigButtonControl.swift; sourceTree = "<group>"; };
-		5F3E27832344CCA300EFBF85 /* TransitSubscibtionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitSubscibtionViewController.swift; sourceTree = "<group>"; };
+		5F3E27832344CCA300EFBF85 /* CarConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarConfigViewController.swift; sourceTree = "<group>"; };
 		5F3E27852344CCCF00EFBF85 /* WalkSpeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkSpeedViewController.swift; sourceTree = "<group>"; };
 		5F3E27872344CCEC00EFBF85 /* HomeAdressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAdressViewController.swift; sourceTree = "<group>"; };
 		5F3E27892344CD1A00EFBF85 /* Configuration.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Configuration.storyboard; sourceTree = "<group>"; };
@@ -159,7 +159,7 @@
 		5F3E27822344CBC200EFBF85 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				5F3E27832344CCA300EFBF85 /* TransitSubscibtionViewController.swift */,
+				5F3E27832344CCA300EFBF85 /* CarConfigViewController.swift */,
 				5F3E27852344CCCF00EFBF85 /* WalkSpeedViewController.swift */,
 				5F3E27872344CCEC00EFBF85 /* HomeAdressViewController.swift */,
 			);
@@ -471,7 +471,7 @@
 				5FE32D3D234F40CA00287264 /* LocationsList.swift in Sources */,
 				5F713AE32333AFDB00C2C8CC /* TransitWebService.swift in Sources */,
 				5F3E277D2343470400EFBF85 /* MultimodalItinerariesList.swift in Sources */,
-				5F3E27842344CCA300EFBF85 /* TransitSubscibtionViewController.swift in Sources */,
+				5F3E27842344CCA300EFBF85 /* CarConfigViewController.swift in Sources */,
 				5FFA4528233B805900EB2237 /* TransitStepControl.swift in Sources */,
 				5F3E27812344AD6700EFBF85 /* ConfigButtonControl.swift in Sources */,
 				5F6BAB64233A60670089D5A8 /* TransitLine.swift in Sources */,

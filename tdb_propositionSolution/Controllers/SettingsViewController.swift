@@ -17,14 +17,42 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     let genevaCoordinates = CLLocationCoordinate2D(latitude: 42.206130, longitude: 6.147783)
     
     //MARK: Mutable
-    var walkSpeed: Double = 4.5
-    var homeAdress: String = ""
-    var electric: Bool = false
-    var consumption: Double = 7.5
-    var weight: Int = 1510
+    var walkSpeed: Double = 4.5 {
+        didSet {
+            txt_walkSpeed.text = String(walkSpeed)
+            step_walkSpeed.value = walkSpeed * 2
+            updateSaveButton()
+        }
+    }
+    var homeAdress: String = "" {
+        didSet {
+            txt_homeAdress.text = homeAdress
+            updateSaveButton()
+        }
+    }
+    var electric: Bool = false {
+        didSet {
+            sw_electric.isOn = electric
+            sw_electricChanged(sw_electric)
+            updateSaveButton()
+        }
+    }
+    var consumption: Double = 7.5 {
+        didSet {
+            txt_consumption.text = String(consumption)
+            updateSaveButton()
+        }
+    }
+    var weight: Int = 1510 {
+        didSet {
+            txt_weight.text = String(weight)
+            updateSaveButton()
+        }
+    }
     
     //MARK: Controls
     @IBOutlet var txt_walkSpeed: UITextField!
+    @IBOutlet var step_walkSpeed: UIStepper!
     @IBOutlet var txt_homeAdress: UITextField!
     @IBOutlet var sw_electric: UISwitch!
     @IBOutlet var txt_consumption: UITextField!
@@ -36,7 +64,6 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         loadPreferences()
-        showPreferences()
         txt_homeAdress.delegate = self
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
@@ -58,14 +85,6 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         if defaults.integer(forKey: "weight") != 0 {
             weight = defaults.integer(forKey: "weight")
         }
-    }
-    
-    private func showPreferences() {
-        txt_walkSpeed.text = String(walkSpeed)
-        txt_homeAdress.text = homeAdress
-        sw_electric.isOn = electric
-        sw_electricChanged(sw_electric)
-        txt_weight.text = String(weight)
     }
     
     func updateSaveButton() {
@@ -130,6 +149,21 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         castPreferences()
         savePreferences()
         btn_save.isEnabled = false
+    }
+    
+    @IBAction func step_walkSpeedChanged(_ sender: Any) {
+        walkSpeed = step_walkSpeed.value / 2
+        updateSaveButton()
+    }
+    
+    @IBAction func viewTapped(_ sender: Any) {
+        for view in self.view.subviews {
+            if let textField = view as? UITextField {
+                if textField.isEditing {
+                    textField.resignFirstResponder()
+                }
+            }
+        }
     }
     
     //MARK: - UITextFieldDelegate
