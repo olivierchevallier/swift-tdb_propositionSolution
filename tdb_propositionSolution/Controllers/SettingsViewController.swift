@@ -14,9 +14,9 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     //MARK: - Properties
     //MARK: Immutable
     let defaults = UserDefaults.standard
+    let genevaCoordinates = CLLocationCoordinate2D(latitude: 42.206130, longitude: 6.147783)
     
     //MARK: Mutable
-    var userLocation: CLLocationCoordinate2D?
     var walkSpeed: Double = 4.5
     var homeAdress: String = ""
     var electric: Bool = false
@@ -64,7 +64,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         txt_walkSpeed.text = String(walkSpeed)
         txt_homeAdress.text = homeAdress
         sw_electric.isOn = electric
-        txt_consumption.text = String(consumption)
+        sw_electricChanged(sw_electric)
         txt_weight.text = String(weight)
     }
     
@@ -101,21 +101,16 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func txt_homeAdressEdited(_ sender: Any) {
-        guard userLocation != nil  else {
-            fatalError("User location unknown")
-        }
-        
-        let locations = LocationsList(proximity: userLocation!)
+        let locations = LocationsList(proximity: genevaCoordinates)
         locations.searchTxt = txt_homeAdress.text
         locations.locationsObtained {
             if let location = locations.locations.first {
                 self.txt_homeAdress.text = location.name
-                self.btn_save.isEnabled = true
             } else {
                 self.txt_homeAdress.text = ""
-                self.btn_save.isEnabled = false
             }
         }
+        updateSaveButton()
     }
     
     @IBAction func sw_electricChanged(_ sender: UISwitch) {

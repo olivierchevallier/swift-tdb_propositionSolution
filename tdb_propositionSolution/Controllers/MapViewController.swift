@@ -16,6 +16,9 @@ import os.log
 class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelegate, UINavigationControllerDelegate {
 
     //MARK: - Properties
+    //MARK: Immutable
+    let defaults = UserDefaults.standard
+    
     //MARK: Mutable
     var mapView: NavigationMapView!
     var str_userLocation: String?
@@ -28,13 +31,11 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
     //MARK: -
     override func viewDidLoad() {
         super.viewDidLoad()
-        /*
-        let defaults = UserDefaults.standard
+        
+        defaults.set(false, forKey: "configured")
         if defaults.bool(forKey: "configured") == false {
             performSegue(withIdentifier: "ConfigurationSegue", sender: self)
         }
-        defaults.set(false, forKey: "configured")
-         */
         
         guard let itinerariesController = children.first as? ItinerariesViewController else {
             fatalError("Error while getting itineraries child view")
@@ -184,11 +185,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
         if segue.identifier == "showResults" {
             if let destinationVC = segue.destination as? LocationTableViewController {
                 destinationVC.str_userLocation = self.str_userLocation
-            }
-        }
-        if segue.identifier == "showPreferences" {
-            if let destinationVC = segue.destination as? SettingsViewController {
-                destinationVC.userLocation = mapView.userLocation!.coordinate
             }
         }
     }
