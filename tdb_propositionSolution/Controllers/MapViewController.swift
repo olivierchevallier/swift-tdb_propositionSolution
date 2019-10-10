@@ -32,7 +32,8 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        defaults.set(false, forKey: "configured")
+        // Décommenter la ligne ci-dessous pour faire apparaître l'écran de config à chaque fois
+        //defaults.set(false, forKey: "configured")
         if defaults.bool(forKey: "configured") == false {
             performSegue(withIdentifier: "ConfigurationSegue", sender: self)
         }
@@ -184,6 +185,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showResults" {
             if let destinationVC = segue.destination as? LocationTableViewController {
+                destinationVC.userLocation = self.mapView.userLocation!.coordinate
                 destinationVC.str_userLocation = self.str_userLocation
             }
         }

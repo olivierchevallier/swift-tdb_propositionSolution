@@ -1,7 +1,7 @@
 //--------------------------------------------------
 // Travail de bachelor - Proposition de solution
 //
-// LocationsList :
+// LocationsList : 
 //
 // Créé par : Olivier Chevallier le 10.10.19
 //--------------------------------------------------
@@ -20,15 +20,13 @@ class LocationsList {
     var searchTxt: String? {
         didSet {
             if self.searchTxt != nil || self.searchTxt! != "" {
+                self.dispatchGroup.enter()
                 if searched {
-                    locationsObtained {
-                        self.cleanList()
-                        self.performSearch()
-                    }
+                    self.cleanList()
                 } else {
                     searched = true
-                    self.performSearch()
                 }
+                self.performSearch()
             }
         }
     }
@@ -41,14 +39,21 @@ class LocationsList {
     }
     
     //MARK: - Private methods
+    /// Rempli le tableau des lieux en fonction du texte recherché
     private func performSearch() {
-        dispatchGroup.enter()
         let url = URL(string: CarWebService.getPlaces(txt: searchTxt!, proximity: proximity.stringRepresentation()))!
+        let reqSearchTxt = searchTxt!
         Network.executeHTTPGet(url: url, dataCompletionHandler: { data in
             do {
                 let featuresCollection = try JSONDecoder().decode(CarWebService.FeaturesCollection.self, from: data!)
                 for feature in featuresCollection.features {
-                    self.locations.append(Location(name: feature.place_name, coordinate: feature.geometry.coordinates))
+                    // Si le texte à changé ça veut dire que la requête ne correspond plus à la recherhce actuelle
+                    if reqSearchTxt == self.searchTxt {
+                        self.locations.append(Location(name: feature.place_name, coordinate: feature.geometry.coordinates))
+                    } else {
+                        self.dispatchGroup.leave()
+                        return
+                    }
                 }
                 self.dispatchGroup.leave()
             } catch {
