@@ -21,32 +21,27 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         didSet {
             txt_walkSpeed.text = String(walkSpeed)
             step_walkSpeed.value = walkSpeed * 2
-            updateSaveButton()
         }
     }
     var homeAdress: String = "" {
         didSet {
             txt_homeAdress.text = homeAdress
-            updateSaveButton()
         }
     }
     var electric: Bool = false {
         didSet {
             sw_electric.isOn = electric
             sw_electricChanged(sw_electric)
-            updateSaveButton()
         }
     }
     var consumption: Double = 7.5 {
         didSet {
             txt_consumption.text = String(consumption)
-            updateSaveButton()
         }
     }
     var weight: Int = 1510 {
         didSet {
             txt_weight.text = String(weight)
-            updateSaveButton()
         }
     }
     
