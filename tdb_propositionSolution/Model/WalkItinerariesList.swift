@@ -1,9 +1,9 @@
 //--------------------------------------------------
 // Travail de bachelor - Proposition de solution
 //
-// CarItinerariesList : Classe permettant d'obtenir la liste des itinéraires en voiture pour un lieu de départ et une destination donnés à l'initialisation de l'instance.
+// WalkItinerariesList :
 //
-// Créé par : Olivier Chevallier le 20.09.19
+// Créé par : Olivier Chevallier le 10.10.19
 //--------------------------------------------------
 
 
@@ -12,11 +12,15 @@ import Mapbox
 import MapboxCoreNavigation
 import MapboxDirections
 
-
-class CarItinerariesList: ItinerariesList {
+class WalkItinerariesList: ItinerariesList {
+    //MARK: - Properties
+    //MARK: Immutable
+    let walkSpeed: Double
+    
     //MARK: - Initializers
-    init(origin: CLLocationCoordinate2D, destination: CLLocationCoordinate2D) {
-        super.init(origin: origin, destination: destination, transport: "Voiture")
+    init(origin: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, walkSpeed: Double) {
+        self.walkSpeed = walkSpeed / 3.6
+        super.init(origin: origin, destination: destination, transport: "Marche")
     }
     
     //MARK: - Private methods
@@ -25,11 +29,11 @@ class CarItinerariesList: ItinerariesList {
         dispatchGroup.enter()
         let originWaypoint = Waypoint(coordinate: origin, coordinateAccuracy: -1, name: "Départ")
         let destinationWaypoint = Waypoint(coordinate: destination, coordinateAccuracy: -1, name: "Arrivée")
-        let options = NavigationRouteOptions(waypoints: [originWaypoint, destinationWaypoint], profileIdentifier: .automobileAvoidingTraffic)
+        let options = RouteOptions(waypoints: [originWaypoint, destinationWaypoint], profileIdentifier: .walking)
+        options.speed = walkSpeed
         _ = Directions.shared.calculate(options, completionHandler: { (waypoints, routes, error) in
-            //TODO: Créer la liste des itinéraires ici
             for route in routes! {
-                self.itineraries.append(CarItinerary(origin: self.origin, destination: self.destination, route: route))
+                self.itineraries.append(WalkItinerary(origin: self.origin, destination: self.destination, route: route))
             }
             self.dispatchGroup.leave()
         })

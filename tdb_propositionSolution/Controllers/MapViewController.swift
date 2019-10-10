@@ -62,7 +62,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
             
         }
         
-        TransitLineColorsList.getInstance()
+        _ = TransitLineColorsList.getInstance()
     }
     
     override func viewWillAppear(_ animated: Bool) {

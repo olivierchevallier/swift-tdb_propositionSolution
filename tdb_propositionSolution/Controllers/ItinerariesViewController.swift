@@ -16,6 +16,7 @@ import MapboxDirections
 class ItinerariesViewController: UIViewController {
     //MARK: - Properties
     //MARK: Immutable
+    let defaults = UserDefaults.standard
     let multimodalMargin = 10
     
     //MARK: Mutable
@@ -43,6 +44,7 @@ class ItinerariesViewController: UIViewController {
     @IBOutlet var btn_goMix: GoButtonControl!
     @IBOutlet var lbl_mixTime: UILabel!
     @IBOutlet var lbl_mixVia: UILabel!
+    @IBOutlet var lbl_walkTime: UILabel!
     
     //MARK: -
     override func viewDidLoad() {
@@ -67,6 +69,7 @@ class ItinerariesViewController: UIViewController {
         getCarItinerary()
         getTransitItineraries()
         getMultimodalItineraries()
+        getWalkItinerary()
     }
     
     private func getCarItinerary() {
@@ -112,6 +115,17 @@ class ItinerariesViewController: UIViewController {
             self.drawRoute(route: self.multimodalItineraries!.carItinerary!.route!, color: UIColor.blue, identifier: "multimodal")
             self.showParking()
             self.btn_goMix.isLoading(false)
+        }
+    }
+    
+    private func getWalkItinerary() {
+        lbl_walkTime.text = "Chargement..."
+        let walkItinerariesList = WalkItinerariesList(origin:userLocation!, destination: destination!.coordinate, walkSpeed: defaults.double(forKey: "walkSpeed"))
+        walkItinerariesList.itinerariesCalculated {
+            let walkItinerary = walkItinerariesList.itineraries.first! as? WalkItinerary
+            let emissions = round(walkItinerary!.emissions*100)/100
+            self.lbl_walkTime.text = "\(walkItinerary!.timeToDestination) min. - \(emissions)g. de CO2"
+            self.drawRoute(route: walkItinerary!.route!, color: UIColor.green, identifier: "walk")
         }
     }
     
