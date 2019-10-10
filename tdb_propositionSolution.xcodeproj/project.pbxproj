@@ -27,6 +27,7 @@
 		5F713AE82333B04B00C2C8CC /* CarWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F713AE72333B04B00C2C8CC /* CarWebService.swift */; };
 		5F89FEDE234F84C6009AB73E /* WalkItinerariesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F89FEDD234F84C6009AB73E /* WalkItinerariesList.swift */; };
 		5F89FEE0234F84D9009AB73E /* WalkItinerary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F89FEDF234F84D9009AB73E /* WalkItinerary.swift */; };
+		5F89FEE2234F958E009AB73E /* MultimodalItinerary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F89FEE1234F958E009AB73E /* MultimodalItinerary.swift */; };
 		5FA66EF9231FA92700A23B14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA66EF8231FA92700A23B14 /* AppDelegate.swift */; };
 		5FA66EFB231FA92700A23B14 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA66EFA231FA92700A23B14 /* SceneDelegate.swift */; };
 		5FA66EFD231FA92700A23B14 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA66EFC231FA92700A23B14 /* MapViewController.swift */; };
@@ -89,6 +90,7 @@
 		5F713AE72333B04B00C2C8CC /* CarWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarWebService.swift; sourceTree = "<group>"; };
 		5F89FEDD234F84C6009AB73E /* WalkItinerariesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkItinerariesList.swift; sourceTree = "<group>"; };
 		5F89FEDF234F84D9009AB73E /* WalkItinerary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkItinerary.swift; sourceTree = "<group>"; };
+		5F89FEE1234F958E009AB73E /* MultimodalItinerary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultimodalItinerary.swift; sourceTree = "<group>"; };
 		5FA66EF5231FA92700A23B14 /* tdb_propositionSolution.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tdb_propositionSolution.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FA66EF8231FA92700A23B14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5FA66EFA231FA92700A23B14 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 				5FADAC2F2327E16D00316A55 /* Location.swift */,
 				5F252B54232F79AB0050546E /* Itinerary.swift */,
 				5F713ADD2333A75900C2C8CC /* CarItinerary.swift */,
+				5F89FEE1234F958E009AB73E /* MultimodalItinerary.swift */,
 				5F89FEDF234F84D9009AB73E /* WalkItinerary.swift */,
 				5F713ADF2333A77400C2C8CC /* TransitItinerary.swift */,
 				5FB3B4452334C84D00205719 /* ItinerariesList.swift */,
@@ -494,6 +497,7 @@
 				5F89FEE0234F84D9009AB73E /* WalkItinerary.swift in Sources */,
 				5FADAC302327E16D00316A55 /* Location.swift in Sources */,
 				5FE32D3F234F429500287264 /* CLLocationCorrdinate2D+StringRepresentation.swift in Sources */,
+				5F89FEE2234F958E009AB73E /* MultimodalItinerary.swift in Sources */,
 				5F6BAB62233A46430089D5A8 /* UIColor+HexInit.swift in Sources */,
 				5FB3B44E23350D1200205719 /* TransitItineraryTableViewCell.swift in Sources */,
 				5F252B55232F79AB0050546E /* Itinerary.swift in Sources */,

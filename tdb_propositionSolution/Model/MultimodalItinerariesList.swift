@@ -12,52 +12,57 @@ import CoreLocation
 
 class MultimodalItinerariesList: ItinerariesList {
     //MARK: - Properties
+    //MARK: Immutable
+    let internalDispatchGroup = DispatchGroup()
+    let parkingList = ParkingList.getInstance()
+
     //MARK: Mutable
-    var departureTime: Date?
-    var carItinerary: CarItinerary?
-    var transitItineraries: TransitItinerariesList?
-    var parking: Parking?
-    
-    //MARK: Computed
-    var timeToDestination: Int = 0
-    
-    var emissions: Double = 0
+    var shortest: MultimodalItinerary {
+        get {
+            return getShortestItinerary()
+        }
+    }
+    var mostEco: MultimodalItinerary {
+        get {
+            return getMostEcoItinerary()
+        }
+    }
+    var mostEfficient: MultimodalItinerary {
+        get {
+            return getMostEfficient()
+        }
+    }
     
     //MARK: - Initializers
     init(origin: CLLocationCoordinate2D, destination: CLLocationCoordinate2D) {
         super.init(origin: origin, destination: destination, transport: "Multimodal")
-        itinerariesCalculated {
-            self.emissions = self.getEmissions()
-            self.timeToDestination = self.computeTimeToDestination()
-        }
     }
     
     //MARK: - Private methods
     /// Calcul l'itinéraire
     override internal func calculateItineraries(completion: @escaping(Error?) -> Void){
-        let parkingList = ParkingList.getInstance()
-        
+        dispatchGroup.enter()
         for parking in parkingList.parkings {
-            dispatchGroup.enter()
-            parking.getDispo { available in
-                if available < 0 || available > 0 {
-                    let carItinerariesList = CarItinerariesList(origin:self.origin, destination: parking.location)
-                    carItinerariesList.itinerariesCalculated {
-                        let tempCarItinerary = (carItinerariesList.itineraries.first! as? CarItinerary)!
-                        let tempTransitItineraries = TransitItinerariesList(origin: parking.location, destination: self.destination, departureTime: self.departureTime(carItinerary: tempCarItinerary))
-                        tempTransitItineraries.itinerariesCalculated {
-                            let actualTimeToDestination = (self.transitItineraries?.itineraries.first as? TransitItinerary)?.timeToDestination
-                            let newTimeToDestination = (tempTransitItineraries.itineraries.first as? TransitItinerary)!.timeToDestination
-                            if self.carItinerary == nil || actualTimeToDestination ?? 0 > newTimeToDestination {
-                                self.parking = parking
-                                self.carItinerary = tempCarItinerary
-                                self.transitItineraries = tempTransitItineraries
-                            }
-                            self.dispatchGroup.leave()
-                        }
-                    }
-                }
+            var carItinerary: CarItinerary?
+            var transitItineraries: TransitItinerariesList?
+            
+            internalDispatchGroup.enter()
+            getCarItinerary(parking: parking, completionHandler: { returnedCarItinerary in
+                carItinerary = returnedCarItinerary
+                self.internalDispatchGroup.leave()
+            })
+            internalDispatchGroup.enter()
+            getTransitItineraries(parking: parking, completionHandler: { returnedTransitItinerariesList in
+                transitItineraries = returnedTransitItinerariesList
+                self.internalDispatchGroup.leave()
+            })
+            
+            internalDispatchGroup.notify(queue: .main) {
+                self.itineraries.append(MultimodalItinerary(origin: self.origin, destination: self.destination, parking: parking, carItinerary: carItinerary!, transitItinerariesList: transitItineraries!))
             }
+        }
+        internalDispatchGroup.notify(queue: .main) {
+            self.dispatchGroup.leave()
         }
     }
     
@@ -65,26 +70,68 @@ class MultimodalItinerariesList: ItinerariesList {
         return Date().advanced(by: Double((carItinerary.expectedTime + 10) * 60))
     }
     
-    private func getCarItinerary(parking: Parking) {
+    private func getCarItinerary(parking: Parking, completionHandler: @escaping(CarItinerary) -> Void) {
         let carItinerariesList = CarItinerariesList(origin:origin, destination: parking.location)
         carItinerariesList.itinerariesCalculated {
-            self.carItinerary = carItinerariesList.itineraries.first! as? CarItinerary
+            let carItinerary = carItinerariesList.itineraries.first! as? CarItinerary
+            completionHandler(carItinerary!)
         }
     }
     
-    private func getEmissions() -> Double {
-        var emissions = carItinerary!.emissions + transitItineraries!.avgEmissions
-        return emissions
+    private func getTransitItineraries(parking: Parking, completionHandler: @escaping(TransitItinerariesList) -> Void) {
+        let transitItinerariesList = TransitItinerariesList(origin: parking.location, destination: destination)
+        transitItinerariesList.itinerariesCalculated {
+            completionHandler(transitItinerariesList)
+        }
     }
     
-    private func computeTimeToDestination() -> Int {
-        var value = 0
-        for itinerary in self.transitItineraries!.itineraries {
-            let timeToDestination = (itinerary as? TransitItinerary)!.timeToDestination
-            if value == 0 || value > timeToDestination {
-                value = timeToDestination
+    private func getShortestItinerary() -> MultimodalItinerary {
+        var shortestTimeToDestination = Int.max
+        var itineraryToReturn: MultimodalItinerary?
+        
+        for itinerary in itineraries {
+            let itineraryTimeToDestination = itinerary.timeToDestination
+            print("Time to destination \(itineraryTimeToDestination)")
+            if itineraryTimeToDestination < shortestTimeToDestination {
+                shortestTimeToDestination = itineraryTimeToDestination
+                itineraryToReturn = itinerary as? MultimodalItinerary
             }
         }
-        return value
+        
+        return itineraryToReturn!
     }
+    
+    private func getMostEcoItinerary() -> MultimodalItinerary {
+        var emissions = -1.0
+        var itineraryToReturn: MultimodalItinerary?
+        
+        for itinerary in itineraries {
+            let itineraryConsumption = itinerary.emissions
+            if emissions < 0 || itineraryConsumption < emissions {
+                emissions = itineraryConsumption
+                itineraryToReturn = itinerary as? MultimodalItinerary
+            }
+        }
+        
+        return itineraryToReturn!
+    }
+    
+    private func getMostEfficient() -> MultimodalItinerary {
+        var efficience = -1.0
+        var itineraryToReturn: MultimodalItinerary?
+        
+        for itinerary in itineraries {
+            let itineraryConsumption = itinerary.emissions
+            let itineraryTimeToDestination = itinerary.timeToDestination
+            let avg = itineraryConsumption / Double(itineraryTimeToDestination)
+            if efficience < 0 || avg < efficience {
+                efficience = avg
+                itineraryToReturn = itinerary as? MultimodalItinerary
+            }
+        }
+        
+        return itineraryToReturn!
+    }
+    
+    //MARK: Public methods
 }

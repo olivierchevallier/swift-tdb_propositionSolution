@@ -24,7 +24,7 @@ class ItinerariesViewController: UIViewController {
     var carItinerary: CarItinerary?
     var transitItineraries = [TransitItinerary]()
     var multimodalItineraries: MultimodalItinerariesList?
-    var multimodalItinerary = ItinerariesList()
+    var multimodalItinerary: MultimodalItinerary?
     var userLocation: CLLocationCoordinate2D?
     
     //MARK: Observed
@@ -59,7 +59,7 @@ class ItinerariesViewController: UIViewController {
     }
     
     @IBAction func btn_goMixTapped(_ sender: Any) {
-        let navigationVC = NavigationViewController(for: multimodalItineraries!.carItinerary!.route!)
+        let navigationVC = NavigationViewController(for: multimodalItinerary!.carItinerary.route!)
         performSegue(withIdentifier: "showMultimodalItineraries", sender: self)
         present(navigationVC, animated: true, completion: nil)
     }
@@ -79,7 +79,7 @@ class ItinerariesViewController: UIViewController {
         carItinerariesList.itinerariesCalculated {
             self.carItinerary = carItinerariesList.itineraries.first! as? CarItinerary
             self.btn_goCar.isLoading(false)
-            let emissions = round(self.carItinerary!.emissions*100)/100
+            let emissions = round(self.carItinerary!.emissions * 100) / 100
             self.lbl_carTime.text = "\(self.carItinerary!.timeToDestination) min. - \(emissions)g. de CO2"
             self.drawRoute(route: self.carItinerary!.route!, color: UIColor.red, identifier: "car")
         }
@@ -95,7 +95,7 @@ class ItinerariesViewController: UIViewController {
                 self.transitItineraries.append(transitIntnerary as! TransitItinerary)
             }
             self.btn_goTransit.isLoading(false)
-            let avgEmissions = round(transitItinerariesList.avgEmissions*100)/100
+            let avgEmissions = round(transitItinerariesList.avgEmissions)
             self.lbl_transitTime.text = "\(self.transitItineraries.first!.timeToDestination) min. - \(avgEmissions)g. de CO2"
         }
     }
@@ -106,14 +106,11 @@ class ItinerariesViewController: UIViewController {
         lbl_mixVia.text = ""
         multimodalItineraries = MultimodalItinerariesList(origin: userLocation!, destination: destination!.coordinate)
         multimodalItineraries!.itinerariesCalculated {
-            self.multimodalItineraries!.parking!.getDispo(completion: { available in
-                let nombrePlaceStr = available >= 0 ? "(\(available)  places)" : "(disp. inconnue)"
-                self.lbl_mixVia.text = "via \(self.multimodalItineraries!.parking!.nom) \(nombrePlaceStr)"
-            })
-            let emissions = round(self.multimodalItineraries!.emissions*100)/100
-            self.lbl_mixTime.text = "\(self.multimodalItineraries!.timeToDestination) min. - \(emissions)g. de CO2"
-            self.drawRoute(route: self.multimodalItineraries!.carItinerary!.route!, color: UIColor.blue, identifier: "multimodal")
+            self.multimodalItinerary = self.multimodalItineraries!.mostEfficient
+            let emissions = round(self.multimodalItinerary!.emissions)
+            self.lbl_mixTime.text = "\(self.multimodalItinerary!.timeToDestination) min. - \(emissions)g. de CO2"
             self.showParking()
+            self.drawRoute(route: self.multimodalItinerary!.carItinerary.route!, color: UIColor.blue, identifier: "multimodal")
             self.btn_goMix.isLoading(false)
         }
     }
@@ -123,7 +120,7 @@ class ItinerariesViewController: UIViewController {
         let walkItinerariesList = WalkItinerariesList(origin:userLocation!, destination: destination!.coordinate, walkSpeed: defaults.double(forKey: "walkSpeed"))
         walkItinerariesList.itinerariesCalculated {
             let walkItinerary = walkItinerariesList.itineraries.first! as? WalkItinerary
-            let emissions = round(walkItinerary!.emissions*100)/100
+            let emissions = round(walkItinerary!.emissions)
             self.lbl_walkTime.text = "\(walkItinerary!.timeToDestination) min. - \(emissions)g. de CO2"
             self.drawRoute(route: walkItinerary!.route!, color: UIColor.green, identifier: "walk")
         }
@@ -131,7 +128,7 @@ class ItinerariesViewController: UIViewController {
     
     private func showParking() {
         let destinationAnnotation = ParkingAnnotation()
-        destinationAnnotation.coordinate = multimodalItineraries!.parking!.location
+        destinationAnnotation.coordinate = multimodalItinerary!.parking.location
         mapView.addAnnotation(destinationAnnotation)
     }
     
@@ -163,7 +160,7 @@ class ItinerariesViewController: UIViewController {
                 destinationVC.destination = self.destination!.coordinate
                 destinationVC.userLocation = userLocation
             } else if segue.identifier == "showMultimodalItineraries" {
-                itineraries = multimodalItineraries!.transitItineraries!.itineraries
+                itineraries = multimodalItinerary!.transitItinerariesList.itineraries
             }
             destinationVC.itineraries = (itineraries as? [TransitItinerary])!
         }
