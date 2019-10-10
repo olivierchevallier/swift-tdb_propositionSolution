@@ -27,6 +27,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var sw_electric: UISwitch!
     @IBOutlet var txt_consumption: UITextField!
     @IBOutlet var txt_weight: UITextField!
+    @IBOutlet var btn_save: UIBarButtonItem!
     
     //MARK: -
     override func viewDidLoad() {
@@ -34,13 +35,16 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
 
         loadPreferences()
         showPreferences()
+        txt_homeAdress.delegate = self
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     //MARK: Private methods
     private func loadPreferences() {
-        if defaults.bool(forKey: "configured") {
+        if defaults.double(forKey: "walkSpeed") != 0 {
             walkSpeed = defaults.double(forKey: "walkSpeed")
+        }
+        if defaults.string(forKey: "homeAdress") != nil {
             homeAdress = defaults.string(forKey: "homeAdress")!
         }
         electric = defaults.bool(forKey: "electric")
@@ -62,12 +66,66 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         txt_weight.text = String(weight)
     }
     
+    func updateSaveButton() {
+        let walkSpeedValid = Double(txt_walkSpeed.text!) != nil
+        let consumptionValid = Double(txt_consumption.text!) != nil || sw_electric.isOn
+        let weightValid = Int(txt_weight.text!) != nil
+        if  walkSpeedValid && consumptionValid && weightValid {
+            btn_save.isEnabled = true
+        } else {
+            btn_save.isEnabled = false
+        }
+    }
+    
+    private func castPreferences() {
+        walkSpeed = Double(txt_walkSpeed.text!)!
+        consumption = sw_electric.isOn ? 0 : Double(txt_consumption.text!)!
+        electric = sw_electric.isOn
+        homeAdress = txt_homeAdress.text!
+        weight = Int(txt_weight.text!)!
+    }
+    
+    private func savePreferences() {
+        defaults.set(walkSpeed, forKey: "walkSpeed")
+        defaults.set(consumption, forKey: "consumption")
+        defaults.set(electric, forKey: "electric")
+        defaults.set(homeAdress, forKey: "homeAdress")
+        defaults.set(weight, forKey: "weight")
+    }
+    
+    //MARK: Actions
+    @IBAction func textFieldChanged(_ sender: UITextField) {
+        updateSaveButton()
+    }
+    
+    @IBAction func txt_homeAdressEdited(_ sender: Any) {
+        
+    }
+    
+    @IBAction func sw_electricChanged(_ sender: UISwitch) {
+        if sender.isOn {
+            txt_consumption.isEnabled = false
+            txt_consumption.text = "-"
+            txt_consumption.textColor = .secondaryLabel
+        } else {
+            txt_consumption.isEnabled = true
+            txt_consumption.textColor = .label
+            txt_consumption.text = String(consumption)
+        }
+        updateSaveButton()
+    }
+    
+    @IBAction func btn_savePressed(_ sender: Any) {
+        castPreferences()
+        savePreferences()
+    }
+    
     //MARK: - UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        print("rupestre")
         return true
     }
+    
 
     /*
     // MARK: - Navigation

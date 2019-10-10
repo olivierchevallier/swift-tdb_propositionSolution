@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Roukoukou-->
+        <!--Preferences-->
         <scene sceneID="70R-Ku-e7f">
             <objects>
-                <viewController title="Roukoukou" id="l5F-mT-68t" customClass="SettingsViewController" customModule="tdb_propositionSolution" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Roukoukou" id="l5F-mT-68t" userLabel="Preferences" customClass="SettingsViewController" customModule="tdb_propositionSolution" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="roN-2s-fq6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,6 +27,9 @@
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                <connections>
+                                    <action selector="textFieldChanged:" destination="l5F-mT-68t" eventType="editingChanged" id="AWw-2O-RTd"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Domicile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="93f-Mc-WOY">
                                 <rect key="frame" x="10" y="165" width="99" height="30"/>
@@ -38,7 +41,10 @@
                                 <rect key="frame" x="10" y="203" width="300" height="38"/>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" textContentType="street-address"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" smartInsertDeleteType="no" smartQuotesType="no" textContentType="street-address"/>
+                                <connections>
+                                    <action selector="txt_homeAdressEdited:" destination="l5F-mT-68t" eventType="editingDidEnd" id="D4W-1i-YYh"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vehicule" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YE5-3d-dwt">
                                 <rect key="frame" x="10" y="266" width="97.5" height="30"/>
@@ -57,12 +63,18 @@
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                <connections>
+                                    <action selector="textFieldChanged:" destination="l5F-mT-68t" eventType="editingChanged" id="Hi1-B2-EkE"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7lo-H3-D2g">
                                 <rect key="frame" x="10" y="394" width="261.5" height="38"/>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <connections>
+                                    <action selector="textFieldChanged:" destination="l5F-mT-68t" eventType="editingChanged" id="see-fy-3ky"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L / 100km" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kW7-Th-GkN">
                                 <rect key="frame" x="204" y="350" width="106" height="30"/>
@@ -78,6 +90,9 @@
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oLw-kM-hSt">
                                 <rect key="frame" x="261" y="305.5" width="51" height="31"/>
+                                <connections>
+                                    <action selector="sw_electricChanged:" destination="l5F-mT-68t" eventType="valueChanged" id="8dx-Xf-qox"/>
+                                </connections>
                             </switch>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -112,9 +127,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="p4X-eu-F18"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Préférences " id="YR1-aO-FGk"/>
+                    <navigationItem key="navigationItem" title="Préférences " id="YR1-aO-FGk">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" style="plain" systemItem="save" id="PS0-tY-ZlT">
+                            <connections>
+                                <action selector="btn_savePressed:" destination="l5F-mT-68t" id="VgW-3z-NbH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="btn_save" destination="PS0-tY-ZlT" id="cKB-Zm-se0"/>
                         <outlet property="sw_electric" destination="oLw-kM-hSt" id="KGe-KM-4OS"/>
                         <outlet property="txt_consumption" destination="eCi-QH-akE" id="z9o-GH-cna"/>
                         <outlet property="txt_homeAdress" destination="i8R-PG-2aA" id="GOF-Cs-32n"/>
