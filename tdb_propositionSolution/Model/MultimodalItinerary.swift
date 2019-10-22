@@ -41,14 +41,14 @@ class MultimodalItinerary: Itinerary {
         if transitItinerariesList.itineraries.count < 1 {
             return Int.max
         }
-        return carItinerary.expectedTime + transitItinerariesList.itineraries.first!.timeToDestination
+        return transitItinerariesList.itineraries.first!.timeToDestination
     }
     
     private func computeTimeToDestination() -> Int {
         if transitItinerariesList.itineraries.count < 1 {
             return Int.max
         }
-        return carItinerary.timeToDestination + transitItinerariesList.itineraries.first!.timeToDestination
+        return transitItinerariesList.itineraries.first!.timeToDestination
     }
     
     private func computeEmissions() -> Double {

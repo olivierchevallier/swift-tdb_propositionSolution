@@ -29,7 +29,13 @@ class ItinerariesList {
     }
     var expectedTime: Int {
         get {
-            return getExpectedTime()        }
+            return getExpectedTime()
+        }
+    }
+    var count: Int {
+        get {
+            return itineraries.count
+        }
     }
     
     
@@ -67,7 +73,8 @@ class ItinerariesList {
     }
     
     private func getExpectedTime() -> Int {
-        if itineraries.count < 1 { return 0 }
+        let count = itineraries.count
+        if count < 1 { return 0 }
         else {
             var total = 0
             for itinerary in itineraries {

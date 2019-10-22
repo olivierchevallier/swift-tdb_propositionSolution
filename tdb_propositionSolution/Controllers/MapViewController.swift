@@ -29,11 +29,11 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
     @IBOutlet var txt_search: UITextField!
     
     //MARK: -
-    override func viewDidLoad() {
+    override func viewDidLoad() { 
         super.viewDidLoad()
         
         // Décommenter la ligne ci-dessous pour faire apparaître l'écran de config à chaque fois
-        //defaults.set(false, forKey: "configured")
+        defaults.set(false, forKey: "configured")
         if defaults.bool(forKey: "configured") == false {
             performSegue(withIdentifier: "ConfigurationSegue", sender: self)
         }
@@ -45,22 +45,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
         itinerariesVC!.view.isHidden = true
         itinerariesVC!.view.superview!.isUserInteractionEnabled = false
         
-        // Setting up the map
-        mapView = NavigationMapView(frame: view.bounds)
-        mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.addSubview(mapView)
-        view.sendSubviewToBack(mapView)
-        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(didLongPressMap(_:)))
-        mapView.addGestureRecognizer(longPress)
-        
-        mapView.delegate = self
-        txt_search.delegate = self
-        
-        adaptMapStyle()
-        mapView.showsUserLocation = true
-        mapView.setUserTrackingMode(.follow, animated: true) {
-            
-        }
+        setupMap()
         
         _ = TransitLineColorsList.getInstance()
     }
@@ -84,6 +69,26 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
     }
     
     //MARK: - Private methods
+    private func setupMap() {
+        mapView = NavigationMapView(frame: view.bounds)
+        mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(mapView)
+        view.sendSubviewToBack(mapView)
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(didLongPressMap(_:)))
+        mapView.addGestureRecognizer(longPress)
+        
+        mapView.delegate = self
+        txt_search.delegate = self
+        
+        adaptMapStyle()
+        mapView.showsUserLocation = true
+        mapView.setUserTrackingMode(.follow, animated: true) {
+            
+        }
+        mapView.compassViewPosition = .topLeft
+        mapView.compassViewMargins = .init(x: txt_search.frame.minX + 10, y: txt_search.frame.maxY + 20)
+    }
+    
     /// Retourne la localisation de l'utilisateur sous forme d'une chaine de caratères respectant le format "longitude,latitude"
     private func getFormatedUserLocation() -> String{
         let userLocation = mapView.userLocation!

@@ -49,12 +49,10 @@ class MultimodalItinerariesList: ItinerariesList {
             internalDispatchGroup.enter()
             getCarItinerary(parking: parking, completionHandler: { returnedCarItinerary in
                 carItinerary = returnedCarItinerary
-                self.internalDispatchGroup.leave()
-            })
-            internalDispatchGroup.enter()
-            getTransitItineraries(parking: parking, completionHandler: { returnedTransitItinerariesList in
-                transitItineraries = returnedTransitItinerariesList
-                self.internalDispatchGroup.leave()
+                self.getTransitItineraries(parking: parking, departureTime: self.departureTime(carItinerary: carItinerary!), completionHandler: { returnedTransitItinerariesList in
+                    transitItineraries = returnedTransitItinerariesList
+                    self.internalDispatchGroup.leave()
+                })
             })
             
             internalDispatchGroup.notify(queue: .main) {
@@ -78,8 +76,8 @@ class MultimodalItinerariesList: ItinerariesList {
         }
     }
     
-    private func getTransitItineraries(parking: Parking, completionHandler: @escaping(TransitItinerariesList) -> Void) {
-        let transitItinerariesList = TransitItinerariesList(origin: parking.location, destination: destination)
+    private func getTransitItineraries(parking: Parking, departureTime: Date, completionHandler: @escaping(TransitItinerariesList) -> Void) {
+        let transitItinerariesList = TransitItinerariesList(origin: parking.location, destination: destination, departureTime: departureTime)
         transitItinerariesList.itinerariesCalculated {
             completionHandler(transitItinerariesList)
         }
@@ -134,4 +132,27 @@ class MultimodalItinerariesList: ItinerariesList {
     }
     
     //MARK: Public methods
+    public func getMosEfficient(transitItineraries: TransitItinerariesList, carItinerary: CarItinerary) -> MultimodalItinerary {
+        var score = -1.0
+        var minTime = -1.0
+        var itineraryToReturn: MultimodalItinerary?
+        for itinerary in itineraries {
+            let timeToDestinationPercentage = Double(itinerary.timeToDestination) / Double(transitItineraries.itineraries.first!.timeToDestination)
+            let emissionsPercentage = itinerary.emissions / carItinerary.emissions
+            let itineraryScore = timeToDestinationPercentage + emissionsPercentage
+            // Tests
+            let unsetted = (minTime < 0 && score < 0)
+            let shorterThanTransit = (minTime >= 1 && timeToDestinationPercentage < minTime)
+            let betterScore = (score > itineraryScore && minTime > 1)
+            let shorterAndBetterScore = (minTime < 1 && timeToDestinationPercentage < 1 && itineraryScore < score)
+            print("\((itinerary as! MultimodalItinerary).parking.nom) (\(Double(itinerary.expectedTime)) min. / \(Double(transitItineraries.expectedTime) / Double(transitItineraries.count)) = \(timeToDestinationPercentage)) :")
+            print(" unsetted \(unsetted) - shorterThanTransit \(shorterThanTransit) - betterScore \(betterScore) - shorterAndBetter \(shorterAndBetterScore)")
+            if  unsetted || shorterThanTransit || betterScore || shorterAndBetterScore {
+                score = timeToDestinationPercentage + emissionsPercentage
+                minTime = timeToDestinationPercentage
+                itineraryToReturn = itinerary as? MultimodalItinerary
+            }
+        }
+        return itineraryToReturn!
+    }
 }

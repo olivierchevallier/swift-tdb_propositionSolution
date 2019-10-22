@@ -39,7 +39,6 @@ class LocationTableViewController: UITableViewController {
         }
         
         locationsList!.locationsObtained() {
-            print("dans le controleur : \(self.locationsList!.locations)")
             self.tableView.reloadData()
             self.indic_loading.stopAnimating()
         }
