@@ -23,8 +23,15 @@ class CarItinerary: Itinerary {
         self.distance = route.distance
         self.route = route
         super.init(origin: origin, destination: destination, transport: "Voiture")
-        self.emissions = self.route!.distance * 197.57 / 1000
+        self.emissions = self.getEmissions()
         self.cost = self.route!.distance * 0.8 / 1000
         self.expectedTime = Int(self.route!.expectedTravelTime) / 60
+    }
+    
+    //MARK: - Private methods
+    private func getEmissions() -> Double {
+        let car = Car.getInstance()
+        let kmDistance = distance / 1000
+        return car.emmissionPerKm * kmDistance
     }
 }

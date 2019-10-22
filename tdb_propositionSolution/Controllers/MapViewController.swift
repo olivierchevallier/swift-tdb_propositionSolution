@@ -33,7 +33,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
         super.viewDidLoad()
         
         // Décommenter la ligne ci-dessous pour faire apparaître l'écran de config à chaque fois
-        defaults.set(false, forKey: "configured")
+        //defaults.set(false, forKey: "configured")
         if defaults.bool(forKey: "configured") == false {
             performSegue(withIdentifier: "ConfigurationSegue", sender: self)
         }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F1104B8235F05E500406F90 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1104B7235F05E500406F90 /* Car.swift */; };
 		5F252B55232F79AB0050546E /* Itinerary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F252B54232F79AB0050546E /* Itinerary.swift */; };
 		5F3E277D2343470400EFBF85 /* MultimodalItinerariesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3E277C2343470400EFBF85 /* MultimodalItinerariesList.swift */; };
 		5F3E27812344AD6700EFBF85 /* ConfigButtonControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3E27802344AD6700EFBF85 /* ConfigButtonControl.swift */; };
@@ -69,6 +70,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5F1104B7235F05E500406F90 /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		5F252B54232F79AB0050546E /* Itinerary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Itinerary.swift; sourceTree = "<group>"; };
 		5F3E277C2343470400EFBF85 /* MultimodalItinerariesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultimodalItinerariesList.swift; sourceTree = "<group>"; };
 		5F3E27802344AD6700EFBF85 /* ConfigButtonControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigButtonControl.swift; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 				5FFA452B233CE52400EB2237 /* Parking.swift */,
 				5FFA452D233CE79900EB2237 /* ParkingList.swift */,
 				5FE32D3C234F40CA00287264 /* LocationsList.swift */,
+				5F1104B7235F05E500406F90 /* Car.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -492,6 +495,7 @@
 				5F6BAB5F233A41570089D5A8 /* TransitLineControl.swift in Sources */,
 				5FB3B44C23350CC900205719 /* TransitItinerariesTableViewController.swift in Sources */,
 				5FB3B4422334C06300205719 /* TransitItinerariesList.swift in Sources */,
+				5F1104B8235F05E500406F90 /* Car.swift in Sources */,
 				5F3E27862344CCCF00EFBF85 /* WalkSpeedViewController.swift in Sources */,
 				5F3E27882344CCEC00EFBF85 /* HomeAdressViewController.swift in Sources */,
 				5F89FEE0234F84D9009AB73E /* WalkItinerary.swift in Sources */,

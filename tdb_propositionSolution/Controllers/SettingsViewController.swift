@@ -107,6 +107,14 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         defaults.set(electric, forKey: "electric")
         defaults.set(homeAdress, forKey: "homeAdress")
         defaults.set(weight, forKey: "weight")
+        updateCarInstance()
+    }
+    
+    private func updateCarInstance() {
+        let car = Car.getInstance()
+        car.weight = weight
+        car.consumption = consumption
+        car.electric = electric
     }
     
     //MARK: Actions
