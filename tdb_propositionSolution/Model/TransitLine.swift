@@ -16,10 +16,19 @@ class TransitLine {
     let number: String
     let destination: String
     let type: String
+    let colors: (background: UIColor, text: UIColor)
     
     //MARK: Mutable
-    var textColor: UIColor
-    var backgroundColor: UIColor
+    var textColor: UIColor {
+        get {
+            return colors.text
+        }
+    }
+    var backgroundColor: UIColor {
+        get {
+            return colors.background
+        }
+    }
     
     //MARK: - Initializer
     init(transitOperator: String, number: String, destination: String, type: String) {
@@ -27,18 +36,25 @@ class TransitLine {
         self.number = number
         self.destination = destination
         self.type = type
-        textColor = UIColor.black
-        backgroundColor = UIColor.red
-        for lineColor in TransitLineColorsList.getInstance().lineColors {
-            if lineColor.lineCode == number && transitOperator == "TPG" {
-                textColor = UIColor(hex: lineColor.text)!
-                backgroundColor = UIColor(hex: lineColor.background)!
-            }
-        }
+        self.colors = TransitLine.getColors(transitOperator: transitOperator, number: number)
     }
     
     convenience init(journey: TransitWebService.Journey) {
         self.init(transitOperator: journey.transitOperator, number: journey.number, destination: journey.to, type: journey.category)
+    }
+    
+    //MARK: - Private methods
+    private static func getColors(transitOperator: String, number: String) -> (background: UIColor, text: UIColor) {
+        if transitOperator == "SBB" {
+            return (background: UIColor.red, text: UIColor.black)
+        } else {
+            for lineColor in TransitLineColorsList.getInstance().lineColors {
+                if lineColor.lineCode == number && transitOperator == "TPG" {
+                    return (background: UIColor(hex: lineColor.background)!, text: UIColor(hex: lineColor.text)!)
+                }
+            }
+        }
+        return (background: UIColor(hex: "0a3689")!, text: UIColor.white)
     }
     
     //MARK: - Public methods

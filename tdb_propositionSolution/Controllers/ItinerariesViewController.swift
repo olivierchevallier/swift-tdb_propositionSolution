@@ -116,6 +116,10 @@ class ItinerariesViewController: UIViewController {
             let emissions = round(self.multimodalItinerary!.emissions)
             self.lbl_mixTime.text = "\(self.multimodalItinerary!.timeToDestination) min. - \(emissions)g. de CO2"
             self.showParking()
+            self.multimodalItinerary!.parking.getDispo(completion: { available in
+                let nombrePlaceStr = available >= 0 ? "(\(available)  places)" : "(disp. inconnue)"
+                self.lbl_mixVia.text = "via \(self.multimodalItinerary!.parking.nom) \(nombrePlaceStr)"
+            })
             self.drawRoute(route: self.multimodalItinerary!.carItinerary.route!, color: self.multiColor, identifier: "multimodal")
             self.btn_goMix.isLoading(false)
         }
