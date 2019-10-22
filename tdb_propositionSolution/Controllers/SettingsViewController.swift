@@ -23,9 +23,9 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
             step_walkSpeed.value = walkSpeed * 2
         }
     }
-    var homeAdress: String = "" {
+    var home: Location? {
         didSet {
-            txt_homeAdress.text = homeAdress
+            txt_homeAdress.text = home!.name
         }
     }
     var electric: Bool = false {
@@ -68,8 +68,9 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         if defaults.double(forKey: "walkSpeed") != 0 {
             walkSpeed = defaults.double(forKey: "walkSpeed")
         }
-        if defaults.string(forKey: "homeAdress") != nil {
-            homeAdress = defaults.string(forKey: "homeAdress")!
+        if defaults.string(forKey: "homeAdress") != nil && defaults.double(forKey: "homeLongitude") != 0.0 && defaults.double(forKey: "homeLatitude") != 0.0 {
+            let homeAdress = defaults.string(forKey: "homeAdress")!
+            home = Location(name: homeAdress, coordinate: [defaults.double(forKey: "homeLongitude"), defaults.double(forKey: "homeLatitude")])
         }
         electric = defaults.bool(forKey: "electric")
         if !electric {
@@ -97,7 +98,6 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         walkSpeed = Double(txt_walkSpeed.text!)!
         consumption = sw_electric.isOn ? 0 : Double(txt_consumption.text!)!
         electric = sw_electric.isOn
-        homeAdress = txt_homeAdress.text!
         weight = Int(txt_weight.text!)!
     }
     
@@ -105,8 +105,16 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         defaults.set(walkSpeed, forKey: "walkSpeed")
         defaults.set(consumption, forKey: "consumption")
         defaults.set(electric, forKey: "electric")
-        defaults.set(homeAdress, forKey: "homeAdress")
         defaults.set(weight, forKey: "weight")
+        if home != nil {
+            defaults.set(home!.name, forKey: "homeAdress")
+            defaults.set(home!.coordinate.longitude, forKey: "homeLongitude")
+            defaults.set(home!.coordinate.latitude, forKey: "homeLatitude")
+        } else {
+            defaults.set(nil, forKey: "homeAdress")
+            defaults.set(0.0, forKey: "homeLongitude")
+            defaults.set(0.0, forKey: "homeLatitude")
+        }
         updateCarInstance()
     }
     
@@ -128,8 +136,10 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         locations.locationsObtained {
             if let location = locations.locations.first {
                 self.txt_homeAdress.text = location.name
+                self.home = location
             } else {
                 self.txt_homeAdress.text = ""
+                self.home = nil
             }
         }
         updateSaveButton()

@@ -15,6 +15,9 @@ class HomeAdressViewController: UIViewController, UITextFieldDelegate {
     //MARK: Immutable
     let genevaCoordinates = CLLocationCoordinate2D(latitude: 42.206130, longitude: 6.147783)
     
+    //MARK: Mutable
+    var home: Location?
+    
     //MARK: Controls
     @IBOutlet var txt_adress: UITextField!
     @IBOutlet var btn_finish: ConfigButtonControl!
@@ -33,8 +36,10 @@ class HomeAdressViewController: UIViewController, UITextFieldDelegate {
         locations.locationsObtained {
             if let location = locations.locations.first {
                 self.txt_adress.text = location.name
+                self.home = location
             } else {
                 self.txt_adress.text = ""
+                self.home = nil
             }
         }
     }
@@ -49,7 +54,15 @@ class HomeAdressViewController: UIViewController, UITextFieldDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let defaults = UserDefaults.standard
         defaults.set(true, forKey: "configured")
-        defaults.set(txt_adress.text!, forKey: "homeAdress")
+        if home != nil {
+            defaults.set(home!.name, forKey: "homeAdress")
+            defaults.set(home!.coordinate.longitude, forKey: "homeLongitude")
+            defaults.set(home!.coordinate.latitude, forKey: "homeLatitude")
+        } else {
+            defaults.set(nil, forKey: "homeAdress")
+            defaults.set(0.0, forKey: "homeLongitude")
+            defaults.set(0.0, forKey: "homeLatitude")
+        }
         resignFirstResponder()
     }
 

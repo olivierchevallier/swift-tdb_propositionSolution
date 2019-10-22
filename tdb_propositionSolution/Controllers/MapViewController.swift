@@ -27,6 +27,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
     
     //MARK: Controls
     @IBOutlet var txt_search: UITextField!
+    @IBOutlet var btn_home: UIButton!
     
     //MARK: -
     override func viewDidLoad() { 
@@ -68,7 +69,20 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
         updateDestination(destination: destination)
     }
     
-    //MARK: - Private methods
+    @IBAction func btn_homeTapped(_ sender: Any) {
+        let homeCoordinates = (longitude: defaults.double(forKey: "homeLongitude"), latitude: defaults.double(forKey: "homeLatitude"))
+        let homeAdress = defaults.string(forKey: "homeAdress")
+        if homeAdress != nil && homeCoordinates.latitude != 0.0 && homeCoordinates.longitude != 0.0 {
+            destination = Location(name: homeAdress!, coordinate: [homeCoordinates.longitude, homeCoordinates.latitude])
+            showItineraries()
+        } else {
+            let alert = UIAlertController(title: "Fonction indisponible", message: "Enregistrez votre domicile pour utiliser cette fonction", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Fermer", style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
+    }
+    
+    //MARK: - Private methodss
     private func setupMap() {
         mapView = NavigationMapView(frame: view.bounds)
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]

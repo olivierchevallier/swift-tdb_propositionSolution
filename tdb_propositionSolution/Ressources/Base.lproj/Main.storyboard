@@ -182,26 +182,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="aUR-6i-MuS">
-                                <rect key="frame" x="10" y="10" width="250" height="40"/>
-                                <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Trouver une destination..." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="TMr-K3-9at">
-                                        <rect key="frame" x="0.0" y="0.0" width="250" height="40"/>
-                                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="DKI-DT-4z4"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="search" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="location"/>
-                                        <connections>
-                                            <segue destination="rT6-KM-ZzY" kind="presentation" identifier="showResults" id="6ZX-RX-0NG"/>
-                                        </connections>
-                                    </textField>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="TMr-K3-9at" firstAttribute="leading" secondItem="aUR-6i-MuS" secondAttribute="leading" id="XqS-AP-aNq"/>
-                                </constraints>
-                            </stackView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d7m-y0-Rdj">
                                 <rect key="frame" x="0.0" y="248" width="320" height="320"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -223,14 +203,42 @@
                                     <segue destination="l5F-mT-68t" kind="show" identifier="showPreferences" id="vmE-Dg-XPc"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Trouver une destination..." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="TMr-K3-9at">
+                                <rect key="frame" x="10" y="10" width="204" height="40"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="DKI-DT-4z4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="search" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="location"/>
+                                <connections>
+                                    <segue destination="rT6-KM-ZzY" kind="presentation" identifier="showResults" id="6ZX-RX-0NG"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="od8-Wy-oX0">
+                                <rect key="frame" x="222" y="10" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="yX4-jK-dyj"/>
+                                    <constraint firstAttribute="width" constant="40" id="ziZ-qH-vOG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                                <state key="normal" image="house.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
+                                </state>
+                                <connections>
+                                    <action selector="btn_homeTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JAD-8D-IJO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aUR-6i-MuS" secondAttribute="trailing" constant="60" id="5Nu-GK-0NV"/>
                             <constraint firstItem="ux0-P1-tWW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="9Y5-k8-I9h"/>
-                            <constraint firstItem="aUR-6i-MuS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="GE6-51-NHV"/>
-                            <constraint firstItem="aUR-6i-MuS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="OrS-wj-7Gp"/>
+                            <constraint firstItem="od8-Wy-oX0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="B4B-2S-cUg"/>
+                            <constraint firstItem="od8-Wy-oX0" firstAttribute="leading" secondItem="TMr-K3-9at" secondAttribute="trailing" constant="8" id="CeA-ha-drL"/>
+                            <constraint firstItem="TMr-K3-9at" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="Fky-wS-R1M"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ux0-P1-tWW" secondAttribute="trailing" constant="10" id="gLV-tQ-kfl"/>
+                            <constraint firstItem="ux0-P1-tWW" firstAttribute="leading" secondItem="od8-Wy-oX0" secondAttribute="trailing" constant="8" id="kuE-hT-20L"/>
+                            <constraint firstItem="TMr-K3-9at" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="kzY-bq-g8z"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -238,6 +246,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <splitViewMasterSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="btn_home" destination="od8-Wy-oX0" id="KPj-Eh-FWL"/>
                         <outlet property="txt_search" destination="TMr-K3-9at" id="vgW-q2-SPa"/>
                         <segue destination="d9h-Cp-SvJ" kind="show" identifier="ConfigurationSegue" id="qQ7-0b-J8N"/>
                     </connections>
@@ -914,6 +923,7 @@
     </scenes>
     <resources>
         <image name="gear" catalog="system" width="64" height="58"/>
+        <image name="house.fill" catalog="system" width="64" height="52"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="AJe-tp-ZOB"/>
