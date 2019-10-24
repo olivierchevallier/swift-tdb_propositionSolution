@@ -89,7 +89,7 @@ class LocationTableViewController: UITableViewController {
             fatalError("The selected cell is not being displayed by the table")
         }
         
-        destination = locationsList!.locations[indexPath.row]
+        destination = locationsList!.locations[indexPath.row]   
         mapViewController.destination = destination
     }
 }

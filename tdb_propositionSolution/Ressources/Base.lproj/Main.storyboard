@@ -562,13 +562,37 @@
                                     <constraint firstAttribute="trailing" secondItem="dmE-ef-u9W" secondAttribute="trailing" id="xjX-ZJ-GRc"/>
                                 </constraints>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NPK-hj-OaW">
+                                <rect key="frame" x="0.0" y="49.5" width="5" height="50"/>
+                                <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q5d-p6-R0b">
+                                <rect key="frame" x="0.0" y="165.5" width="5" height="75.5"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XFF-sV-Z8v">
+                                <rect key="frame" x="0.0" y="249" width="5" height="46"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="XFF-sV-Z8v" firstAttribute="height" secondItem="Z3m-u3-5he" secondAttribute="height" id="9sw-XI-Nf3"/>
+                            <constraint firstItem="NPK-hj-OaW" firstAttribute="height" secondItem="5Vv-oa-jVJ" secondAttribute="height" id="BAE-2W-45g"/>
                             <constraint firstItem="mQE-UL-60b" firstAttribute="top" secondItem="czT-cB-y39" secondAttribute="top" constant="10" id="Baq-hX-ZrT"/>
+                            <constraint firstItem="dmE-ef-u9W" firstAttribute="leading" secondItem="Q5d-p6-R0b" secondAttribute="trailing" constant="5" id="FTU-ol-Xm4"/>
+                            <constraint firstItem="NPK-hj-OaW" firstAttribute="leading" secondItem="3QX-GY-Yb7" secondAttribute="leading" id="N3E-hn-4Ph"/>
+                            <constraint firstItem="Q5d-p6-R0b" firstAttribute="top" secondItem="dmE-ef-u9W" secondAttribute="top" id="Rau-gw-WsN"/>
+                            <constraint firstItem="Z3m-u3-5he" firstAttribute="leading" secondItem="XFF-sV-Z8v" secondAttribute="trailing" constant="5" id="VRs-NR-DJD"/>
+                            <constraint firstItem="Q5d-p6-R0b" firstAttribute="leading" secondItem="3QX-GY-Yb7" secondAttribute="leading" id="VgF-6y-pKi"/>
+                            <constraint firstItem="NPK-hj-OaW" firstAttribute="top" secondItem="5Vv-oa-jVJ" secondAttribute="top" id="VoV-gN-1bd"/>
                             <constraint firstAttribute="trailing" secondItem="mQE-UL-60b" secondAttribute="trailing" constant="10" id="bfZ-nB-BqQ"/>
                             <constraint firstAttribute="bottom" secondItem="mQE-UL-60b" secondAttribute="bottom" constant="25" id="iYP-Bz-kv6"/>
+                            <constraint firstItem="XFF-sV-Z8v" firstAttribute="leading" secondItem="3QX-GY-Yb7" secondAttribute="leading" id="jYB-zz-1YD"/>
+                            <constraint firstItem="Q5d-p6-R0b" firstAttribute="height" secondItem="dmE-ef-u9W" secondAttribute="height" id="o0W-Jb-wih"/>
                             <constraint firstItem="mQE-UL-60b" firstAttribute="leading" secondItem="czT-cB-y39" secondAttribute="leading" constant="10" id="orf-pc-nYK"/>
+                            <constraint firstItem="XFF-sV-Z8v" firstAttribute="top" secondItem="Z3m-u3-5he" secondAttribute="top" id="wqY-ok-WCM"/>
+                            <constraint firstItem="5Vv-oa-jVJ" firstAttribute="leading" secondItem="NPK-hj-OaW" secondAttribute="trailing" constant="5" id="xqJ-oX-jlU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3QX-GY-Yb7"/>
                     </view>
@@ -588,7 +612,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dBp-oB-W8d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1669" y="765"/>
+            <point key="canvasLocation" x="1668.75" y="764.78873239436621"/>
         </scene>
         <!--Choix de itinéraire-->
         <scene sceneID="MgX-vi-cFf">

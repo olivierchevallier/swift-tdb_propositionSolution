@@ -73,8 +73,8 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UITextFieldDelega
         let homeCoordinates = (longitude: defaults.double(forKey: "homeLongitude"), latitude: defaults.double(forKey: "homeLatitude"))
         let homeAdress = defaults.string(forKey: "homeAdress")
         if homeAdress != nil && homeCoordinates.latitude != 0.0 && homeCoordinates.longitude != 0.0 {
-            destination = Location(name: homeAdress!, coordinate: [homeCoordinates.longitude, homeCoordinates.latitude])
-            showItineraries()
+            let destination = Location(name: homeAdress!, coordinate: [homeCoordinates.longitude, homeCoordinates.latitude])
+            updateDestination(destination: destination)
         } else {
             let alert = UIAlertController(title: "Fonction indisponible", message: "Enregistrez votre domicile pour utiliser cette fonction", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Fermer", style: .default, handler: nil))

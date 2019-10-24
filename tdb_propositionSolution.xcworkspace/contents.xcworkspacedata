@@ -5,6 +5,21 @@
       location = "group:chancy.gpx">
    </FileRef>
    <FileRef
+      location = "group:bellevue.gpx">
+   </FileRef>
+   <FileRef
+      location = "group:versoix.gpx">
+   </FileRef>
+   <FileRef
+      location = "group:collonges-bellerive.gpx">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/olivierchevallier/Documents/Coding/iPhone/tdb_propositionSolution/jussy.gpx">
+   </FileRef>
+   <FileRef
+      location = "group:meyrin.gpx">
+   </FileRef>
+   <FileRef
       location = "group:tdb_propositionSolution.xcodeproj">
    </FileRef>
    <FileRef
