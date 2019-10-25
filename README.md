@@ -12,6 +12,6 @@ sudo gem install cocoapods
 ```bash
 pod install
 ```
-3. Ouvrir tdb_propositionSolution.xcworkspace avec Xcode.
+3. Ouvrir `tdb_propositionSolution.xcworkspace` avec Xcode.
 4. Brancher l'iPhone à l'ordinateur à l'aide d'un cable Lightning et lancer l'application avec CMD+R
 5. Se fier au profil développeur nécessaire au lancement de l'application en se rendant dans les réglages du téléphone Général > Gestion des profils et de l'appareil
