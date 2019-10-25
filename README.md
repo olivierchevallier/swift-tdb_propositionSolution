@@ -1,8 +1,8 @@
-#Proposition de solution pour le travail de bachelor "L’apport des systèmes d’information et des nouvelles technologies dans la mobilité des personnes"
-##Description
+# Proposition de solution pour le travail de bachelor "L’apport des systèmes d’information et des nouvelles technologies dans la mobilité des personnes"
+## Description
 Cette application iOS représente la solution proposée pour accompagné le mémoire du travail de bachelor
 
-##Procédure d'installation
+## Procédure d'installation
 L'installation sur un appareil à des fins de tests nécessite d'utiliser un ordinateur sous MacOS disposant de Xcode. 
 1. S'assurer d'avoir cocoapods installé sur sa machine. Si ce n'est pas le cas, l'installer avec la commande ci-dessous :
 ```bash
