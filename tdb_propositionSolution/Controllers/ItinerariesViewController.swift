@@ -167,11 +167,11 @@ class ItinerariesViewController: UIViewController {
             var itineraries = [Itinerary]()
             if segue.identifier == "showTransitItineraries" {
                 itineraries = transitItineraries
-                destinationVC.destination = self.destination!.coordinate
-                destinationVC.userLocation = userLocation
             } else if segue.identifier == "showMultimodalItineraries" {
                 itineraries = multimodalItinerary!.transitItinerariesList.itineraries
             }
+            destinationVC.destination = self.destination!.coordinate
+            destinationVC.userLocation = userLocation
             destinationVC.itineraries = (itineraries as? [TransitItinerary])!
         }
     }

@@ -30,8 +30,7 @@ class TransitItinerariesTableViewController: UITableViewController {
         super.viewDidLoad()
 
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        showItinerary()
-    }
+        showItinerary()    }
     
     //MARK: Actions
     @IBAction func btn_soonerTapped(_ sender: Any) {
@@ -57,6 +56,7 @@ class TransitItinerariesTableViewController: UITableViewController {
         btn_later.isEnabled = false
         btn_sooner.isEnabled = false
         itineraries = [TransitItinerary]()
+        print("userLocation : \(userLocation), destination : \(destination), departureTime: \(departure)")
         let transitItinerariesList = TransitItinerariesList(origin: userLocation!, destination: destination!, departureTime: departure)
         transitItinerariesList.itinerariesCalculated {
             for transitIntnerary in transitItinerariesList.itineraries {
