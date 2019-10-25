@@ -52,8 +52,8 @@ class TransitItineraryController: UIViewController, UICollectionViewDelegate, UI
         for section in itinerary!.connection.sections {
             let step = TransitStepControl()
             steps.append(step)
-            step.departureStop = TransitItinerary.splitAtFirst(str: section.departure.station.name!, delimiter: "@")!.first
-            step.arrivalStop = TransitItinerary.splitAtFirst(str: section.arrival.station.name!, delimiter: "@")!.first
+            step.departureStop = section.departure.station.name!.splitAtFirst(delimiter: "@")!.first
+            step.arrivalStop = section.arrival.station.name!.splitAtFirst(delimiter: "@")!.first
             step.departureTime = TransitItinerary.makeTimePrensentable(time: section.departure.departure!)
             step.arrivalTime = TransitItinerary.makeTimePrensentable(time: section.arrival.arrival!)
             if section.journey == nil {

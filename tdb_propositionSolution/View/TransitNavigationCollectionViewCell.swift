@@ -26,7 +26,7 @@ class TransitNavigationCollectionViewCell: UICollectionViewCell {
                 lbl_leaveAt.isHidden = true
                 lbl_connectionLine.isHidden = true
             }
-            lbl_nextStop.text = lbl_nextStop.text!.splitAtFirst(delimiter: "@")!.first
+            lbl_nextStop.text = section!.arrival.station.name!.splitAtFirst(delimiter: "@")!.first
             resizeLabels()
         }
     }
@@ -43,7 +43,7 @@ class TransitNavigationCollectionViewCell: UICollectionViewCell {
                     lbl_nextConnectionIn.isHidden = false
                 } else {
                     lbl_nextConnection.text = "Puis marchez jusqu'à"
-                    lbl_nextConnectionDirection.text = lbl_nextConnectionDirection.text!.splitAtFirst(delimiter: "@")!.first
+                    lbl_nextConnectionDirection.text = nextSection!.arrival.station.name!.splitAtFirst(delimiter: "@")!.first
                     lbl_nextConnectionLine.isHidden = true
                     lbl_nextConnectionIn.isHidden = true
                 }

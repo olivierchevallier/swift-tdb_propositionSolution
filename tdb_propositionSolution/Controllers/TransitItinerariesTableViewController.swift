@@ -48,8 +48,8 @@ class TransitItinerariesTableViewController: UITableViewController {
     //MARK: - Private methods
     private func showItinerary() {
         if itineraries.count > 0 {
-            lbl_from.text = TransitItinerary.splitAtFirst(str: (itineraries.first?.connection.from.station.name)!, delimiter: "@")!.first
-            lbl_to.text = TransitItinerary.splitAtFirst(str: (itineraries.first?.connection.to.station.name)!, delimiter: "@")!.first
+            lbl_from.text = (itineraries.first?.connection.from.station.name)!.splitAtFirst(delimiter: "@")!.first
+            lbl_to.text = (itineraries.first?.connection.to.station.name)!.splitAtFirst(delimiter: "@")!.first
         }
     }
     
