@@ -1,7 +1,7 @@
 //--------------------------------------------------
 // Travail de bachelor - Proposition de solution
 //
-// MultimodalItinerariesList :
+// MultimodalItinerariesList : Classe permettant d'obtenir la liste des itinéraires multimodaux pour un lieu de départ et une destination donnés à l'initialisation de l'instance. 
 //
 // Créé par : Olivier Chevallier le 01.10.19
 //--------------------------------------------------
@@ -39,7 +39,6 @@ class MultimodalItinerariesList: ItinerariesList {
     }
     
     //MARK: - Private methods
-    /// Calcul l'itinéraire
     override internal func calculateItineraries(completion: @escaping(Error?) -> Void){
         dispatchGroup.enter()
         for parking in parkingList.parkings {
@@ -133,20 +132,17 @@ class MultimodalItinerariesList: ItinerariesList {
     
     //MARK: Public methods
     public func getMosEfficient(transitItineraries: TransitItinerariesList, carItinerary: CarItinerary) -> MultimodalItinerary {
-        var score = -1.0
-        var minTime = -1.0
+        var score = -1.0,  minTime = -1.0
         var itineraryToReturn: MultimodalItinerary?
         for itinerary in itineraries {
             let timeToDestinationPercentage = Double(itinerary.timeToDestination) / Double(transitItineraries.itineraries.first!.timeToDestination)
             let emissionsPercentage = itinerary.emissions / carItinerary.emissions
             let itineraryScore = timeToDestinationPercentage + emissionsPercentage
-            // Tests
+            // Critères
             let unsetted = (minTime < 0 && score < 0)
             let shorterThanTransit = (minTime >= 1 && timeToDestinationPercentage < minTime)
             let betterScore = (score > itineraryScore && minTime > 1)
             let shorterAndBetterScore = (minTime < 1 && timeToDestinationPercentage < 1 && itineraryScore < score)
-            print("\((itinerary as! MultimodalItinerary).parking.nom) (\(Double(itinerary.expectedTime)) min. / \(Double(transitItineraries.expectedTime) / Double(transitItineraries.count)) = \(timeToDestinationPercentage)) :")
-            print(" unsetted \(unsetted) - shorterThanTransit \(shorterThanTransit) - betterScore \(betterScore) - shorterAndBetter \(shorterAndBetterScore)")
             if  unsetted || shorterThanTransit || betterScore || shorterAndBetterScore {
                 score = timeToDestinationPercentage + emissionsPercentage
                 minTime = timeToDestinationPercentage

@@ -1,7 +1,7 @@
 //--------------------------------------------------
 // Travail de bachelor - Proposition de solution
 //
-// CLLocationCorrdinate2D+StringRepresentation :
+// CLLocationCorrdinate2D+StringRepresentation : Extension de la calsse CLLocationCoordinate2D
 //
 // Créé par : Olivier Chevallier le 10.10.19
 //--------------------------------------------------

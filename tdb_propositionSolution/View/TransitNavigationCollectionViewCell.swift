@@ -1,7 +1,7 @@
 //--------------------------------------------------
 // Travail de bachelor - Proposition de solution
 //
-// TransitNavigationCollectionViewCell :
+// TransitNavigationCollectionViewCell : Vue affichant une étape de trajet en TP 
 //
 // Créé par : Olivier Chevallier le 02.10.19
 //--------------------------------------------------
@@ -26,7 +26,7 @@ class TransitNavigationCollectionViewCell: UICollectionViewCell {
                 lbl_leaveAt.isHidden = true
                 lbl_connectionLine.isHidden = true
             }
-            lbl_nextStop.text = TransitItinerary.splitAtFirst(str: section!.arrival.station.name!, delimiter: "@")!.first
+            lbl_nextStop.text = lbl_nextStop.text!.splitAtFirst(delimiter: "@")!.first
             resizeLabels()
         }
     }
@@ -43,7 +43,7 @@ class TransitNavigationCollectionViewCell: UICollectionViewCell {
                     lbl_nextConnectionIn.isHidden = false
                 } else {
                     lbl_nextConnection.text = "Puis marchez jusqu'à"
-                    lbl_nextConnectionDirection.text = TransitItinerary.splitAtFirst(str: nextSection!.arrival.station.name!, delimiter: "@")!.first
+                    lbl_nextConnectionDirection.text = lbl_nextConnectionDirection.text!.splitAtFirst(delimiter: "@")!.first
                     lbl_nextConnectionLine.isHidden = true
                     lbl_nextConnectionIn.isHidden = true
                 }

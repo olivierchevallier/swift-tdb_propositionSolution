@@ -20,7 +20,6 @@ class Network {
                 os_log("Client error", log: OSLog.default, type: .debug)
                 return
             }
-            
             guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
                 os_log("Server error", log: OSLog.default, type: .debug)
                 return

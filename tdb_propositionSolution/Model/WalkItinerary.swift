@@ -1,7 +1,7 @@
 //--------------------------------------------------
 // Travail de bachelor - Proposition de solution
 //
-// WalkItinerary :
+// WalkItinerary : Sous-classe d'Itinerary modélisant un itinéraire à pied
 //
 // Créé par : Olivier Chevallier le 10.10.19
 //--------------------------------------------------

@@ -1,7 +1,7 @@
 //--------------------------------------------------
 // Travail de bachelor - Proposition de solution
 //
-// ParkingList :
+// ParkingList : Classe permettant d'obtenir la liste des parkings
 //
 // Créé par : Olivier Chevallier le 26.09.19
 //--------------------------------------------------
@@ -37,7 +37,7 @@ class ParkingList {
                 print(error)
             }
         } else {
-            fatalError("File with parkings data cannot be found ")
+            fatalError("Parking data file cannot be found ")
         }
     }
     

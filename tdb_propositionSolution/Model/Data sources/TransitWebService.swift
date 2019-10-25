@@ -1,7 +1,7 @@
 //--------------------------------------------------
 // Travail de bachelor - Proposition de solution
 //
-// TransitWebServiceNames : Class permettant de générer les liens des différents web services relatifs aux transport publics
+// TransitWebServiceNames : Classe permettant de générer les liens des différents web services relatifs aux transport publics
 //
 // Créé par : Olivier Chevallier le 19.09.19
 //--------------------------------------------------
@@ -32,12 +32,6 @@ class TransitWebService {
         print(stringURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
         return stringURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     }
-    /*
-    public static func getLinePolyline(line: String, direction: String) -> String {
-        //let stringURL = "https://ge.ch/sitgags1/rest/services/VECTOR/SITG_OPENDATA_04/MapServer/8423/query?outsr=4326&where=NOM_LIGNE+LIKE+'%\(line)%'+AND+UPPER(DIRECTION)+LIKE+UPPER('%\(direction)%')&geometry=1&outFields=*&f=pjson"
-        let stringURL = "https://ge.ch/sitgags1/rest/services/VECTOR/SITG_OPENDATA_04/MapServer/8423/query?outsr=4326&where=NOM_LIGNE+LIKE+'%\(line)%'&geometry=1&outFields=*&f=pjson"
-        return stringURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-    }*/
     
     //MARK: getRoute
     struct Connections: Decodable {

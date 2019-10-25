@@ -1,7 +1,7 @@
 //--------------------------------------------------
 // Travail de bachelor - Proposition de solution
 //
-// Car : Cette classe modélise la voiture de l'utilisateur, elle implémente le design pattern du singleton
+// Car : Classe modélisant la voiture de l'utilisateur, elle implémente le design pattern du singleton
 //
 // Créé par : Olivier Chevallier le 22.10.19
 //--------------------------------------------------
@@ -59,7 +59,7 @@ class Car {
         let delivery = 9.01 / 1000 * Double(weight)
         return directUse + indirectUse + maintaining + recycling + delivery
     }
-    
+
     private func getThermicEmmisionPerKm() -> Double {
         let directUse = 25.65 * consumption
         let indirectUse = 6.12 * consumption

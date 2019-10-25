@@ -1,7 +1,7 @@
 //--------------------------------------------------
 // Travail de bachelor - Proposition de solution
 //
-// TransitSubscibtionViewController :
+// CarConfigViewController : Contrôleur de la vue de configuration de la voiture
 //
 // Créé par : Olivier Chevallier le 02.10.19
 //--------------------------------------------------
@@ -39,6 +39,7 @@ class CarConfigViewController: UIViewController {
         txt_weight.text = String(weight)
     }
     
+    /// Active ou désactive le bouton permettant de passer à l'ecran suivant en fonction de la validité des données
     private func updateNextButton() {
         let consumptionValid = Double(txt_consumption.text!) != nil || sw_electric.isOn
         let weightValid = Int(txt_weight.text!) != nil
@@ -49,12 +50,14 @@ class CarConfigViewController: UIViewController {
         }
     }
     
+    /// Traite les données rensignées par l'utilisateur pour les préparer à l'enregistrement
     private func castData() {
         consumption = sw_electric.isOn ? 0 : Double(txt_consumption.text!)!
         electric = sw_electric.isOn
         weight = Int(txt_weight.text!)!
     }
     
+    /// Enregistre les données 
     private func saveData() {
         defaults.set(consumption, forKey: "consumption")
         defaults.set(electric, forKey: "electric")
@@ -90,5 +93,4 @@ class CarConfigViewController: UIViewController {
         castData()
         saveData()
     }
-
 }

@@ -1,7 +1,7 @@
 //--------------------------------------------------
 // Travail de bachelor - Proposition de solution
 //
-// Parking :
+// Parking : Classe modélisant un parking
 //
 // Créé par : Olivier Chevallier le 26.09.19
 //--------------------------------------------------
@@ -21,7 +21,7 @@ class Parking {
     
     //MARK: Initializer
     init(id: Int, nom: String, east: Double, north: Double, realTime: String) {
-        let coordinates = Parking.mn95_to_wgs84(e: east, n: north)
+        let coordinates = Parking.ch1903_to_wgs84(e: east, n: north)
         self.nom = nom
         location = CLLocationCoordinate2D(latitude: coordinates.latitude, longitude: coordinates.longitude)
         self.realTime = realTime.lowercased() == "vrai"
@@ -29,8 +29,8 @@ class Parking {
     }
     
     //MARK: Private methods
-    private static func mn95_to_wgs84(e: Double, n: Double) -> (longitude: Double, latitude: Double){
-        let civilCoordinates = mn95_to_civil(e: e, n: n)
+    private static func ch1903_to_wgs84(e: Double, n: Double) -> (longitude: Double, latitude: Double){
+        let civilCoordinates = ch1903_to_civil(e: e, n: n)
         var longitude = 2.6779094
             + 4.728982 * civilCoordinates.e
             + 0.791484 * civilCoordinates.e * civilCoordinates.n
@@ -47,7 +47,7 @@ class Parking {
         return (longitude, latitude)
     }
     
-    private static func mn95_to_civil(e: Double, n: Double) -> (e: Double, n: Double) {
+    private static func ch1903_to_civil(e: Double, n: Double) -> (e: Double, n: Double) {
         let referenceE: Double = 2600000
         let referenceN: Double = 1200000
         let eCivil = (e - referenceE) / 1000000
@@ -76,7 +76,6 @@ class Parking {
                 print("JSON error : \(error)")
             }
         })
-        //TODO: Résoudre problème de lenteur du à la ligne ci-dessous
         dispatchGroup.notify(queue: .main, execute: {
             completion(dispo)
         })

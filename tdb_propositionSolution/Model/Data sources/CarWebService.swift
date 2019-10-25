@@ -1,7 +1,7 @@
 //--------------------------------------------------
 // Travail de bachelor - Proposition de solution
 //
-// CarWebServiceNames : Class permettant de générer les liens des différents web services relatifs aux voitures
+// CarWebServiceNames : Class permettant de générer les liens des différents web services relatifs aux voitures.
 //
 // Créé par : Olivier Chevallier le 19.09.19
 //--------------------------------------------------

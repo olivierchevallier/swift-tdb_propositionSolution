@@ -9,6 +9,7 @@
 import UIKit
 
 extension UIColor {
+    /// Initialiseur permettant d'instancier une UIColor à partir du code hexadécimal passé sous forme de chaine de caractères avec ou sans #.
     public convenience init?(hex: String) {
         let r, g, b, a: CGFloat
         let start: String.Index

@@ -1,7 +1,7 @@
 //--------------------------------------------------
 // Travail de bachelor - Proposition de solution
 //
-// LocationsList : 
+// LocationsList : Classe permettant d'obtenir une liste de lieux 
 //
 // Créé par : Olivier Chevallier le 10.10.19
 //--------------------------------------------------

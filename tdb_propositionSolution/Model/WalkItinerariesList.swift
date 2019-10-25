@@ -1,7 +1,7 @@
 //--------------------------------------------------
 // Travail de bachelor - Proposition de solution
 //
-// WalkItinerariesList :
+// WalkItinerariesList : Classe permettant d'obtenir la liste des itinéraires à la marche pour un lieu de départ et une destination donnés à l'initialisation de l'instance. 
 //
 // Créé par : Olivier Chevallier le 10.10.19
 //--------------------------------------------------
@@ -24,7 +24,6 @@ class WalkItinerariesList: ItinerariesList {
     }
     
     //MARK: - Private methods
-    /// Calcul l'itinéraire
     override internal func calculateItineraries(completion: @escaping(Error?) -> Void){
         dispatchGroup.enter()
         let originWaypoint = Waypoint(coordinate: origin, coordinateAccuracy: -1, name: "Départ")

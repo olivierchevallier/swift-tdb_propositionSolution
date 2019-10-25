@@ -58,12 +58,12 @@ class ItinerariesList {
     }
     
     //MARK: - Private methods
-    /// Calcul l'itinéraire
+    /// Calcul l'itinéraire, cette méthode doit être réécrite et est définie ici  pour permettre un traitement polymorphe
     internal func calculateItineraries(completion: @escaping(Error?) -> Void){
         assert(false, "This method must be overriden by the subclass")
     }
     
-    /// Cette fonction permet de calculer la moyenne des émissions des itinéraires
+    /// Cette fonction permet de calculer la moyenne des émissions des itinéraires de la liste
     private func computeAvgEmissions() -> Double {
         var totalEmissions = 0.0
         for itinerary in itineraries {

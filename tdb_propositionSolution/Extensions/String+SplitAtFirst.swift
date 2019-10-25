@@ -1,7 +1,7 @@
 //--------------------------------------------------
 // Travail de bachelor - Proposition de solution
 //
-// String+SplitAtFirst :
+// String+SplitAtFirst : Extension de la class String
 //
 // Créé par : Olivier Chevallier le 07.10.19
 //--------------------------------------------------

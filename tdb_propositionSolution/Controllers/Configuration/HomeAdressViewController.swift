@@ -1,7 +1,7 @@
 //--------------------------------------------------
 // Travail de bachelor - Proposition de solution
 //
-// HomeAdressViewController :
+// HomeAdressViewController : Contrôleur de la vue de configuration de l'adresse du domicile
 //
 // Créé par : Olivier Chevallier le 02.10.19
 //--------------------------------------------------

@@ -1,7 +1,7 @@
 //--------------------------------------------------
 // Travail de bachelor - Proposition de solution
 //
-// ParkingRessource :
+// ParkingRessource : Classe permettant de générer les liens des différents web services relatifs aux parkings
 //
 // Créé par : Olivier Chevallier le 26.09.19
 //--------------------------------------------------

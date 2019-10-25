@@ -1,7 +1,7 @@
 //--------------------------------------------------
 // Travail de bachelor - Proposition de solution
 //
-// TransitItinerary : Classe modélisant un itinéraire en transports publics
+// TransitItinerary : Sous-classe d'Itinerary modélisant un itinéraire en transports publics
 //
 // Créé par : Olivier Chevallier le 19.09.19
 //--------------------------------------------------
@@ -56,17 +56,6 @@ class TransitItinerary: Itinerary {
         return String(subStr)
     }
     
-    /// Fonction permettant de récupérer la sous-chaine de caractère se trouvant avant le caractère indiqué et celle se trouvant après.
-    /// Le code vient de : https://stackoverflow.com/questions/27226128/what-is-the-more-elegant-way-to-remove-all-characters-after-specific-character-i
-    public static func splitAtFirst(str: String, delimiter: String) -> (first: String, last: String)? {
-        guard let upperIndex = (str.range(of: delimiter)?.upperBound), let lowerIndex = (str.range(of: delimiter)?.lowerBound) else {
-            return (str, str)
-        }
-        let firstPart: String = .init(str.prefix(upTo: lowerIndex))
-        let lastPart: String = .init(str.suffix(from: upperIndex))
-        return (firstPart, lastPart)
-    }
-    
     //MARK: - Private methods
     /// Fonction permettant de récupérer les émissions relatives à un itinéraire en TP. Le résultat est en équivalent de grammes de CO2
     private func computeEmissions() -> Double {
@@ -96,7 +85,6 @@ class TransitItinerary: Itinerary {
         return avgSpeed / 3.6 * time
     }
     
-    /// Fonction calculant le temps total de l'itinéraire
     private func computeExpectedTime() -> Int {
         let duration = connection.duration
         let daysStr = duration.startIndex..<duration.index(duration.startIndex, offsetBy: 2)

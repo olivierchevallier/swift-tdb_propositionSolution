@@ -1,7 +1,7 @@
 //--------------------------------------------------
 // Travail de bachelor - Proposition de solution
 //
-// MultimodalItinerary :
+// MultimodalItinerary : Sous-classe d'Itinerary modélisant un itinéraire multimodal
 //
 // Créé par : Olivier Chevallier le 10.10.19
 //--------------------------------------------------
