@@ -1,6 +1,6 @@
 # Proposition de solution pour le travail de bachelor "L’apport des systèmes d’information et des nouvelles technologies dans la mobilité des personnes"
 ## Description
-Cette application iOS représente la solution proposée pour accompagnéer le mémoire du travail de bachelor
+Cette application iOS représente la solution proposée pour accompagner le mémoire du travail de bachelor
 
 ## Procédure d'installation
 L'installation sur un appareil à des fins de tests nécessite d'utiliser un ordinateur sous MacOS disposant de Xcode. 
